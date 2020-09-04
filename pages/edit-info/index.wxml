@@ -1,0 +1,154 @@
+<!--pages/edit-info/index.wxml-->
+<!-- <title back/> -->
+<view class="my-box container">
+<!-- <view class="my-box container {{[isIpx ? 'isIpx' : '']}}"> -->
+
+  <view class='my-box-con'>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        我的头像
+      </view>
+      <!-- <view class='my-box-item-r' bindtap='updatePic'> -->
+      <view class='my-box-item-r'>
+        <image mode="aspectFill" class='avera' src='{{userInfo.avatar||userInfo.picture}}'></image>
+        <!-- <image class='camera-tip' src='../../img/camera_info.png'></image> -->
+      </view>
+    </view>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        我的昵称
+      </view>
+      <view class='my-box-item-r'>
+        <!-- <input class='nickname-text' type='text' value='{{userInfo.nickname}}' bindinput='getName'> </input> -->
+        <text class='nickname-text'>{{userInfo.nickname}}</text>
+
+      </view>
+    </view>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        绑定手机号码
+      </view>
+      <view class='my-box-item-r'>
+
+        <text wx:if="{{userInfo.mobile}}" class='nickname-text' bindtap='changeSignTel'>{{userInfo.mobile}}</text>
+        <text wx:else class='nickname-text' bindtap='bindSignTel'>未绑定</text>
+
+      </view>
+    </view>
+
+    <!-- <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        宝宝生日
+        <view class='must-write' wx:if='{{extraInfo == 0}}'>*</view>
+      </view>
+      <view class='my-box-item-r slh'>
+        <picker mode="date" value="{{date}}" start="1990-01-01" end="{{enddate}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        宝宝就读的年级
+        <view class='must-write' wx:if='{{extraInfo == 0}}'>*</view>
+      </view>
+      <view class='my-box-item-r'>
+        <picker mode="multiSelector" bindchange="bindMultiGradeChange" bindcolumnchange="bindMultiGradeColumnChange" value="{{gradeIndex}}" range="{{gradeArray}}">
+          <view class="picker" wx:if="{{showMoreCol == true}}">
+            {{gradeArray[0][gradeIndex[0]]}}{{gradeArray[1][gradeIndex[1]]}}
+          </view>
+          <view class="picker" wx:if="{{showMoreCol == false}}">
+            {{gradeArray[0][gradeIndex[0]]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='my-box-item' wx:if='{{extraInfo == 0 && open_type == 5}}'>
+      <view class='my-box-item-l'>
+        所在的群
+        <view class='must-write' wx:if='{{extraInfo == 0 && open_type == 5}}'>*</view>
+      </view>
+      <view class='my-box-item-r'>
+        <picker bindchange="bindGroupChange" value="{{groupIndex}}" range="{{groupList}}" range-key="{{'group_name'}}">
+          <view class="picker">
+            {{groupList[groupIndex].group_name}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        宝宝性别
+        <view class='must-write' wx:if='{{extraInfo == 0}}'>*</view>
+      </view>
+      <view class='my-box-item-r'>
+        <picker bindchange="bindSexChange" value="{{sexindex}}" range="{{sexarray}}" range-key="{{'name'}}">
+          <view class="picker">
+            {{sexarray[sexindex].name}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        所在城市
+        <view class='must-write' wx:if='{{extraInfo == 0}}'>*</view>
+      </view>
+      <view class='my-box-item-r'>
+        <picker bindchange="changeRegin" mode="region" value="{{region}}">
+          <view wx:if='{{!selectRegion}}'>请选择</view>
+          <view wx:else>{{province}} - {{city}} - {{district}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='my-box-item'>
+      <view class='my-box-item-l'>
+        此次参与学习的家长
+        <view class='must-write' wx:if='{{extraInfo == 0}}'>*</view>
+      </view>
+      <view class='my-box-item-r'>
+        <picker bindchange="bindPeopleChange" value="{{parentindex}}" range="{{parentarray}}" range-key="{{'name'}}">
+          <view class="picker">
+            {{parentarray[parentindex].name}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='my-box-item2'>
+      <view class='state-box'>平时陪伴宝宝较多的人(可多选)</view>
+      <checkbox-group bindchange="loveCheckboxChange">
+        <label class="checkbox" wx:for="{{loveItems}}" wx:for-item="itemLove">
+          <checkbox value="{{itemLove.name}}" checked="{{itemLove.loveCheck}}" />{{itemLove.value}}
+        </label>
+        <view class='study_conditon_input' style='margin-top:8rpx' wx:if='{{loveItemShow == true}}'>
+          <input class='' name="" type='text' bindinput='getLoveOtherInfo' placeholder="其他陪伴人描述" placeholder-style='color:darkgray;font-size:12px' value='{{loveInputInfo}}' />
+        </view>
+      </checkbox-group>
+    </view>
+
+
+    <view class='my-box-item2'>
+      <view class='state-box'>我家宝宝在学习方面的现状(可多选)</view>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{items}}" wx:for-item="itemStudy">
+          <checkbox value="{{itemStudy.name}}" checked="{{itemStudy.checked}}" />{{itemStudy.value}}
+        </label>
+        <view class='study_conditon_input' style='margin-top:8rpx' wx:if='{{itemShow == true}}'>
+          <input class='' name="" type='text' bindinput='getOtherInfo' placeholder="其他学习现状描述" placeholder-style='color:darkgray;font-size:12px' value='{{itemInputInfo}}' />
+        </view>
+      </checkbox-group>
+    </view>
+
+    <view class='ok-edit' bindtap='submitInfo'>确定</view> -->
+  </view>
+</view>

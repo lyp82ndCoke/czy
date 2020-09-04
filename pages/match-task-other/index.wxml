@@ -1,0 +1,54 @@
+<view class="container padding-btm">
+	<view class="other-info">
+		<view class="other-info-content">
+			<view class="other-count-text">
+				<text class="top-line"></text>
+				<text class="query-other-par">看看其他父母</text>
+				<text class="top-line"></text>
+			</view>
+			<view class="other-top-title">无痕养育，爱与自由</view>
+			<view class="other-top-title">{{count_user_num}}+父母一同参加</view>
+		</view>
+	</view>
+	<view class="other-content">
+		<view
+		 class="bbs-item"
+		 wx:for="{{example_list}}"
+		 data-index="{{index}}"
+		 wx:key="index"
+		 wx:for-index="index"
+		 wx:for-item="item"
+		>
+			<view class="other-head">
+				<image class="user-headimgurl" src="{{item.headimgurl}}"></image>
+				<view class="other-head-right">
+					<view class="nick-name">{{item.nickname}}</view>
+					<view class="current-activity">{{item.camp_times_name}}</view>
+				</view>
+			</view>
+			<view data-isfold="{{item.isfold}}" class="bbs-item-text  {{item.isfold?'title7':'bbs-item-text-auto'}}">
+				<text>{{item.details}}</text>
+			</view>
+			<view
+			 data-posts_id="{{item.id}}"
+			 data-length="{{ item.content.length }}"
+			 wx-if="{{item.contentLength>175}}"
+			 data-index="{{index}}"
+			 class='bbs-item-more'
+			 bindtap='showDetail'
+			 data-idx="{{ item.id }}"
+			>
+				<text wx-if="{{item.isfold == true}}">展开</text>
+				<i wx-if="{{item.isfold == true}}" class="iconfont icon-zhankai fold-icon" />
+				<text wx-if="{{item.isfold == false}}">收起</text>
+				<i wx-if="{{item.isfold == false}}" class="iconfont icon-zhankai1 fold-icon" />
+			</view>
+			<imgList
+			 class="bbs-item-imglist"
+			 list="{{item.pic_url}}"
+			 bindimgView="imgClickShow"
+			/>
+		</view>
+	</view>
+</view>
+

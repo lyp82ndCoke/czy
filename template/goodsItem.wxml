@@ -1,0 +1,28 @@
+
+<template name="courseItem">
+ <form class="course-wrap" bindsubmit="goDetails" data-id="{{item.goods_id}}" report-submit>
+  <button formType='submit' class="flex-btn">
+     <image mode='aspectFill' class='course-img' src="{{item.face_pic}}" />
+     <view class='content-desc'>
+       <text class='course-title'>{{item.goods_name}}</text> 
+       <view class='price-wrap'>
+        <text class='price'>￥{{item.group_price}}</text>
+        <text class='original-price'>{{item.line_price}}</text>
+       </view>
+       <view class='course-bottom'>
+         <view wx:if='{{item.is_group == 1}}' class='sell-num'>
+          已团{{item.sales_num}}件
+         </view>
+         <view wx:if='{{item.is_group == 0}}' class='sell-num'>
+          已售{{item.sales_num}}件
+         </view>
+         <view class='tag-wrap'>
+           <!-- <label class='good-tag' wx:for="{{item.tag_name}}" wx:for-item='itemTag'>{{itemTag}}</label> -->
+         </view>
+       </view>
+      <label wx:if='{{item.is_group == 2}}' class='buy-btn'>去购买</label>
+      <label wx:if='{{item.is_group == 1}}' class='buy-btn'>去开团</label>
+     </view>
+   </button>
+   </form>
+ </template>

@@ -1,0 +1,35 @@
+<!--pages/my-help/index.wxml-->
+<!-- <title text="使用帮助" back/> -->
+<view class="suggestions-wrapper container">
+<!-- <view class="suggestions-wrapper container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <view class='sugList'>
+    <image src='../../img/logo.png' class='logo'></image>
+    <view class='title-text'>您是不是遇到了以下问题</view>
+    <view class='suggestions-content' wx:for="{{sugList}}" wx:key="{{index}}" hidden='{{!sugList}}'>
+      <view class='suggestions-title' bindtap='showHide' data-index="{{index}}" data-show="{{item.isShow}}">
+        <view class='title-header'>
+          <image src='../../img/dian.png'></image>
+          <text>{{item.problem}}</text>
+        </view>
+        <image wx:if="{{item.isShow}}" src='../../img/jiantouup.png'></image>
+        <image wx:else src='../../img/jiantou.png'></image>
+      </view>
+      <view class='content-dlts' wx:if="{{item.isShow == true}}">
+        {{item.problem_statement}}
+      </view>
+    </view>
+    <!-- 空页面 -->
+    <view class='main1' style='background:#fff' hidden='{{sugList}}'>
+      <image src='../../img/box_03.jpg' class='bg' mode='widthFix' />
+      <view class='order-sub-title'>暂无内容~</view>
+    </view>
+    <view style='display: flex;justify-content: center;align-items: center;flex-direction: column'>
+      <view class='footer-text'>更多问题将持续更新</view>
+      <!-- <text style='font-size: 24rpx;color: #ccc;margin-bottom: 17rpx;'>版本信息：{{version}}</text> -->
+    </view>
+  </view>
+  <!-- 意见反馈 -->
+  <!-- <view class='sug-btn'>
+    <view bindtap='kipBtn' class='sug'>意见反馈</view>
+  </view> -->
+</view>

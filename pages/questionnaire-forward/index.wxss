@@ -1,0 +1,171 @@
+.forward-wrap{
+    padding: 30rpx 0;
+}
+.message-wrap{
+    margin: 0 30rpx 0;
+    font-size: 0;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 6rpx 8rpx 0px rgba(240, 240, 240, 1);
+    border-radius:24rpx;
+}
+.shop-image{
+    width: 100%;
+    border-radius: 24rpx 24rpx 0 0;
+    /* height: 539rpx; */
+}
+.msg-text-w{
+    padding: 40rpx 30rpx;
+}
+.msg-text-t{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dear-text{
+    font-size:32rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.edit-btn{
+    font-size:32rpx;
+    font-weight:400;
+    color:rgba(230,0,57,1);
+}
+.save-color{
+    color:#07c160;
+}
+.cancel-color{
+    color:#4380E1;
+    margin-left: 15px;
+}
+.text-wrap{
+    border-top: dashed 2rpx #DDDDDD;
+    border-bottom: dashed 2rpx #DDDDDD;
+    margin-top: 10rpx;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.message-text{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    display: inline;
+    border-bottom: dashed 2rpx #DDDDDD;
+    padding-bottom: 13rpx;
+    line-height: 2.5;
+}
+.bottom-empty{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    height: 8rpx;
+    width: 100%;
+    z-index: 999;
+}
+.msg-text-b{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15rpx;
+}
+.nick-name{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.button-wrap{
+    margin: 60rpx 30rpx 0;
+    text-align: center;
+}
+.share-firend, .share-circle{
+    width: 100%;
+    height:88rpx;
+    background:linear-gradient(0deg,rgba(244,26,80,1),rgba(230,0,57,1));
+    box-shadow:0px 10rpx 10rpx 0rpx rgba(255,220,229,0.71);
+    border-radius: 44rpx;
+    text-align: center;
+    color:#fff;
+    line-height: 88rpx;
+    font-size: 32rpx;
+}
+.share-circle{
+    background:rgba(255,153,81,1);
+    box-shadow:0px 10rpx 10rpx 0px rgba(253,223,202,0.71);
+    margin-top: 40rpx;
+}
+.opacity-button{
+    opacity: .3;
+}
+.circle-text{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    margin-top: 30rpx;
+    display: inline-block;
+}
+.dialog-wrap{
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+.dialog-wrap-center{
+    width:540rpx;
+    margin: 60rpx auto 0;
+    text-align: center;
+    border-radius:24rpx 24rpx 0rpx 0rpx;
+}
+.poster-image{
+    width: 100%;
+    /* height: 810rpx; */
+}
+.dialog-close-w{
+    margin-top: 40rpx;
+}
+.close-icon{
+    color: #C4C1C4;
+    font-size: 48rpx;
+}
+.savePhoto{
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(230,0,57,1);
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+}
+.photo-sty{
+    font-size: 32rpx;
+    margin-right: 21rpx;
+}
+.bbs-textarea{
+    background: #f8f8f8;
+    height: 200rpx;
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    padding: 27rpx 30rpx;
+    width: 100%;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    margin-top: 15rpx;
+}
+.font-count{
+    font-size:25rpx;
+    color:#999;
+    font-weight:bold;
+    position: absolute;
+    right: 30rpx;
+    bottom: 20rpx;
+}

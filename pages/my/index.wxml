@@ -1,0 +1,125 @@
+<!--pages/my/m'y.wxml-->
+<!-- <title text="我的" /> -->
+<view class="container">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <login wx:if="{{loginShow}}" class="login" bind:getuserinfo="loginHide" bind:cancel="cancelLogin" />
+  <view class="login-wrap" wx:if="{{loginWrapShow}}" catchtap='loginShow' />
+  <view class="my-box">
+    <!-- <image class="avatarurl" src="{{userInfo.avatarurl}}" mode="aspectFit" binderror="" bindload=""></image>
+        <view class="nick-name">{{userInfo.nickname}}</view> -->
+    <view class='my-box-head' bindtap="editInfoMsg">
+      <image mode="aspectFill" class='avera' src='{{userInfo.avatar||userInfo.picture}}'></image>
+      <view class='my-box-head-nickname'>{{userInfo.nickname}}</view>
+    </view>
+  </view>
+  <scroll-view class="box-scroll-wrap" scroll-x="true">
+    <view class="attention">
+      <view wx:for="{{ghlist}}" wx:key="{{index}}" data-subscribe="{{item.subscribe}}" data-subscribeTitle="{{item.subscribeTitle}}" data-content="{{item.content}}" data-picturePreview="{{item.picturePreview }}" data-logoPreview="{{item.logoPreview}}" data-subscribeDay="{{item.subscribeDay}}"
+        data-title="{{item.title }}" bindtap="showdetail" class="total-pic">
+        <image src="{{item.logoPreview}}" class="specal-image"></image>
+        <view class="shadow" wx:if="{{item.subscribe == 0}}">
+          <image src="../../img/suo.png"></image>
+        </view>
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="menu-list">
+    <form report-submit data-path="pages/my-growing-up/index" bindsubmit="goPage">
+      <button formType='submit' class="menu-item flex-btn">
+        <image class='icon-img' src="../../img/wdxly.png" mode="aspectFit" binderror="" bindload=""></image>
+        <view class="text-item">我的成长墙</view>
+      </button>
+    </form>
+    <form report-submit data-path="pages/my-collects/index" bindsubmit="goPage">
+      <button formType='submit' class="menu-item flex-btn">
+        <image class='icon-img' src="../../img/wdsc.png" mode="aspectFit" binderror="" bindload=""></image>
+        <view class="text-item">我的收藏</view>
+      </button>
+    </form>
+    <form report-submit data-path="pages/my-course/index" bindsubmit="goPage">
+      <button formType='submit' class="menu-item flex-btn">
+        <image class='icon-img' src="../../img/wdkc.png" mode="aspectFit" binderror="" bindload=""></image>
+        <view class="text-item">我的课程 <text wx:if="{{userInfo.is_show_notice_oncourse}}" class="red-dot"></text> </view>
+      </button>
+    </form>
+    <form report-submit data-path="pages/my-orders/index" bindsubmit="goPage">
+      <button formType='submit' class="menu-item flex-btn">
+        <image class='icon-img' src="../../img/wddd.png" mode="aspectFit" binderror="" bindload=""></image>
+        <view class="text-item">我的订单</view>
+      </button>
+    </form>
+    
+    <form report-submit data-path="pages/questionnaire-list/index" bindsubmit="showPutOrser">
+      <button formType='submit' class="menu-item flex-btn">
+      <i class="iconfont icon-douyin list-icon"></i>
+        <view class="text-item">抖音购买</view>
+      </button>
+    </form>
+    <form report-submit data-path="pages/my-help/index" bindsubmit="goPage">
+      <button formType='submit' class="menu-item flex-btn">
+        <image class='icon-img' src="../../img/yijianfankui.png" mode="aspectFit" binderror="" bindload=""></image>
+        <view class="text-item">使用帮助</view>
+      </button>
+    </form>
+    <form wx:if="{{userInfo.is_show_questionnaire}}" report-submit data-path="pages/questionnaire-list/index" bindsubmit="goPage">
+      <button formType='submit' class="menu-item flex-btn">
+      <i class="iconfont icon-wenjuan list-icon"></i>
+        <view class="text-item">调查问卷</view>
+      </button>
+    </form>
+  </view>
+  <!-- 每日签到begin -->
+  <image class="sing-img" wx:if="{{userInfo.is_sign}}" bindtap="goSing" src="../../img/sing-img.png"></image>
+  <!-- 每日签到end -->
+  <!-- 关注与未关注的遮罩层 -->
+  <view class="fmodal" wx:if="{{isfmodal}}" catchtap="hideAlert">
+    <!-- 已关注 -->
+    <view class="overattention" catchtap="return" wx:if="{{ detaillist.subscribe == 1}}">
+      <image src="../../img/stars.png" class="bg-pic">
+        <view class="pic-border">
+          <image src="{{detaillist.logopreview}}" class="pic"></image>
+        </view>
+      </image>
+      <view class="detail-word">{{detaillist.subscribetitle}}</view>
+      <view class="details">{{detaillist.content}}</view>
+      <button catchtap="closeFmdal" class="known">我知道了</button>
+    </view>
+    <!-- 未关注 -->
+    <view class="overattention noAttention" catchtap="return" wx:if="{{ detaillist.subscribe == 0 }}">
+      <image src="../../img/stars.png" class="bg-pic">
+        <view class="pic-border">
+          <image src="{{detaillist.logopreview}}" class="pic"></image>
+        </view>
+      </image>
+      <view class="barcode">{{detaillist.content}}</view>
+      <view class="searchBarcode">微信搜索「{{detaillist.title}}」或下载二维码关注吧</view>
+      <image src="{{ detaillist.picturepreview }}"></image>
+      <button wx:if="{{openSetting}}" data-groupQrcode="{{detaillist.picturepreview}}" bindtap="openSetting">
+        设置保存图片
+      </button>
+      <button wx:else catchtap="saveCodeBtn" data-groupQrcode="{{detaillist.picturepreview}}">
+        一键保存二维码
+      </button>
+    </view>
+  </view>
+  <view class="alert-wrap" wx:if="{{showOrder}}" bindtouchmove="return">
+    <view class="put-order-wrap">
+    <view class="content-wrap">
+    <view class="put-order-title">请输入抖音绑定的手机号</view>
+    <view class="phone-wrap">
+       <input class="put-order-input" type="number" placeholder="请输入手机号" value="{{phone}}" bindinput="changOrder"></input>
+    </view>
+      <view class="phone-code flex-left-row">
+       <input class="put-code-input" type="number" value="{{code}}" bindinput="changCode"></input>
+       <button wx:if="{{showCodeBtn}}" class="get-code-btn" bindtap="getCode">获取验证码</button>
+       <button wx:else class="get-code-btn">{{num}}s</button>
+    </view>
+      </view>
+      <view class="put-order-bottom flex-left-row">
+        <view class="put-order-btn" bindtap="cancel">取消</view>
+        <view class="put-order-btn put-order-confirm-btn" bindtap="confirm">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

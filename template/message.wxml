@@ -1,0 +1,16 @@
+<wxs module="filters" src="../wxs/numToW.wxs"></wxs>
+<template name="messageItem">
+   <view class='message-item-wrap' >
+     <image class='avatar-img' src="{{item.avatarurl}}" />
+     <view class='message-content'>
+       <view class='message-item-title'>
+        <text class='message-nickname'>{{item.comment_nickname}}</text>
+        <text class='message-time'>{{filters.format(item.add_time*1000)}}</text>
+       </view>
+       <view class='message-text title3'>
+         {{item.comment_content}}
+       </view>
+       
+     </view>
+   </view>
+ </template>

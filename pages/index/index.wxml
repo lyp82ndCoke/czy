@@ -1,0 +1,144 @@
+<!--index.wxml-->
+<wxs module="filters" src="../../wxs/numToW.wxs"></wxs>
+<!-- <title/> -->
+<!-- <navBar 
+    title-text="自定义导航栏" 
+    background="#fff"
+    /> -->
+<view class="container ">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <!-- 授权遮罩组件 -->
+  <login wx:if="{{loginShow}}" class="login" bind:getuserinfo="loginHide" bind:cancel="cancelLogin" />
+  <!--全局点击唤醒授权遮罩-->
+  <view class="login-wrap" wx:if="{{loginWrapShow}}" catchtap='loginShow' />
+  <!--banner-->
+  <view class="swiper-wrap" wx:if="{{imgUrls.length}}">
+
+    <swiper class="top-swiper" indicator-dots="{{indicatorDots}}" indicator-active-color="#3EC9C9" indicator-color="rgba(255,255,255,.5)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    
+      <block wx:for="{{imgUrls}}" wx:key="{{item.bananer_id}}">
+        <swiper-item >
+          <!-- <image class="slide-image" mode='aspectFill' src="{{item.ad_picture}}" data-path='{{item.bananer_link}}' data-parms='{{item.parms}}' class="slide-image" bindtap='goLink' /> -->
+           <button class="concat-class" show-message-card="true" send-message-title="培养好孩子" data-all_camp_id="{{item.item_id}}" bindcontact="handleContact" send-message-path="/pages/training/index?goods_id={{item.content_id}}" send-message-img="https://task.zmedc.com/upload/20191106/60539705a32a63b38e85c092054f77c7_265696.jpeg"
+                    open-type="contact" session-from="user_add_class" />
+          <image class="slide-image" src="{{item.ad_picture}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 金句样式 -->
+  <form class="course-wrap" v-if="{{todaySentence.article_id}}" bindsubmit="gotoGoldSent" data-id="{{todaySentence.article_id}}" report-submit>
+    <button formType='submit' class="flex-btn">
+      <view class='daily-golden-sentence'>
+        <view class='gold-sent-detail'>
+          <!-- 每日金句栏的头部两边图片 -->
+          <view class='gold-head-img'>
+            <image src='../../img/gold1.png' class='gold-head-img-l' />
+            <image src='../../img/gold2.png' class='gold-head-img-r' />
+          </view>
+          <!-- 每日金句内容  -->
+          <view class='gold-sent-content'>
+            <view class='gold-content-l'>
+              <image class='gold-image' src='../../img/jinjulogo.png' />
+              <view class='left-date'>{{todaySentence.saying_date}}</view>
+            </view>
+            <view class='gold-content-r'>
+              <view class='right-content'>{{todaySentence.intro}}</view>
+            </view>
+          </view>
+          <!-- 金句作者 -->
+          <view class='gold-sent-author'>
+            <view class='author-name' wx:if='{{todaySentence.creators_name}}'>
+              <view class="author-line" /> {{todaySentence.creators_name}}
+              <view class="author-line" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </button>
+  </form>
+
+  <!-- 首页列表 -->
+  <!-- <view class="first-page-list"> -->
+  <view class="list-wrap" wx:for="{{list}}" wx:key="{{index}}">
+
+    <view class="item-wrap" wx:for="{{item}}" wx:for-item="itemCont" wx:for-index="i" wx:key="{{itemCont.article_id}}">
+      <!-- 群聊和好文样式 -->
+      <form class="course-wrap" data-index="{{index}}" data-subIndex="{{i}}" bindsubmit="goDetails" data-id="{{itemCont.article_id}}" data-type="{{itemCont.type}}" report-submit>
+        <button formType='submit' class="flex-btn">
+          <view class='list-type-one' wx:if="{{itemCont.type==2||itemCont.type==1}}">
+
+            <!-- 标签 需要根据状态判断-->
+            <image class='list-label' wx:if="{{itemCont.type==1}}" src='../../img/label3.jpg' />
+            <image class='list-label' src='../../img/label1.jpg' wx:if="{{itemCont.type==2}}" />
+            <!-- 内容 -->
+            <view class='content-box'>
+              <view class='list-content'>{{itemCont.title}}</view>
+              <view class='content-bottom'>
+                <view class='content-bottom-tag'>
+                  <image src='../../img/eye.jpg' class='content-bottom-img' />
+                  <view class='content-bottom-font'>{{itemCont.view_all_count}}</view>
+                  <image src='../../img/star1.png' class='content-bottom-img1' />
+                  <view class='content-bottom-font'>{{itemCont.collect_num}}</view>
+                  <image src='../../img/speak.jpg' class='content-bottom-img1' />
+                  <view class='content-bottom-font'>{{itemCont.comment_num}}</view>
+                </view>
+              </view>
+            </view>
+            <!-- 右侧图片 -->
+            <image src='{{itemCont.face_picture}}' class='list-right-img' />
+
+          </view>
+        </button>
+      </form>
+      <!-- 金句 -->
+      <form class="course-wrap" data-index="{{index}}" data-subIndex="{{i}}" bindsubmit="gotoGoldSent" data-id="{{itemCont.article_id}}" report-submit>
+        <button formType='submit' class="flex-btn">
+          <view class='list-type-one' wx:if="{{itemCont.type==3}}">
+            <!-- 标签 -->
+            <image class='list-label' src='../../img/label2.jpg' />
+            <!-- 内容 -->
+            <view class='content-box'>
+              <view class='list-content-two'>{{itemCont.intro}}</view>
+              <view class='content-bottom-two'>
+                <view class='content-bottom-tag'>
+                  <image src='../../img/eye.jpg' class='content-bottom-img' />
+                  <view class='content-bottom-font'>{{itemCont.view_all_count}}</view>
+                  <image src='../../img/star1.png' class='content-bottom-img1' />
+                  <view class='content-bottom-font'>{{itemCont.zan_num}}</view>
+                  <image src='../../img/speak.jpg' class='content-bottom-img1' />
+                  <view class='content-bottom-font'>{{itemCont.collect_num}}</view>
+                </view>
+                <view class='content-come-from' wx:if='{{itemCont.creators_name}}'>
+                  <view class="author-line" /> {{itemCont.creators_name}}
+                  <view class="author-line" />
+                </view>
+              </view>
+            </view>
+          </view>
+        </button>
+      </form>
+      <!-- 广告位 -->
+      <view class='list-advertisement' bindtap='jump' wx:if="{{itemCont.type==4}}" data-url="{{itemCont.video_url}}" bindtap="showVideo">
+        <image src='{{itemCont.ad_picture}}' class='advertisement-img' />
+      </view>
+    </view>
+
+  </view>
+
+  <!-- </view> -->
+  <!--播放视频-->
+  <view class="video-wrap" wx:if="{{videoWrap}}">
+    <video class="video" src="{{videoUrl}}" autoplay="true" show-fullscreen-btn="false" />
+    <view class="close-wrap">
+      <i class='iconfont icon-close icon-guanbi' bindtap="closeVideo" />
+    </view>
+
+  </view>
+
+  <!--商品列表参考做list相关逻辑-->
+  <view class='goods-item-wrap' wx:for='{{goods}}' wx:key="{{item.goods_id}}">
+    <template is="courseItem" data='{{item}}' />
+  </view>
+
+</view>

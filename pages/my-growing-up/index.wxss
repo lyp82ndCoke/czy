@@ -1,0 +1,202 @@
+/**我的成长墙.wxss**/
+
+
+
+
+.bbs-box {
+    padding-bottom: 20rpx;
+}
+
+.bbs-box-head {
+    background: url(http://task.zmedc.com/upload/20180614/4366abdb04cd99cf60e8512934f0a3ab_5054.jpg);
+    background-size: cover;
+    height: 156rpx;
+    padding: 10rpx 60rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bbs-item {
+    background: #fff;
+    padding: 20rpx 40rpx;
+    margin-top: 20rpx;
+}
+
+.bbs-item-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bbs-item-head-avea {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.bbs-item-head-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bbs-item-head-desc-nickname {
+    font-weight: bold;
+    font-size: 30rpx;
+    width:300rpx;
+
+}
+
+.bbs-item-head-desc-time {
+    font-size: 26rpx;
+    color: #999;
+    font-weight: bold;
+    float: left;
+}
+
+.bbs-item-tip-delete {
+    width: 22rpx;
+    height: 28rpx;
+    margin-left: 15rpx;
+}
+
+.bbs-item-text-con {
+    font-size: 26rpx;
+    text-align: justify;
+      line-height:50rpx;
+  letter-spacing:1px;
+  word-break: break-all;
+  
+}
+
+.bbs-item-text {
+    margin: 20rpx 0rpx;
+    /* height: 70rpx; */
+    overflow: hidden;
+}
+
+.bbs-item-text-auto {
+    height: auto;
+}
+
+.bbs-item-more {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 28rpx;
+    font-weight: bold;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.bbs-item-more image {
+    width: 24rpx;
+    height: 22rpx;
+    margin-left: 14rpx;
+}
+
+.bbs-item-imglist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.bbs-item-imglist-item {
+    width: 220rpx;
+    height: 220rpx;
+    margin-bottom: 20rpx;
+    margin-right: 2rpx;
+}
+
+.release-notes {
+    width: 160rpx;
+    height: 70rpx;
+    background-color: rgba(255, 122, 57, 0.98);
+    border-top-left-radius: 40rpx;
+    border-bottom-left-radius: 40rpx;
+    position: fixed;
+    right: 0;
+    bottom: 160rpx;
+    font-size: 24rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.release-notes image {
+    width: 38rpx;
+    height: 38rpx;
+    margin: 0 10rpx;
+}
+
+.btn-agree {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 24rpx;
+}
+.icon-wrap{
+  
+  margin: 0 25rpx;
+  font-size: 24rpx;
+}
+
+.btn-agree image {
+    width: 29rpx;
+    height: 29rpx;
+    margin-right: 10rpx;
+}
+
+.my-send-msg {
+    width: 160rpx;
+    height: 60rpx;
+    background: #ff7a39;
+    border-radius: 40rpx;
+    color: #fff;
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+}
+
+.my-send-msg image {
+    width: 38rpx;
+    height: 38rpx;
+    margin-left: 10rpx;
+    margin-right: 5rpx;
+}
+
+.kong {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 25vh 0;
+    margin-top: 20rpx;
+    flex-direction: column;
+    font-size:30rpx;
+
+}
+
+.kong image {
+    width: 200rpx;
+    height: 200rpx;
+    margin-bottom: 20rpx;
+}
+.zan-icon{
+  margin-right: 10rpx;
+  /* vertical-align: middle; */
+  font-size: 26rpx;
+}
+.message-icon{
+  margin-right: 10rpx;
+  vertical-align: middle;
+  font-size: 26rpx;
+}
+.zan-icon-true{
+  color: #E6484D;
+}
+.double-up-sty{
+    font-size: 25rpx;
+    margin-left: 10rpx;
+}

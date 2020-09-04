@@ -1,0 +1,26 @@
+<!--pages/questionnaire-share/index.wxml-->
+<!-- <title back text="调查问卷" /> -->
+<view class="wrap">
+  <view class="content">
+    <view class="top-padding">
+      <view class="top-title flex-between-row">
+        <text class="text-line">———</text>
+        <text>分享至</text>
+        <text class="text-line">———</text>
+      </view>
+      <view class="content-center flex-row">
+        <button open-type="share" class="img-wrap">
+          <i class="iconfont icon-weixin weixin-sty"></i>
+          <view class="img-text">发送给好友</view>
+        </button>
+        <view class="img-wrap" bindtap="goQrCode">
+          <i class="iconfont icon-erweima erweima-sty"></i>
+          <view class="img-text">二维码</view>
+        </view>
+      </view>
+    </view>
+    <image class="bottom-img" mode="widthFix" src="../../img/share-bg-botton-img.png"></image>
+    <!-- <view class="bottom-img"></view> -->
+  </view>
+  
+</view>

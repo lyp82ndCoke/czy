@@ -1,0 +1,32 @@
+<view class="container answer-wrap">
+    <view class="answer-center">
+        <view class="answer-top">
+            <view>
+                <text class="question-index">{{orderNumber+1}}</text><text class="question-num" > / {{questionList.length}}</text>
+            </view>
+            <view class="answer-top-right">
+                <i class="iconfont icon-dengdai wait-sty"></i>
+                <text class="use-time">已用时{{useTime}}</text>
+            </view>
+        </view>
+        <view class='question-item'>
+            <view class="question-title">
+                <text class="">{{questionInfo.select_content}}</text>
+            </view>
+            <view class='answer-list'>
+                <label class="checkbox" wx:for="{{questionInfo.select_option}}" wx:for-index='index' wx:for-item='item' wx:key="index">
+                    <view class='lab-view' bindtap="clickCheck" data-index="{{index}}">
+                        <view class='un-check {{item.checked?"active-number":""}}'>
+                            <text class='selection'>{{item.option_index}}</text>
+                        </view>
+                        <view class='sub-selection {{item.checked?"active-content":""}}'>{{item.option_content}}</view>
+                    </view>
+                </label>
+            </view>
+        </view>
+        <view class="bottom-wrap">
+            <view class="next-question" bindtap="submitData">{{orderNumber+1==questionList.length?'提交':'下一题'}}</view>
+            <view class="bottom-text" wx:if="{{orderNumber+1<questionList.length}}">选择“下一题”后不可修改哦～</view>
+        </view>
+    </view>
+</view>

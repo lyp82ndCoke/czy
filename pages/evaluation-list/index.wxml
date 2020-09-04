@@ -1,0 +1,25 @@
+<view class="container evaluation-wrap">
+    <view class="list-wrap" wx:if="{{list.length > 0}}">
+        <view class="list-top">
+            <view class="top-title">{{assess_data.assess_name}}</view>
+            <view class="top-dsc">{{assess_data.assess_remarks}}</view>
+        </view>
+        <view class="evalua-list">
+            <view class="evalua-item" wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                <view class="evalua-status {{item.status==2?'no-start':item.status==3?'end-bgc':''}}">{{item.status==2?'未开始':item.status==1?'已开始':'已结束'}}</view>
+                <view class="evalue-info">
+                    <view class="evalue-info-top flex-between-row">
+                        <view>测评时间：{{item.start_time}} - {{item.end_time}}</view>
+                    </view>
+                    <view class="evalue-info-top flex-between-row">总计 {{item.subject_num}} 道题</view>
+                    <view class="evalue-info-content">
+                        <text>{{item.paper_name}}</text>
+                    </view>
+                </view>
+                <view class="click-btn {{item.is_report==1?'have-report':item.status==2||item.status==3?'end-bgc':''}}" bindtap="queryBtn" data-index="{{index}}">
+                    <i class="iconfont {{item.is_report==1?'icon-baogao':'icon-tianxiecopy'}} icon-sty"></i>{{item.is_report==1?'看报告':'去测评'}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

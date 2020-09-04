@@ -1,0 +1,13 @@
+<view wx:if="{{timeData}}">
+	<text>{{timeData[0] ? timeData[0] : '00'}}天 </text>
+	<text>{{timeData[1] ? timeData[1] : '00'}}:</text>
+	<text>{{timeData[2] ? timeData[2] : '00'}}:</text>
+	<text>{{timeData[3] ? timeData[3] : '00'}}</text>
+</view>
+<view wx:else>
+	<text>00天 </text>
+	<text>00:</text>
+	<text>00:</text>
+	<text>00</text>
+</view>
+

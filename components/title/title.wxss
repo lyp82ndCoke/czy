@@ -1,0 +1,22 @@
+/* components/title/title.wxss */
+@import "../../app.wxss";
+.title-app {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 48rpx 40rpx 5rpx;
+  line-height: 64rpx;
+}
+
+.title-isIpx {
+  padding-top: 88rpx;
+}
+
+.title-app .back {
+  /* color: #000; */
+  font-size: 35rpx;
+}

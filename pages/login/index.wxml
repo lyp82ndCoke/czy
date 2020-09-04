@@ -1,0 +1,17 @@
+<!--pages/login/index.wxml-->
+<!--pages/share/index.wxml-->
+<!-- <title/> -->
+
+<view class="container flex-col">
+<!-- <view class="container flex-col {{[isIpx ? 'isIpx' : '']}}"> -->
+    <view class="img-wrap">
+        <image src="../../img/login.png" mode="aspectFit"></image>
+        <view class="text1">
+            请先授权，才能正常使用小程序
+        </view>
+        <view class="text2">
+            授权仅会获取您的头像、昵称等信息
+        </view>
+    </view>
+    <button wx:if="{{btn}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="login-btn">立即授权</button>
+</view>

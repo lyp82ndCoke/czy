@@ -1,0 +1,72 @@
+<view class="container" style="padding-bottom:40rpx;">
+	<view class="task-head">
+		<view class="head-title"></view>
+		<view class="daily-task-top">{{type == 'task' ? '所有锦囊' : '所有任务'}}</view>
+		<view class="head-title"></view>
+	</view>
+	<!-- <view class="daily-total" wx:if="{{!showEmpty}}">
+		<text>今日{{task_info.today_release_num}}人发布，公开任务到赛区{{task_info.today_open_num}}条</text>
+	</view> -->
+	<view class="task-list" wx:if="{{list.length > 0 && !showEmpty}}">
+		<view
+		 class="task-item"
+		 wx:for="{{list}}"
+		 wx:key="index"
+		 wx:for-index="index"
+		 wx:for-item="item"
+		 wx:if="{{ item.dataList.length > 0 }}"
+		>
+			<view class="daily-num" wx:if="{{item.dataList.length > 0}}">Day{{item.target_day}}</view>
+			<view
+			 class="daily-item-min"
+			 wx:for="{{item.dataList}}"
+			 wx:key="indexMin"
+			 wx:for-index="indexMin"
+			 wx:for-item="itemMin"
+			 data-item="{{itemMin}}"
+			 bindtap='queryDayDetail'
+			 wx:if="{{item.dataList.length > 0}}"
+			>
+				<view>
+					<text class="task-category">{{itemMin.task_category_name}}</text>
+				</view>
+				<view
+				 class="task-content"
+				 hover-class="none"
+				 hover-stop-propagation="false"
+				>
+					<text>{{itemMin.task_content}}</text>
+					<view class="piblish-num" wx:if="{{itemMin.is_block==2}}">
+						<text class="">{{itemMin.task_content_time}}</text> 
+						已有
+						<text class="people-num">{{itemMin.release_num}}</text>
+						人发布
+					</view>
+					<view class="piblish-num" wx:else>
+						<text class="">{{itemMin.task_content_time}}</text> 
+						暂未开始
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="no-award-show" wx:if="{{list.length <= 0 || showEmpty}}">
+		<view class="task-status-img">
+			<image
+			 class="award-empty-img"
+			 src="../../img/empty-pic.png"
+			 mode="aspectFit|aspectFill|widthFix"
+			></image>
+		</view>
+		<view class="task-status-text">哎呦～还没有呢，先去看看其他吧</view>
+	</view>
+	<view
+	 class="back-top"
+	 wx:if="{{showBackTop}}"
+	 catchtap="backTop"
+	>
+		<i class="iconfont icon-up icon-up-sty"></i>
+		<text class="back-top-text">TOP</text>
+	</view>
+</view>
+

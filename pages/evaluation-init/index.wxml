@@ -1,0 +1,45 @@
+<view class="container init-wrap">
+    <view class="page-wrap">
+        <view class="init-head">
+            <view class="init-title">{{accessInfo.assess_name}}</view>
+            <view class="steps_box">
+                <view class="step-slider-item slider-first {{is_ceping?'active-item':''}}"></view>
+                <view class="step-slider-item"></view>
+            </view>
+            <view class="steps-all">
+                <view class="steps-one-box steps-one-box1">
+                    <view class="">
+                        <view class="">测试</view>
+                        <view class="">3-5分钟</view>
+                    </view>
+                </view>
+                <view class="steps-one-box">
+                    测试结果
+                </view>
+                <view class="steps-one-box">
+                    成长里程碑
+                </view>
+            </view>
+        </view>
+        <view class="content-wrap">
+            <view class="user-info">
+                <image class="user-icon" src="{{userInfo.avatar||userInfo.picture}}"></image>
+                <view class="user-name">Hi，{{userInfo.nickname}}</view>
+            </view>
+            <view class="evalua-target">
+                <view class="evalua-head">
+                    <view class="evalua-head-title"></view>
+                    <view class="evalua-title">测试目标</view>
+                    <view class="evalua-head-title"></view>
+                </view>
+                <view class="text-sty">
+                    <text>{{accessInfo.access_target}}</text>
+                </view>
+            </view>
+            <view class="evalua-bottom">
+                <view class="evalua-btn" bindtap="evaluationNow">立即测评</view>
+                <view class="evalua-text">测评后即获得测评报告一份</view>
+            </view>
+        </view>
+    </view>
+</view>

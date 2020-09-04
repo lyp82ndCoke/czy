@@ -1,0 +1,29 @@
+<!--pages/good-sentence-list/index.wxml-->
+<import src="../../../template/login.wxml" />
+<!-- <title back="true" /> -->
+<view class="container">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+	<view class="main flex-center-column ">
+		<view
+		 class='saying-item flex-center-column'
+		 wx:for="{{list}}"
+		 wx:key="{{item.article_id}}"
+		 bindtap='gotoSayDetail'
+		 data-id='{{item.article_id}}'
+		>
+			<view class='saying-item-box'>
+				<view class='saying-item-box-view'>{{item.intro}}</view>
+				<view class='saying-item-box-zz' wx:if="{{item.creators_name}}">-{{item.creators_name}}-</view>
+				<view class='saying-item-box-zz' wx:if="{{item.creators_name == ''}}" />
+			</view>
+			<view class='saying-item-bottom flex-between-row'>
+				<text>{{item.create_date}}</text>
+				<view class='flex-center-row'>
+					<image src='../../img/kazilandayanjing.png' mode='widthFix' />
+					<text>{{item.view_num}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+

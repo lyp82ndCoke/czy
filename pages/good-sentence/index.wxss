@@ -1,0 +1,173 @@
+/* pages/good-sentence/index.wxss */
+@import "../../template/comment/index.wxss";
+.container{
+  background-color: #f8f8f8;
+}
+.saying-title {
+  color: rgb(244, 196, 111);
+  font-size: 25rpx;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0 28rpx;
+}
+
+.saying-title image {
+  width: 12rpx;
+  margin-left: 15rpx;
+}
+
+.saying-banner {
+
+  width: 100%;
+  height: 375rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  position: relative
+}
+
+.saying-main {
+  margin: 0 28rpx;
+  box-sizing: border-box;
+  background: #fff;
+  position: relative;
+}
+
+.more-icon {
+  margin: 4rpx 0 0 4rpx;
+  font-size: 30rpx;
+}
+
+.saying-title-t {
+  margin: 0 28rpx;
+  box-sizing: border-box;
+  color: rgb(195, 195, 195);
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  padding: 0 40rpx;
+  text-align: right;
+
+}
+
+.saying-content-line {
+  background: #000;
+  width: 40rpx;
+  height: 6rpx;
+  margin-left: 40rpx;
+  margin-top: 78rpx;
+  margin-bottom: 30rpx;
+}
+
+.saying-content {
+  padding: 0 40rpx;
+  box-sizing: border-box;
+
+}
+
+.saying-content text {
+  font-size: 30rpx;
+  letter-spacing: 5rpx;
+  color: rgb(65, 65, 65);
+  text-align: justify
+}
+
+.saying-bottom {
+  width: 100%;
+  margin: 20rpx 0;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+
+.saying-title-a {
+  color: rgb(195, 195, 195);
+  font-size: 29rpx;
+  letter-spacing: 3rpx;
+  margin-bottom: 5rpx;
+  height: 40rpx;
+}
+
+.saying-title-b {
+  color: rgb(102, 102, 102);
+  font-size: 29rpx;
+  letter-spacing: 3rpx;
+}
+
+.saying-button {
+  color: #fff;
+  font-size: 30rpx;
+  letter-spacing: 3rpx;
+  width: 100%;
+  height: 90rpx;
+  margin-top: 60rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(180deg, #FFB700, #FFA700);
+}
+
+.saying-other {
+  margin-top: 40rpx;
+  width: 100%;
+}
+
+.saying-other image {
+  width: 26rpx;
+  height: 13rpx;
+  margin-right: 10rpx;
+}
+
+.saying-other-text {
+  font-size: 28rpx;
+  color: rgb(244, 173, 61);
+}
+
+.saying-other-text-cel {
+  font-size: 28rpx;
+  color: rgb(196, 196, 196);
+}
+
+swiper {
+  height: 900rpx;
+}
+
+.saying-banner-data {
+  position: absolute;
+  bottom: 20rpx;
+  left: 40rpx;
+}
+
+.saying-banner-data-n {
+  font-size: 70rpx;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.saying-banner-data-k {
+  border: 1px solid #fff;
+  border-radius: 5rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 5rpx 10rpx;
+
+}
+
+.mask {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.mask-hand {
+  width: 380rpx;
+  margin: 360rpx 0 200rpx 0;
+}
+
+.mask-know {
+  width: 230rpx;
+  /* margin-right: 50rpx; */
+}

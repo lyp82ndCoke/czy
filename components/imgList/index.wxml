@@ -1,0 +1,41 @@
+<!--components/imgList/index.wxml-->
+<!-- 一行一个 -->
+<view class="img-wrap img-wrap-1" wx:if="{{list.length==1}}">
+	<image
+	 mode="aspectFill"
+	 wx:for="{{list}}"
+	 wx:key="item"
+	 catchtap="imgView"
+	 class='img-item'
+	 data-list="{{list}}"
+	 data-src="{{item}}"
+	 src="{{item}}"
+	></image>
+</view>
+<!-- 一行两个 -->
+<view class="img-wrap img-wrap-2" wx:if="{{list.length<=4&&list.length % 2==0}}">
+	<image
+	 mode="aspectFill"
+	 wx:for="{{list}}"
+	 wx:key="item"
+	 catchtap="imgView"
+	 class='img-item'
+	 data-list="{{list}}"
+	 data-src="{{item}}"
+	 src="{{item}}"
+	></image>
+</view>
+<!-- 一行三个 -->
+<view class="img-wrap img-wrap-3" wx:if="{{list.length>4||list.length==3}}">
+	<image
+	 mode="aspectFill"
+	 wx:for="{{list}}"
+	 wx:key="item"
+	 catchtap="imgView"
+	 class='img-item'
+	 data-list="{{list}}"
+	 data-src="{{item}}"
+	 src="{{item}}"
+	></image>
+</view>
+

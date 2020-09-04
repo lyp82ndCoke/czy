@@ -1,0 +1,302 @@
+<wxs module="filters" src="../../wxs/numToW.wxs"></wxs>
+<view class="container">
+	<login
+	 wx:if="{{loginShow}}"
+	 class="login"
+	 bind:getuserinfo="loginHide"
+	 bind:cancel="cancelLogin"
+	/>
+	<view
+	 class="login-wrap"
+	 wx:if="{{loginWrapShow}}"
+	 catchtap='loginShow'
+	/>
+	<view class="flex-left-row  rank-share-tips">
+		<i class="iconfont icon-laba-copy laba-sty"></i>
+		<view class="tips-text">
+			<text>你的好友{{times_task_user_info.nickname}}正在参加{{camp_times_info.camp_times_name}}</text><text wx:if="{{prize_info.award_name}}">，赢{{prize_info.award_name}}</text><text>，邀请你参加</text>
+		</view>
+	</view>
+	<view class="music-wrap" wx:if="{{task_info.audio_url}}">
+		<text class="audio-title" wx:if="{{task_info.audio_title}}">{{task_info.audio_title}}</text>
+		<view class="slider-wrap">
+			<view class="music-slider-t">
+				<slider class='course-slider' bindchange='radioChange' block-color='#F0EFEF' color='#DBDADB' block-size="13" activeColor='#FB643B' step='1' value='{{userPlaySecond}}' mini='0' max='{{userPlayTotal}}' />
+				<view class="paly-button">
+					<image class='music-button' src="../../img/{{!musicPlay?'3.png':'4.png'}}" bindtap='musicPlay' />
+				</view>
+			</view>
+			<view class="flex-between-row music-time">
+				<view class='cours-top-font3'>{{filters.toAfater(userPlaySecond)}}</view>
+				<view class='cours-top-font3'>{{filters.toAfater(userPlayTotal)}}</view>
+			</view>
+		</view>
+	</view>
+	<view class="rank-total-msg">
+		<image
+		 class="user-icon"
+		 src="{{times_task_user_info.headimgurl}}"
+		 mode="aspectFit|aspectFill|widthFix"
+		></image>
+		<view class="rank-num">
+			已获赞
+			<text class="rank-num-sty">{{times_task_user_info.zan_num}}</text>
+		</view>
+		<view class="count-time-wrap">
+			<view>
+				<i class="iconfont icon-shalou1 shalou-sty"></i>
+				<text class="task-end-sty" wx:if="{{task_info.task_status==2}}">活动已结束</text>
+			</view>
+			<view class="task-end-sty task-count-sty" wx:if="{{task_info.task_status==1&&timeData}}">
+				<text>{{timeData[0] > 1 ? "活动剩余" : '活动倒计时'}}</text>
+				<text class="count-num" wx:if="{{timeData[0] > 0}}">{{timeData[0]}}</text>
+				<text wx:if="{{timeData[0] > 0}}">天</text>
+				<view wx:else>
+					<text class="count-num">{{timeData[1]}}</text>
+					<text>:</text>
+					<text class="count-num" >{{timeData[2]}}</text>
+					<text>:</text>
+					<text class="count-num" >{{timeData[3]}}</text>
+				</view>
+			</view>
+		</view>
+		<view
+		 class="dian-zan-btn"
+		 bindtap="activeZan"
+		 data-zan="{{task_submit_info.is_zan}}"
+		>{{task_submit_info.is_zan === '1' ? '已点赞':'给他点赞'}}
+		</view>
+		<view class="dian-zan-text">帮他点赞，助一臂之力</view>
+		<view class="join-task" catchtap="goMatchArea" wx:if="{{task_info.is_bind_match == 1}}">查看赛况</view>
+	</view>
+	<view class="today-task-content task-box-shadow {{more_task_list.length <= 0 && list.length <= 0 ? 'unmore-area-list' : ''}}">
+		<button
+		 class="activity-img"
+		 open-type="contact"
+		 show-message-card="true"
+		 send-message-title="培养好孩子"
+		 send-message-path="/pages/match-share-area/index?site_id={{adv_info.also_join.site_id}}&category=2&camp_times_id={{camp_times_info.camp_times_id}}"
+		 send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+		 data-button_path="{{adv_info.also_join.apipath_button}}"
+		 data-goods_id="{{adv_info.also_join.goods_id}}"
+		 bindcontact="handleContact"
+		 wx:if="{{adv_info.also_join.adv_pic_url}}"
+		>
+			<image src="{{adv_info.also_join.adv_pic_url}}" mode="aspectFit|aspectFill|widthFix"></image>
+		</button>
+
+		<view class="today-top-title">任务详情</view>
+		<view class="task-content today-task-detail">
+			<text>{{times_task_content_info.task_content}}</text>
+		</view>
+		<view class="today-top-title">我的完成情况</view>
+		<view class="finish-situation">
+			<view class="task-content">
+				<text class="title7">{{task_submit_info.details}}</text>
+			</view>
+			<imgList list="{{task_submit_info.pic_url}}" bindimgView="imgClickShow" />
+			<view
+			 class="dianzan-wrap {{task_submit_info.is_zan == 1?'active-zan':''}}"
+			 bindtap="activeZan"
+			 data-zan="{{task_submit_info.is_zan}}"
+			>
+				<i class="iconfont icon-dianzan dianzan-sty"></i>
+				<text class="dianzan-text-sty">{{task_submit_info.zan_num>0?task_submit_info.zan_num:'点赞'}}</text>
+			</view>
+			<view class="view-comment" bindtap="showCommon">
+				<i class="iconfont icon-liulan liulan-sty"></i>
+				<text>{{task_submit_info.view_count_num}}</text>
+				<i class="iconfont icon-pinglun1 pinlun-sty"></i>
+				<text>{{task_submit_info.comment_count_num>0?task_submit_info.comment_count_num:'评论'}}</text>
+			</view>
+		</view>
+	</view>
+	<!-- 评论 -->
+	<view class="comment-wrap task-box-shadow" wx:if="{{list.length>0}}">
+		<view class="today-top-title comment-title">评论</view>
+		<view class="comment-content-wrap">
+			<view
+			 class="comment-item"
+			 wx:for="{{list}}"
+			 wx:for-item="item"
+			 wx:for-index="index"
+			 wx:key="index"
+			>
+				<view class="comment-user">
+					<image
+					 class="comment-user-icon"
+					 src="{{item.headimgurl}}"
+					 mode="aspectFit|aspectFill|widthFix"
+					></image>
+					<text class="user-nickname">{{item.nickname}}</text>
+				</view>
+				<view class="comment-content">
+					<view class="comment-text">
+						<text>{{item.comment_contents}}</text>
+					</view>
+					<view
+					 class="comment-text comment-text-reply"
+					 wx:for="{{item._apply}}"
+					 wx:for-item="itm"
+					 wx:for-index="idx"
+					 wx:key="idx"
+					>
+						<text class="comment-nickname">{{itm.nickname}}：</text>
+						{{itm.comment_contents}}
+					</view>
+					<view class="comment-bottom">
+						<text class="comment-date">{{item.create_time}}</text>
+						<i
+						 class="iconfont icon-pinglun1 comment-sty"
+						 bindtap="showCommon"
+						 data-comment_id="{{item.comment_id}}"
+						 data-nickname="{{item.nickname}}"
+						></i>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view
+		 class="comment-more"
+		 bindtap="queryMore"
+		 wx:if="{{showMore}}"
+		>
+			<text class="comment-more-text" bindtap="moreComment">查看更多评论</text>
+			<text class="comment-title-line"></text>
+		</view>
+	</view>
+	<view class="task-more task-box-shadow" wx:if="{{more_task_list.length > 0}}">
+		<view class="today-top-title comment-title">本赛区更多任务</view>
+		<view class="task-more-text">上千个亲子任务不断更新~</view>
+		<view
+		 class="task-more-item"
+		 wx:for="{{more_task_list}}"
+		 wx:key="index"
+		 wx:for-index="index"
+		 wx:for-item="item"
+		>
+			<view class="item-top">
+				<view class="category-sty">
+					<text>{{item.task_category_name}}</text>
+				</view>
+				<view class="participant-sty">
+					<text class="participant-num">{{item.finish_task_people_num}}</text>
+					人参与
+				</view>
+			</view>
+			<view class="task-more-content">
+				<text class="title2">{{item.task_content}}</text>
+			</view>
+		</view>
+	</view>
+	<!-- 0元购 -->
+	<view class="drainage-botton">
+		<button
+		 class="drainage-bto"
+		 open-type="contact"
+		 show-message-card="true"
+		 send-message-title="培养好孩子"
+		 send-message-path="/pages/match-share-area/index?site_id={{adv_info.zero_buy.site_id}}&category=2&camp_times_id={{camp_times_info.camp_times_id}}"
+		 send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+		 data-button_path="{{adv_info.zero_buy.apipath_button}}"
+		 data-goods_id="{{adv_info.zero_buy.goods_id}}"
+		 bindcontact="handleContact"
+		>
+			<view class="buy-wrap-left">
+				<text class="buy-text-o">点击了解活动详情</text>
+				<text class="buy-text-t">还能与大家一起讨论问题</text>
+			</view>
+			<view class="buy-rmb">我也要参加</view>
+		</button>
+	</view>
+
+	<!-- 前往赛区 -->
+	<button
+		class="free-join"
+		open-type="contact"
+		show-message-card="true"
+		send-message-title="培养好孩子"
+		send-message-path="/pages/match-share-area/index?site_id={{adv_info.free_join.site_id}}&category=2&camp_times_id={{camp_times_info.camp_times_id}}"
+		send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+		data-button_path="{{adv_info.free_join.apipath_button}}"
+		data-goods_id="{{adv_info.free_join.goods_id}}"
+		bindcontact="handleContact"
+	>我也要参加
+	</button>
+	<!-- <view
+	 class="back-my-area"
+	 catchtap="goMatchArea"
+	 wx:if="{{task_info.is_bind_match == 1}}"
+	>
+		<image
+		 class="btn-trophy"
+		 src="../../img/match_area.png"
+		 mode="aspectFit|aspectFill|widthFix"
+		></image>
+	</view> -->
+	<!-- 写评论 -->
+	<view class='write-commont' bindtap="showCommon">
+		<view>
+			<view class="commont-bottom-text">{{placeholderText}}</view>
+			<text type="text" class="text-btn">发布</text>
+		</view>
+	</view>
+	<block>
+		<view
+		 class="write-commont-wrap"
+		 catchtouchmove='true'
+		 wx:if="{{!commontShow}}"
+		 bindtap="hideCommon"
+		>
+			<view class="commont-wrap" catchtap="return">
+				<textarea
+				 fixed
+				 class="textarea"
+				 adjust-position="false"
+				 catchtouchmove='true'
+				 focus
+				 value="{{commentText}}"
+				 bindinput="commontChange"
+				 maxlength="1000"
+				 cursor-spacing="150"
+				 disable-default-padding
+				 adjust-position="false"
+				 show-confirm-bar="false"
+				 placeholder="{{placeholderText}}"
+				></textarea>
+				<view>
+					<text wx:if="{{!loadingBtn}}" class="release-btn" bindtap="release">发布</text>
+					<text wx:else class="release-btn release-btn-loading">发布</text>
+				</view>
+			</view>
+		</view>
+	</block>
+	<!-- 切换公开 -->
+	<view class="dialog-wrap" wx:if="{{showPopup}}">
+		<view class="dialog-wrap-center">
+			<view class="close-wrap-t">
+				<view class="colse_wrap">
+					<i class="iconfont icon-guanbi1 guanbi-sty" catchtap="closePopup"></i>
+					<text class="guanbi-line"></text>
+				</view>
+			</view>
+			<view class="prop-text-w">
+				<text class="prop-text">您给{{times_task_user_info.nickname}}增加了赞，<text wx:if="{{prize_info.award_name}}">ta距离{{prize_info.award_name}}更进一步，</text>亲子关系又提升了，您也可以的，相当于免费快来参加吧！</text>
+			</view>
+			  <button
+				class="entered-btn"
+				open-type="contact"
+				show-message-card="true"
+				send-message-title="培养好孩子"
+				send-message-path="/pages/match-share-area/index?site_id={{adv_info.go_now.site_id}}&category=2&camp_times_id={{camp_times_info.camp_times_id}}"
+				send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+				data-button_path="{{adv_info.go_now.apipath_button}}"
+		 		data-goods_id="{{adv_info.go_now.goods_id}}"
+				bindcontact="handleContact"
+				>
+					立即前往
+				</button>
+		</view>
+	</view>
+</view>
+

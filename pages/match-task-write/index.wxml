@@ -1,0 +1,81 @@
+<view class="container">
+	<view class="add-task-box">
+		<view class="add-task-head">
+			<view class="add-task-title">
+				<image class="title-left-img" src="{{task_info.face_img_url}}"></image>
+				<view
+				 class=""
+				 hover-class="none"
+				 hover-stop-propagation="false"
+				>
+					<view>
+						<image class="match-title-icon" src="../../img/match-tag.png"></image>
+						<text class="title-top">{{camp_times_info.camp_times_name}}</text>
+					</view>
+					<view>
+						<i class="iconfont icon-kaisuo kaisuo-sty"></i>
+						<text class="title-bottom">第{{camp_times_info.diff_day}}天</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class='bbs-item-box'>
+			<view class="flex-between-row pub-wrap">
+				<view class='bbs-item-head-desc'>
+					<image class='bbs-item-head-avea' src='{{times_task_user_info.headimgurl}}'></image>
+					<view class='bbs-item-head-desc-nickname'>{{times_task_user_info.nickname}}</view>
+				</view>
+				<view class="add-task-btn">
+					<view wx-if="{{!sendred}}" class="send-msg">发布</view>
+					<view
+					 bindtap='postMsg'
+					 wx-if="{{sendred}}"
+					 class="red-send-msg"
+					>发布
+					</view>
+				</view>
+			</view>
+			<textarea
+			 maxlength="1500"
+			 value="{{content}}"
+			 bindinput='getAreaValue'
+			 class='bbs-textarea'
+			 placeholder="说说你的感受与..."
+			>
+				<view class='font-count'><text style='color:#E60039;'>{{fontvaluelength}}</text>/1500</view>
+
+
+
+
+</textarea>
+			<view class='tips'>*长按可以删除图片</view>
+			<view class='bbs-item-imglist'>
+				<image
+				 mode="aspectFill"
+				 bindtap="imgYu"
+				 bindlongpress="deleteImage"
+				 data-index="{{index}}"
+				 class='bbs-item-imglist-item bbs-item-imglist-radius'
+				 data-list="{{pic_url}}"
+				 data-src="{{item}}"
+				 wx:for="{{pic_url}}"
+				 wx:for-item="item"
+				 src="{{item}}"
+				 wx:key="index"
+				></image>
+				<image
+				 wx-if="{{pic_url.length<9}}"
+				 class='bbs-item-imglist-item'
+				 src='../../img/upImg.png'
+				 bindtap='choose'
+				></image>
+			</view>
+			<view class="flex-left-row" bindtap="radioChang">
+				<view class="checkbox-style {{ is_open ? 'checkbox-check' : ''}}"></view>
+				<view class="checktext-style {{ is_open ? 'check-text' : ''}}">公开</view>
+				<view class="add-task-prompt">(可分享给更多人获得更多赞哦~)</view>
+			</view>
+		</view>
+	</view>
+</view>
+

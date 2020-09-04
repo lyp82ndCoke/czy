@@ -1,0 +1,210 @@
+<view class="container  {{taskInfo.awards_status==2?'rank-list':''}}">
+	<view class="rank-info">
+		<view class="rank-info-content">
+			<view class="price-title">{{taskInfo.task_name}}</view>
+			<view class="rank-count-time" wx:if="{{taskInfo.awards_status==1}}">
+				<text>颁奖倒计时</text>
+				<count-time
+				 class="count-sty"
+				 endTime="{{taskInfo.give_prize_time}}"
+				/>
+			</view>
+			<view wx:else class="rank-count-time">比赛已结束</view>
+			<view class="price-title">当前参赛人数{{taskInfo.participant_num}}人</view>
+			<view class="taste-text" wx:if="{{taskInfo.task_status==0}}">攻略：分享越多点赞量越高，排名靠前</view>
+		</view>
+	</view>
+	<view class="flex-left-row  rank-tips" wx:if="{{taskInfo.task_status!=0}}">
+		<i class="iconfont icon-laba-copy laba-sty"></i>
+		<text class="tips-text">排行统计时间截止{{taskInfo.rank_end_time_ch}}，颁奖时间截止{{taskInfo.give_prize_time_ch}}</text>
+	</view>
+	<view class="price-good-list">
+		<view class="price-good-title">
+			<text class="good-title-line"></text>
+			<text class="good-title-text">活动奖品</text>
+			<text class="good-title-line"></text>
+		</view>
+		<scroll-view scroll-x class="date-wrap">
+			<view
+			 class="card-style"
+			 wx:for="{{prizeList}}"
+			 wx:for-item="item"
+			 wx:for-index="index"
+			 wx:key="day"
+			 data-item="{{item}}"
+			 bindtap="clickItem"
+			>
+				<view class="prize-wrap">
+					<view class="price-top-box">
+						<image
+						 class="prize-image"
+						 src="{{item.prize_data[0].prize_img}}"
+						 mode="aspectFit|aspectFill|widthFix"
+						 wx:if="{{item.prize_type==1}}"
+						></image>
+						<i wx:else class="iconfont icon-youhuiquan yohui-sty"></i>
+					</view>
+					<image
+					 class="prize-podium"
+					 src="../../img/podium.png"
+					 mode="aspectFit|aspectFill|widthFix"
+					></image>
+				</view>
+				<view class="prize-name">{{item.prize_name}}</view>
+				<view class="prize-rank">{{item.win_prize_people_num}}名</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="rank-conent" wx:if="{{taskInfo.task_status!=0}}">
+		<view class="price-good-title rank-name-list">
+			<text class="good-title-line"></text>
+			<text class="good-title-text">获奖名单</text>
+			<text class="good-title-line"></text>
+		</view>
+		<view class="award-end-text" wx:if="{{taskInfo.task_status==2}}">注：1-3个工作日内专属老师通过微信与您联系，优惠券会直接发放</view>
+	</view>
+	<view class="no-award-show" wx:if="{{taskInfo.task_status!=0&&taskInfo.awards_status==1}}">
+		<view class="no-award-img">
+			<image
+			 class="award-empty-img"
+			 src="../../img/empty-pic.png"
+			 mode="aspectFit|aspectFill|widthFix"
+			></image>
+		</view>
+		<view class="no-award-text">活动进行中，还未颁奖</view>
+		<view class="award-prize-time">颁奖时间{{taskInfo.give_prize_time}}</view>
+	</view>
+	<view class="no-award-show" wx:if="{{taskInfo.task_status==0}}">
+		<view class="task-status-img">
+			<image
+			 class="award-empty-img"
+			 src="../../img/empty-pic.png"
+			 mode="aspectFit|aspectFill|widthFix"
+			></image>
+		</view>
+		<view class="task-status-text">先做好热身，活动即将开始</view>
+	</view>
+	<view class="rank-list-content" wx:if="{{taskInfo.awards_status==2&&rankList.length>0}}">
+		<view
+		 class="rank-list-item"
+		 wx:for="{{rankList}}"
+		 wx:for-index="index"
+		 wx:for-item="item"
+		 wx:key="index"
+		>
+			<view class="rank-item-left">
+				<view class="rank-tag-wrap">
+					<image
+					 class="medal-tag"
+					 src="../../img/medal_{{item.current_rank}}.png"
+					 mode="aspectFit|aspectFill|widthFix"
+					 wx:if="{{item.current_rank<=5}}"
+					></image>
+					<text class="rank-index-sty" wx:else>{{item.current_rank}}</text>
+				</view>
+				<view class="rank-item-center">
+					<image
+					 class="rank-user-icon"
+					 src="{{item.headimgurl}}"
+					 mode="aspectFit|aspectFill|widthFix"
+					></image>
+					<view class="user-info-sty">
+						<view class="rank-user-name">{{item.nickname}}</view>
+						<view class="rank-task-num">
+							<text>已完成任务</text>
+							<text class="count-num">{{item.finish_task_day_num}}天</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="rank-zan">
+				<i class="iconfont icon-icondianzan dian-zan-sty"></i>
+				<text class="task-zan-num" >{{item.zan_num}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="user-self-info" wx:if="{{taskInfo.awards_status==2}}">
+		<view class="user-self-bto">
+			<text class="good-title-line"></text>
+			<text class="good-title-text">{{myRank.is_prize==1?'我的最终排行':'我的当前排名'}}</text>
+			<text class="good-title-line"></text>
+		</view>
+		<view class="share-warp">
+			<text class="zan-taste">教育的路上有大家的努力，不会孤单</text>
+		</view>
+		<view class="user-rank-wrap">
+			<view class="rank-item-left user-msg-left">
+				<view class="rank-tag-wrap">
+					<image
+					 class="awards-rank"
+					 src="../../img/medal_{{myRank.current_rank}}.png"
+					 wx:if="{{myRank.is_prize==1&&myRank.current_rank<=5}}"
+					/>
+					<text class="rank-index-sty" wx:else>{{myRank.current_rank}}</text>
+				</view>
+				<view class="rank-item-center">
+					<image
+					 class="rank-user-icon"
+					 src="{{myRank.headimgurl}}"
+					 mode="aspectFit|aspectFill|widthFix"
+					></image>
+					<view class="user-info-sty">
+						<view class="rank-user-name">{{myRank.nickname}}</view>
+						<view class="rank-task-num">
+							<text>已完成任务</text>
+							<text class="count-num">{{myRank.finish_task_day_num}} 天</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="rank-zan user-zan-bot">
+				<i class="iconfont icon-icondianzan dian-zan-sty"></i>
+				<text class="task-zan-num" >{{myRank.zan_num}}</text>
+			</view>
+		</view>
+	</view>
+	<!-- 奖品 -->
+	<view class="prize-popup" wx:if="{{showPopup}}">
+		<view class="prize-popup-center">
+			<view class="prize-popup-title">
+				<text class="prize-popup-name">{{prizeInfo.prize_name}}</text>
+				<text class="prize-popup-people">{{prizeInfo.win_prize_people_num}}人</text>
+			</view>
+			<view class="award-name-sty">
+				<text>奖品名称：{{prizeInfo.award_name}}</text>
+			</view>
+			<view wx:if="{{prizeInfo.prize_type==1}}">
+				<image
+				 class="prize-award-img"
+				 src="{{prizeInfo.prize_data[0].prize_img}}"
+				 mode="aspectFit|aspectFill|widthFix"
+				></image>
+			</view>
+			<view class="coupon-wrap" wx:else>
+				<view
+				 class="coupon-list"
+				 wx:for="{{prizeInfo.prize_data}}"
+				 wx:for-item="minItem"
+				 wx:key="index"
+				 wx:for-index="index"
+				>
+					<image
+					 class="prize-coupon-bg"
+					 src="../../img/coupon_bg.png"
+					 mode="aspectFit|aspectFill|widthFix"
+					></image>
+					<view class="flex-left-row coupon-text-dsc">
+						<view class="coupon-left-text">
+							<text class="coupon-amount">￥{{minItem.amount}}</text>
+							<text class="coupon-threshold">{{minItem.coupon_threshold?'满减卷':'无门槛'}}</text>
+						</view>
+						<view class="coupon-name-dsc title2">{{minItem.coupon_name}}</view>
+					</view>
+				</view>
+
+			</view>
+			<view class="popup-btn-know" catchtap="closePopup">我知道了</view>
+		</view>
+	</view>
+</view>
+

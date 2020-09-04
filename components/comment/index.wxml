@@ -1,0 +1,36 @@
+<!-- 公共评论模块 -->
+<!-- 参数
+    title：好文或群聊的title  用于带到发表留言
+    list：当前评论list
+ -->
+<view class='flex-center-column comment'>
+  <view class='comment-title' wx:if="{{showBtn}}">
+    <text bindtap='publish' data-id='{{articleId}}' data-type="{{articleType}}" data-title='{{articleTitle}}'>写留言</text>
+  </view>
+  <view class='comment-line' wx:if="{{showBtn}}"></view>
+  <view class='commetn-all flex-left-row' wx:if="{{list.length > 0}}">
+    <text class='comm-text-a'>{{commTitle}}</text>
+  </view>
+  <view class='flex-between-row comm' wx:for="{{list}}" wx:key="{{index}}" >
+    <view class='comm-photo flex-center-column'>
+      <image src='{{item.headimgurl}}' mode='widthFix'></image>
+    </view>
+    <view class='comm-content'>
+      <view class='flex-between-row comm-content-top'>
+        <view class='comm-text-a'>{{item.nickname}}</view>
+        <view class='flex-left-row' bindtap='like' data-index='{{index}}' data-like="{{item.is_zan}}" >
+          <image src="../../img/{{item.is_zan == 2?'hand2.png':'hand3.png'}}" class='comm-hand' mode='widthFix'></image>
+          <!-- <image wx:if='{{pageType == 2}}' src="../../img/{{item.isPraise == 0?'hand2.png':'hand3.png'}}" class='comm-hand' mode='widthFix'></image> -->
+          <text class="{{item.is_zan == 2?'comm-hand-text-cel':'comm-hand-text'}}">{{item.zan_num}}</text>
+        </view>
+      </view>
+      <view class='comm-content-true'>
+        <text class='comm-text-b'>{{item.comment_contents}}</text>
+      </view>
+    </view>
+  </view>
+   <view class='comm-bottom' wx:if="{{list.length==0}}">暂无评论</view>
+  <view class='comm-bottom' wx:if="{{over&&list.length > 0}}">已显示全部评论</view>
+ 
+</view> 
+

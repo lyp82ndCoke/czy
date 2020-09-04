@@ -1,0 +1,64 @@
+<view class="container prize-wrap">
+	<view class="activity-top">
+		<text class="top-line"></text>
+		<text class="task-name">{{taskInfo.camp_times_name}}</text>
+		<text class="top-line"></text>
+	</view>
+	<view class="prize-list" wx:if="{{prizeList.length > 0}}">
+		<view
+		 class="prize-item-wrap"
+		 wx:for="{{prizeList}}"
+		 wx:for-item="item"
+		 wx:key="index"
+		>
+			<view class="grade-name">{{item.prize_name}}</view>
+			<view
+			 class="prize-data"
+			 wx:for="{{item.prize_data}}"
+			 wx:for-index="indexMin"
+			 wx:for-item="itemMin"
+			 wx:key="indexMin"
+			>
+				<view class="prize-item">
+					<view class="prize-img">
+						<image
+						 src="{{itemMin.prize_img}}"
+						 mode="aspectFit|aspectFill|widthFix"
+						 wx:if="{{itemMin.prize_type==1}}"
+						 data-src="{{itemMin.prize_img}}"
+						 bindtap="imgView"
+						></image>
+						<view class="coupon-wrap prize-img" wx:if="{{itemMin.prize_type==2}}">
+							<image
+							 class="coupon-img-bg"
+							 src="../../img/coupon_bg_price.png"
+							 mode="aspectFit|aspectFill|widthFix"
+							>
+							</image>
+							<view class="coupon-text">
+								<text class="amount-num">￥{{itemMin.amount}}</text>
+								<text class="coupon-type">{{itemMin.coupon_threshold?'满减卷':'无门槛'}}</text>
+							</view>
+						</view>
+					</view>
+					<view class="prize-dsc">
+						<text class="prize-name title2">{{itemMin.prize_type==1?itemMin.award_name:itemMin.coupon_name}}</text>
+						<text class="prize_people_num">名额：{{itemMin.win_prize_people_num}}名</text>
+						<text class="prize-date">颁奖时间：{{item.give_prize_time}}</text>
+					</view>
+				</view>
+				<view class="border-sty {{(item.prize_data.length > 1 && (item.prize_data.length - 1) != indexMin) ? 'prize-bto-border' : ''}}"></view>
+			</view>
+		</view>
+	</view>
+	<view wx:else class="area-empty-wrap">
+		<image
+		 class="area-empty-img"
+		 src="../../img/area-empty.png"
+		 mode="aspectFit|aspectFill|widthFix"
+		>
+		</image>
+		<text class="area-empty-text">暂无奖品~</text>
+	</view>
+</view>
+

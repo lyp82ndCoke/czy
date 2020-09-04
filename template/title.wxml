@@ -1,0 +1,11 @@
+
+<template name="title">
+<view class='title-app {{[title.isIpx ? "title-isIpx":""]}}' style='background:{{title.bgColor}};color:{{title.color}};'>
+  <view wx:if='{{title.back}}' class='back' bindtap="goBack">
+    <i class='iconfont icon-fanhui back-icon' ></i>
+  </view>
+  <view class='text'>
+    {{title.text}}
+  </view>
+</view>
+</template>

@@ -1,0 +1,118 @@
+/* pages/course-details/index.wxss */
+
+@import '../../css/message.wxss';
+@import "../../template/comment/index.wxss";
+
+.container {
+    min-height: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    width: 100%;
+}
+
+.goods-details-wrap{
+  padding: 30rpx 30rpx 0;
+  background-color: #fff;
+}
+.article-title{
+  
+}
+.title-details{
+  width:100%;
+  color: #000000;
+  font-weight: bold;
+  font-size: 40rpx;
+  letter-spacing: 2rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+
+}
+.title-source {
+  color:#B4B4B4;
+  font-size: 29rpx;
+  margin-top:25rpx;
+}
+
+.goods-details-content{
+  margin-top: 70rpx;
+}
+.content-statistics {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 34rpx;
+  padding:0 30rpx 70rpx;
+}
+.ispay-content-statistics {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top:24rpx;
+}
+.statistics-view {
+  display: flex;
+  align-items: center;
+  
+}
+.ispay-statistics-view {
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+}
+.statistics-img {
+  width: 31rpx; 
+  height: 29rpx;
+}
+.statistics-img1 {
+  width: 39rpx;
+  height: 29rpx;
+}
+.statistics-text {
+  color: rgb(196, 196, 196);
+  font-size: 26rpx;
+  margin-left: 10rpx;
+}
+.click-statistics-text {
+ color : rgb(244, 173, 61);
+ font-size: 24rpx;
+ margin-left: 10rpx;
+}
+
+.go-top {
+    position: fixed;
+    right: 44rpx;
+    bottom: 280rpx;
+    width: 66rpx;
+    height: 66rpx;
+    border-radius: 33rpx;
+    background: rgba(255, 255, 255, .8);
+    text-align: center;
+    font-size: 36rpx;
+    line-height: 66rpx;
+    color: #999;
+}
+rich-text{
+  overflow: hidden;
+}
+rich-text .rich_pages{
+  max-width: 100%!important;
+  height: auto;
+}
+rich-text .wscnph{
+  max-width: 100%!important;
+  height: auto;
+}
+.goods-details-content .wxParse-img{
+  max-width: 100%!important;
+}
+.goods-details-content .wxParse-p{
+  /* line-height: 16rpx; */
+  min-height: 30px;
+}
+

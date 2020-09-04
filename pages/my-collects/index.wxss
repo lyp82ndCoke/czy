@@ -1,0 +1,131 @@
+/* pages/my-collects/index.wxss */
+
+.first-page-list {
+  /* height: 100%; */
+  /* width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background:#fff;height:auto;border-top:1rpx soild #eeeeee */
+}
+
+.wx-for-list {
+  display: flex;
+  width: 100%;
+  border-bottom-width: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: #eee;
+}
+
+.list-type-one {
+  display: flex;
+  justify-content: flex-start;
+  padding: 30rpx;
+  border-bottom: 1rpx solid rgba(238, 238, 238, 1);
+}
+.title-img{
+  width:37rpx;height:75rpx;margin:0 10rpx 0 10rpx;
+}
+.content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.list-content {
+  width: 420rpx;
+  font-size: 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  line-height: 47rpx;
+  color: #333;
+}
+
+.list-content-two {
+  margin-left: 25rpx;
+  width: 636rpx;
+  font-size: 32rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  line-height: 47rpx;
+}
+
+.content-bottom {
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content-bottom-two {
+  margin-top: 19rpx;
+  margin-left: 25rpx;
+  width: 636rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content-bottom-font {
+  font-size: 22rpx;
+  color: #e9e9e9;
+  margin-left: 5rpx;
+}
+
+.content-bottom-img {
+  width: 30rpx;
+  height: 20rpx;
+}
+
+.list-right-img {
+  margin-left: 14rpx;
+  margin-top: 8rpx;
+  width: 200rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+}
+
+.content-come-from {
+  margin-left: 160rpx;
+  font-size: 32rpx;
+  color: #a4a4a4;
+}
+
+.wx-adv-list {
+  width: 100%;
+}
+
+.list-advertisement {
+  background: #f9f9f8;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15rpx;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+
+.advertisement-img {
+  height: 325rpx;
+  width: 700rpx;
+  border-radius: 15rpx;
+}
+
+.showStyle {
+  /* height: 100%; */
+  background: #fff;
+}
+
+page {
+  background: #fff;
+}

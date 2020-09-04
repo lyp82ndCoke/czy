@@ -1,0 +1,426 @@
+<!--pages/course/index.wxml-->
+<!-- <title/> -->
+<view class="container">
+	<!-- <view class="container" style="height:calc(100% - {{navHeight}}px);"> -->
+	<login
+	 wx:if="{{loginShow}}"
+	 class="login"
+	 bind:getuserinfo="loginHide"
+	 bind:cancel="cancelLogin"
+	/>
+	<!--全局点击唤醒授权遮罩-->
+	<view
+	 class="login-wrap"
+	 wx:if="{{loginWrapShow}}"
+	 catchtap='loginShow'
+	/>
+	<view class="wrap-posi">
+
+		<!--Tab布局-->
+		<view class='title'>
+			<view class="title-wrap">
+				<view
+				 class="titleSel {{0 == currentIndex ? 'headerLineSel' : ''}}"
+				 bindtap='titleClick'
+				 data-idx='0'
+				>
+					<i class='iconfont icon-dengdai title-icon' />
+					<text>正在参加</text>
+					<view wx:if="{{0 == currentIndex}}" class="headerLineSel-line"></view>
+				</view>
+				<view
+				 class="titleSel {{1 == currentIndex ? 'headerLineSel' : ''}}"
+				 bindtap='titleClick'
+				 data-idx='1'
+				>
+					<i class='iconfont icon-menu-s title-icon' />
+					<text>全部训练营</text>
+					<view wx:if="{{1 == currentIndex}}" class="headerLineSel-line"></view>
+				</view>
+			</view>
+		</view>
+
+		<!--内容布局-->
+		<swiper
+		 class='swiper-wrap'
+		 bindchange='pagechange'
+		 current='{{currentIndex}}'
+		>
+			<swiper-item class='swiper'>
+				<scroll-view
+				 style="height:100%;"
+				 scroll-y="true"
+				 bindscrolltolower="onScrollEnd"
+				>
+					<view
+					 wx:if="{{firstList.length}}"
+					 wx:for="{{firstList}}"
+					 wx:key="index"
+					 class='first-wrap'
+					>
+						<view class='first-content-wrap'>
+							<view class="first-title-wrap ">
+								<view class="title2">
+									<!-- <text style="font-weight: 1000;">·</text> -->
+									<!-- {{item.camp_times_name}} -->
+									<image
+									 class="btn-trophy"
+									 src="../../img/trophy.png"
+									 mode="aspectFit|aspectFill|widthFix"
+									></image>
+									<text>{{item.camp_times_name}}</text>
+								</view>
+
+							</view>
+							<view class="flex-center-row time-wrap">
+								<view class="flex1 begin-wrap">
+									<view class="time">
+										{{item.start_time}}
+									</view>
+									<view class="time-title">
+										开营时间
+									</view>
+
+								</view>
+								<view class="center-wrap">
+									<image
+									 class="center-img"
+									 src="../../img/shuangjiantou.png"
+									 mode="aspectFit"
+									 lazy-load="false"
+									 binderror=""
+									 bindload=""
+									/>
+								</view>
+								<view class="flex1 end-wrap">
+									<view class="time">
+										{{item.end_time}}
+									</view>
+									<view class="time-title">
+										结营时间
+									</view>
+								</view>
+
+							</view>
+							<view class="days days-begin" wx:if="{{item.status==0}}">
+								<i class="iconfont icon-suo1 status-icon un-status"></i>
+								<text>未开营</text>
+							</view>
+							<view class="days days-begin" wx:if="{{item.status==1}}">
+								<i class="iconfont icon-kaisuo status-icon start-status"></i>
+								<text>开营第{{item.daynum}}天</text>
+							</view>
+							<view class="days days-begin" wx:if="{{item.status==2}}">
+								<!--days-end-->
+								<i class="iconfont icon-jieshu status-icon end-status"></i>
+								<text>已结束</text>
+							</view>
+							<view class="learn-status-wrap">
+								<view class="learn-status-title">
+									<text style="font-weight: 1000;">·</text>
+									营内学习
+								</view>
+								<view class="learn-sign-wrap" wx:if="{{item.is_assess==1}}" data-id="{{item.camp_times_id}}" bindtap="goEvaluation">
+									<view class="learn-tag">
+										培育水平测试
+									</view>
+									<view class="flex-center-row">
+										<view class="learn-day-text flex1">{{item.assess_name}}</view><!--未来精英能力培育水平测评-->
+									</view>
+								</view>
+								<view class="learn-sign-wrap" wx:if="{{item.is_sign==1}}">
+									<view class="learn-tag">
+										每日签到
+									</view>
+									<view class="flex-center-row">
+										<view wx:if="{{item.sign_daynum > 0 || item.sign_times > 0}}" class="learn-day-text flex1">
+											您已<text>{{item.sign_type == 1 ? '连续' : '累计'}}</text>签到<text class="learn-day-number">{{item.sign_type == 1 ? item.sign_daynum : item.sign_times}}</text>天
+										</view>
+										<view wx:else class="learn-day-text flex1">
+											您还未<text>{{item.sign_type == 1 ? '连续' : '累计'}}</text>签到，继续加油哦！
+										</view>
+										<view
+										 class="recording "
+										 data-id="{{item.camp_times_id}}"
+										 bindtap="goSign"
+										>
+											签到记录>>
+										</view>
+
+									</view>
+								</view>
+
+								<view class="learn-sign-wrap" wx:if="{{item.is_task==1}}" 
+									 bindtap="goTaskCalendar"
+									 data-id="{{item.camp_times_id}}">
+									<view class="learn-tag">{{item.task_show_title || '每日任务'}}</view>
+									<view
+									 class="flex-center-row"
+									>
+										<view wx:if="{{item.status == 0}}" class="learn-day-text flex1">
+											{{item.task_show_rules || '还未开营先去看看任务规则与玩法吧~'}}
+										</view>
+										<view wx:else class="learn-day-text flex1">
+											累计完成
+											<text class="learn-day-number">{{item.task_daynum}}</text>
+											天
+										</view>
+										<!-- <view
+										 wx:if="{{item.status == 2}}"
+										 class="recording query-rank"
+										 data-id="{{item.camp_times_id}}"
+										 bindtap="goTaskCalendar"
+										>
+											查看排名>>
+										</view> -->
+									</view>
+								</view>
+
+								<view class="learn-course-wrap" wx:if="{{item.is_course==1}}">
+									<view class="learn-tag">
+										我的课程
+									</view>
+									<view class="column-swiper-one" wx:if="{{!item.spec_column_list||item.spec_column_list.length<=1}}">
+										<view
+										 class="learn-sign-content flex-center-row"
+										 data-spec_column_id="{{item.spec_column_id}}"
+										 data-camp_times_id="{{item.camp_times_id}}"
+										 data-is_enable="{{item.is_enable}}"
+										 data-type="{{item.spec_column_type}}"
+										 bindtap="goCourseList"
+										>
+											<view class="goods-img-wrap">
+												<image
+												 class="goods-img"
+												 src="{{item.cover_img}}"
+												 mode="aspectFill"
+												/>
+											</view>
+											<view class="flex1 goods-text-wrap">
+												<view class="goods-title title2">
+													{{item.spec_column_title}}
+												</view>
+												<view class="goods-text title2">
+													{{item.spec_column_introduction}}
+												</view>
+
+											</view>
+
+										</view>
+									</view>
+									<!-- <swiper wx:else class="column-swiper" indicator-dots indicator-dotsindicator-color="#CCCCCC" indicator-active-color="#E60039" previous-margin="60rpx" next-margin="60rpx"> -->
+									<swiper
+									 wx:else
+									 class="column-swiper"
+									 indicator-dots
+									 indicator-dotsindicator-color="#CCCCCC"
+									 indicator-active-color="#E60039"
+									>
+										<!-- {{item.spec_column_list}} -->
+										<swiper-item wx:for="{{item.spec_column_list}}" wx:for-item="columnItem">
+											<view
+											 class="learn-sign-content flex-center-row"
+											 data-is_enable="{{columnItem.is_enable}}"
+											 data-spec_column_id="{{columnItem.spec_column_id}}"
+											 data-camp_times_id="{{columnItem.camp_times_id}}"
+											 data-type="{{columnItem.spec_column_type}}"
+											 bindtap="goCourseList"
+											>
+												<view class="goods-img-wrap">
+													<image
+													 class="goods-img"
+													 src="{{columnItem.cover_img}}"
+													 mode="aspectFill"
+													/>
+												</view>
+												<view class="flex1 goods-text-wrap">
+													<view class="goods-title title2">
+														{{columnItem.spec_column_title}}
+													</view>
+													<view class="goods-text title2">
+														{{columnItem.spec_column_introduction}}
+													</view>
+
+												</view>
+
+											</view>
+										</swiper-item>
+
+									</swiper>
+
+								</view>
+							</view>
+						</view>
+					</view>
+					<view
+					 class='main1'
+					 style='background:#fff'
+					 wx:if="{{firstList.length==0}}"
+					>
+						<image
+						 src='../../img/box_03.jpg'
+						 class='bg'
+						 mode='widthFix'
+						/>
+						<view class='order-sub-title'>暂无内容~</view>
+					</view>
+
+				</scroll-view>
+
+			</swiper-item>
+
+			<swiper-item class='swiper' class='swiper'>
+				<scroll-view
+				 style="height:100%;"
+				 scroll-y="true"
+				 bindscrolltolower="onScrollEnd"
+				>
+					<!-- 深度学习 -->
+					<view class='learn-box'>
+
+						<!-- 深度学习主要头部信息 -->
+						<image
+						 class=""
+						 src="https://task.zmedc.com/upload/20190128/57ac1369978e8b6fb4a773bae69f5a5e_86856.png"
+						 style="width:100%;"
+						 mode="widthFix"
+						 lazy-load="false"
+						 binderror=""
+						 bindload=""
+						/>
+
+						<!-- 模块 -->
+						<view
+						 class="module-box  {{index == moduleList.length -1 ? 'last-bottom':'' }}"
+						 wx:for="{{secondList}}"
+						 wx:key="index"
+						 wx:for-item='moduleItem'
+						 hidden='{{secondList.length == 0}}'
+						 wx:for-index="index"
+						>
+
+							<!-- 模块标题信息 -->
+							<view class='module-title'>
+								<view class='module-line'>
+									<view class='tip-blue' />
+									<view class='module-font1'>{{moduleItem.camp_position_name}}</view>
+								</view>
+								<view class='module-font2'>{{moduleItem.camp_position_introduction}}</view>
+							</view>
+
+							<!-- 模块详情 -->
+							<view
+							 style='width:100%;position:relative'
+							 wx:for='{{moduleItem.campData}}'
+							 wx:key="moduleSubItem.all_camp_id"
+							 wx:for-item='moduleSubItem'
+							 wx:for-index="subIndex"
+							>
+
+								<!-- 课程商品 -->
+								<view
+								 class='course-box'
+								 data-orderPicture="{{moduleSubItem.adv_img}}"
+								 data-id="{{moduleSubItem.all_camp_id}}"
+								>
+									<view class="course-list">
+										<image class="goods-item-img" src='{{moduleSubItem.adv_img}}' />
+									</view>
+									<button
+									 class="concat-class"
+									 show-message-card="true"
+									 send-message-title="培养好孩子"
+									 data-all_camp_id="{{moduleSubItem.item_id}}"
+									 bindcontact="handleContact"
+									 send-message-path="/pages/training/index?goods_id={{moduleSubItem.all_camp_id}}"
+									 send-message-img="https://task.zmedc.com/upload/20191106/60539705a32a63b38e85c092054f77c7_265696.jpeg"
+									 open-type="contact"
+									 session-from="user_add_class"
+									/>
+								</view>
+
+								<!-- <view bindtap='{{moduleSubItem.isPlayStatus == true?"musicPlay":"auditionBtn"}}' data-id="{{moduleSubItem.id}}" data-header-img="{{moduleSubItem.picturePreview}}" data-playAudioUrl="{{moduleSubItem.playAudioUrl}}" data-audioSecond="{{moduleSubItem.audioSecond}}"
+                data-audioTitle="{{moduleSubItem.audioTitle}}" data-courseTitle="{{moduleSubItem.goodsTitle}}" wx:if='{{moduleSubItem.playAudioUrl && (moduleSubItem.goodsType == 8 || moduleSubItem.goodsType == 7)}}' style='position:absolute;bottom:20rpx;right:60rpx;z-index:99!important'>
+
+                <view class='audition-btn' wx:if="{{moduleSubItem.isPlayStatus == false}}">
+                  <image src='../../img/Play.png' /> 试听
+                </view>
+                <view class='audition-btn' wx:if="{{moduleSubItem.isPlayStatus == true && musicPlay == false}}">
+                  <image src='../../img/listenings.png' /> 试听中
+                </view>
+                <view class='audition-btn' wx:if="{{moduleSubItem.isPlayStatus == true && musicPlay == true}}">
+                  <image src='../../img/Play.png' mode='widthFix' /> 试听
+                </view>
+              </view> -->
+
+								<!-- 服务商品 -->
+								<view
+								 class='service-box'
+								 bindtap=''
+								 wx:if='{{moduleSubItem.goodsType == 7}}'
+								>
+									<view class='service-content'>
+										<view class='service-content-l'>
+											<image src='{{moduleSubItem.picturePreview}}' />
+										</view>
+										<button
+										 class="concat-class"
+										 show-message-card="true"
+										 send-message-title="{{moduleSubItem.contactTitle}}"
+										 send-message-path="/pages/bbs/bbs?goods_id={{moduleSubItem.id}}"
+										 send-message-img="{{moduleSubItem.contactImgUrl}}"
+										 open-type="contact"
+										 session-from="user_add_class"
+										/>
+										<!-- <view class='service-content-r'>
+                      <view bindtap='goodsBtn' data-orderPicture="{{moduleSubItem.picturePreview}}" data-goodsType="{{moduleSubItem.goodsType}}" data-id="{{moduleSubItem.id}}">
+                        <view class='service-right-title'>{{moduleSubItem.goodsTitle}}</view>
+                        <view class='service-right-dtl'>{{moduleSubItem.goodsSubtitle}}</view>
+                        <view class="{{iosHidden == true?'service-right-count-ios':'service-right-count'}}">{{moduleSubItem.studyNum || 0}}人已学</view>
+                      </view>
+
+                      <view class='service-price' hidden='{{moduleSubItem.priceType == 2 || iosHidden == true}}'>
+                        <text class='price-l'>￥</text>
+                        <text class='price-r'>{{moduleSubItem.goodsPriceLabel}}</text>
+                        <text class="price-original" hidden='{{moduleSubItem.goodsOriginalPriceLabel == 0}}'>￥{{moduleSubItem.goodsOriginalPriceLabel}}</text>
+                      </view>
+                      <view class='service-price' hidden='{{moduleSubItem.priceType == 1 || iosHidden == true}}'>
+                        <text class='price-free'>0元免费购</text>
+                      </view>
+
+                      <view class='audition-btn' data-id="{{moduleSubItem.id}}" data-playAudioUrl="{{moduleSubItem.playAudioUrl}}" data-audioSecond="{{moduleSubItem.audioSecond}}" data-courseTitle="{{moduleSubItem.goodsTitle}}" bindtap='auditionBtn' style='position:absolute;bottom:0;right:0;z-index:99!important'
+                        hidden='{{moduleSubItem.playAudioUrl == ""}}'>
+                        <image src='../../img/Play.png' mode='widthFix'></image>
+                        <view>试听</view>
+                      </view>
+                    </view> -->
+									</view>
+
+								</view>
+
+							</view>
+
+							<!--  模块详情特殊情况训练营商品 swiper滑块 -->
+
+							<!-- 广告位 -->
+						</view>
+						<view
+						 class='main1'
+						 wx:if="{{moduleItem.length==0}}"
+						 style='background:#fff'
+						>
+							<image
+							 src='../../img/box_03.jpg'
+							 class='bg'
+							 mode='widthFix'
+							/>
+							<view class='order-sub-title'>暂无内容~</view>
+						</view>
+					</view>
+				</scroll-view>
+			</swiper-item>
+
+		</swiper>
+	</view>
+</view>
+

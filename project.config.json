@@ -1,0 +1,375 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": true,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.11.1",
+	"appid": "wxd871c7e8d45490d8",
+	"projectname": "%E6%97%A0%E7%97%95%E5%85%BB%E8%82%B2%E6%88%90%E9%95%BF%E8%90%A5",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "我的",
+					"pathName": "pages/my/index",
+					"query": "scene=oFKG10_iJrKwgnFvvvdNXdnFvgDY",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "好文详情",
+					"pathName": "pages/article-detail/index",
+					"query": "id=articlellbA9iJKcglc&type=1&unionid=oFKG103dyo9VrxegB6MlFh-Ghfzs",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/publish/publish",
+					"pathName": "pages/publish/publish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/my-collects/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的课程",
+					"pathName": "pages/my-course/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "使用帮助",
+					"pathName": "pages/my-help/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "金句详情",
+					"pathName": "pages/good-sentence/index",
+					"query": "id=articlell8xjrElQBoE&unionid=oFKG103dyo9VrxegB6MlFh-Ghfzs",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "金句列表",
+					"pathName": "pages/good-sentence-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "训练营首页",
+					"pathName": "pages/training/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "签到日历",
+					"pathName": "pages/training-check-in/index",
+					"query": "id=timeslsaLaDUC3NaU",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "金句列表",
+					"pathName": "pages/good-sentence-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "留言",
+					"pathName": "pages/publish/publish",
+					"query": "id=articlel4udNW1GR745&title=金句title&type=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "成长墙",
+					"pathName": "pages/growing-up/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的成长墙",
+					"pathName": "pages/my-growing-up/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "训练营解锁课程",
+					"pathName": "pages/course-list/index",
+					"query": "id=222",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的成长墙",
+					"pathName": "pages/my-growing-up/index",
+					"query": "id=222",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "签到记录",
+					"pathName": "pages/training-check-in/index",
+					"query": "id=courselXJkPOxA2267",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "答题详情",
+					"pathName": "pages/training-answer/index",
+					"query": "id=timesl0KSjpP86YNy&date=2019-12-16&singInDate=1",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "音频课程详情",
+					"pathName": "pages/course-details/index",
+					"query": "course_id=courseltXvHVkJ1Ufp&spec_column_id=specltXvHWZEztas",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "我的课程详情表",
+					"pathName": "pages/my-course-list/index",
+					"query": "id=speclFue5lodntAm",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "签到列表",
+					"pathName": "pages/training-check-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 21,
+					"name": "pages/training-check-in/index",
+					"pathName": "pages/training-check-in/index",
+					"query": "id=timeslRP0yIkIMdrW&text=一二三四五六七八九十一二三四五六七八九十",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "调查问卷列表",
+					"pathName": "pages/questionnaire-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 23,
+					"name": "问卷详情",
+					"pathName": "pages/questionnaire/index",
+					"query": "questionnaire_code=ques1lCnvoWJQfqwq",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "分享页面",
+					"pathName": "pages/questionnaire-share/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "每日任务",
+					"pathName": "pages/match-daily-tasks/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 26,
+					"name": "任务日历页",
+					"pathName": "pages/match-task-calendar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "赛区任务详情",
+					"pathName": "pages/match-task-details/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 28,
+					"name": "赛区分享落地页",
+					"pathName": "pages/match-share-area/index",
+					"query": "times_task_id=ttaskleZV3YO0z24r&camp_times_id=timeslevhYllz0xzQ",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "赛区所有页",
+					"pathName": "pages/match-area-details/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "任务详情个人",
+					"pathName": "pages/match-task-person/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "赛区首页",
+					"pathName": "pages/match-area/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "赛区任务详情",
+					"pathName": "pages/match-task-details/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "排行榜",
+					"pathName": "pages/match-rank-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 34,
+					"name": "排行榜分享落地",
+					"pathName": "pages/match-share-rank/index",
+					"query": "camp_times_id=timesljvnkIIawjiZ&times_task_id=ttaskljvaNroXuTHJ&task_view_unionid=oFKG10-2kNQ_jFPHj_O-erY-fruA",
+					"scene": null
+				},
+				{
+					"id": 34,
+					"name": "任务发布页面",
+					"pathName": "pages/match-task-write/index",
+					"query": " times_task_id=task1&camp_times_id=camp2&times_task_content_id=content3",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "我的任务分享落地页",
+					"pathName": "pages/match-share-mytask/index",
+					"query": "task_submit_id=tsubmitlzXYIsfm0q3P&times_task_id=ttaskleZV3YO0z24r",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷分享",
+					"pathName": "pages/questionnaire-share/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测评列表",
+					"pathName": "pages/evaluation-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测评初始页",
+					"pathName": "pages/evaluation-init/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "开始答题",
+					"pathName": "pages/evaluation-answer/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测评报表",
+					"pathName": "pages/evaluation-report/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 42,
+					"name": "问卷转发分享页",
+					"pathName": "pages/questionnaire-forward/index",
+					"query": "questionnaire_code=ques1leYTjVxGhXJh",
+					"scene": null
+				},
+				{
+					"id": 43,
+					"name": "转发分享落地页",
+					"pathName": "pages/questionnaire-share-forward/index",
+					"query": "share_id=sharelez0fjlphWGX",
+					"scene": null
+				}
+			]
+		}
+	}
+}

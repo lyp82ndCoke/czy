@@ -1,0 +1,126 @@
+{
+  "usingComponents": {
+    "login": "/components/login/login",
+    "title": "/components/navBar/navBar",
+    "comment": "/components/comment/index",
+    "goIndex": "/components/goIndex/index",
+    "navBar": "/components/navBar/navBar",
+    "imgList":"/components/imgList/index",
+    "count-time": "/components/counttime/countTime"
+  },
+  "pages": [
+
+    "pages/index/index",
+    "pages/good-sentence/index",
+    "pages/article-detail/index",
+    "pages/publish/publish",
+    "pages/training/index",
+    "pages/training-detail/index",
+    "pages/course-list/index",
+    "pages/my-course-list/index",
+    "pages/course-details/index",
+    "pages/training-check-in/index",
+    "pages/training-check-list/index",
+    "pages/training-answer/index",
+    "pages/growing-up/index",
+    "pages/growing-up-add/index",
+    "pages/my/index",
+    "pages/my-growing-up/index",
+    "pages/my-collects/index",
+    "pages/my-course/index",
+    "pages/my-orders/index",
+    "pages/my-help/index",
+    "pages/login/index",
+    "pages/good-sentence-list/index",
+    "components/comment/index",
+    "pages/growing-up-details/index",
+    "components/goIndex/index",
+    "pages/edit-info/index",
+    "pages/questionnaire-list/index",
+    "pages/questionnaire/index",
+    "pages/questionnaire-share/index",
+    "pages/questionnaire-qrcode/index",
+
+    "pages/match-task-calendar/index",
+    "pages/match-task-write/index",
+    "pages/match-task-person/index",
+    "pages/match-rank-list/index",
+    "pages/match-task-other/index",
+    "pages/match-area/index",
+    "pages/match-daily-tasks/index",
+    "pages/match-area-details/index",
+    "pages/match-activity-prize/index",
+    "pages/match-share-mytask/index",
+    "pages/match-share-rank/index",
+    "pages/match-my-task/index",
+    "pages/match-task-details/index",
+    "pages/match-share-area/index",
+    "pages/match-award-list/index",
+
+    "pages/evaluation-list/index",
+    "pages/evaluation-init/index",
+    "pages/evaluation-answer/index",
+    "pages/evaluation-report/index",
+
+    "pages/questionnaire-forward/index",
+    "pages/questionnaire-share-forward/index",
+    "pages/task-list/index"
+    
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "无痕养育成长营",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50,
+    "backgroundColor": "#F5F3F0"
+  },
+  "tabBar": {
+    "custom": false,
+    "backgroundColor": "#fff",
+    "color": "#333333",
+    "selectedColor": "#E60039",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/home_v2.png",
+        "selectedIconPath": "img/ishome_v2.png"
+      },
+      {
+        "pagePath": "pages/training/index",
+        "text": "训练营",
+        "iconPath": "img/learn_v2.png",
+        "selectedIconPath": "img/islearn_v2.png"
+      },
+      {
+        "pagePath": "pages/match-area/index",
+        "text": "7天挑战赛",
+        "iconPath": "img/area_v2.png",
+        "selectedIconPath": "img/isarea_v2.png"
+      },
+      {
+        "pagePath": "pages/growing-up/index",
+        "text": "成长墙",
+        "iconPath": "img/growup_v2.png",
+        "selectedIconPath": "img/isgrowup_v2.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "img/my_v2.png",
+        "selectedIconPath": "img/ismy_v2.png"
+      }
+    ]
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "navigateToMiniProgramAppIdList": [
+    "wxd871c7e8d45490d8"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,33 @@
+<!--components/login/login.wxml-->
+<!-- 
+  页面全局遮挡点击出发授权登录的组件
+  页面任何地方引入
+  <login
+	 bind:getuserinfo="loginHide" 授权成功触发事件
+	 bind:cancel="cancelLogin"  取消授权触发事件
+	/>
+ -->
+<view class='login-wrap' catchtap="">
+    <view class="login-content-wrap">
+      <view class="login-title">
+        授权无痕养育成长营
+      </view>
+      <view class="login-logo">
+        <image class="login-img" src="../../img/logo.png" mode="aspectFill" lazy-load="false"  />
+      </view>
+      <view class="login-text1">需要微信授权使用</view>
+      <view class="login-text2">查看更多育儿锦囊与技巧</view>
+      <view class="login-btn-wrap">
+        <span class="login-btn login-cancel" bindtap="cancel">取消授权</span>
+        <span class="login-btn ">
+         <button class="flex-btn login-true" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getuserinfo">
+        前往授权
+        </button>
+        </span>
+       
+
+       
+          
+      </view>
+    </view>
+   </view>

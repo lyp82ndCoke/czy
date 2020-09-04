@@ -1,0 +1,76 @@
+<!--我的成长墙-->
+<!-- <title text="我的成长墙" back/> -->
+<view class="container ">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <!--banner-->
+  <view class='bbs-box'>
+    <view class='bbs-box-head'>
+      <view class='bbs-item-head-desc'>
+        <image class='bbs-item-head-avea' src='{{userinfo.avatar||userinfo.picture}}'></image>
+
+        <view class='bbs-item-head-desc-nickname slh'>{{userinfo.nickname}}</view>
+      </view>
+      <view class='my-send-msg' bindtap='sendInfoMsg'>
+        <image src='../../img/bbs_release.png'></image>
+        发布心得
+      </view>
+      <!-- <form wx:if="{{details.is_income==1}}" class="share-btn-wrap" bindsubmit="goSharePage" data-id="{{goods_id}}" report-submit>
+            <button formType='submit' class="flex-btn">
+             发布心得
+            </button>
+          </form> -->
+    </view>
+    <view class='bbs-item' wx:for="{{bbslist}}" wx:for-index="index" wx:key="{{item.growth_wall_id}}" wx:for-item="item">
+      <view class='bbs-item-head'>
+
+        <view class='bbs-item-head-desc'>
+          <view class='bbs-item-head-desc-time'>{{item.create_time}}</view>
+          <i class="iconfont icon-shanchu" data-index="{{index}}" bindtap="postsDel" data-id="{{item.growth_wall_id}}" style="margin-left:5rpx;color:#ff7a39;font-size:30rpx;"></i>
+        </view>
+      </view>
+      <view data-isfold="{{item.isfold}}" class="bbs-item-text {{item.isfold?'title7':'bbs-item-text-auto'}}">
+        <text class='bbs-item-text-con '>{{item.details}}</text>
+      </view>
+      <view data-posts_id="{{item.growth_wall_id}}" data-length="{{ item.content.length }}" wx-if="{{ item.contentLength>175}}" data-index="{{index}}" class='bbs-item-more' bindtap='showDetail' data-idx="{{ item.growth_wall_id }}">
+        <text>{{item.isfold == true ? '全部' : '收起'}}</text>
+        <i class="iconfont {{item.isfold == true ? 'icon-double-up1' : 'icon-double-up'}} double-up-sty"></i>
+      </view>
+      <view class='bbs-item-imglist' wx:if="{{item.pic_urls}}">
+        <image mode="aspectFill" bindtap="imgYu" class='bbs-item-imglist-item' data-list="{{item.pic_urls}}" wx:for="{{item.pic_urls}}" wx:key="{{iIndex}}" wx:for-item="itemin" wx:for-index="iIndex" src="{{itemin}}"></image>
+      </view>
+      <!-- <view class='btn-agree'>
+        <text class='bbs-item-head-desc-time'>{{item.create_time}}</text>
+        <view class="flex-between-row">
+          <view class="icon-wrap" data-index="{{index}}" bindtap="goDetail" data-action_type="{{item.is_zans}}" data-growth_wall_id="{{item.growth_wall_id}}">
+            <i class="iconfont icon-liuyan1 message-icon"></i>
+            <text>{{item.comment_num?item.comment_num:'评论'}}</text>
+          </view>
+          <view class="icon-wrap" bindtap='postsPraise' data-index="{{index}}" data-action_type="{{item.is_zans}}" data-id="{{item.growth_wall_id}}">
+            <i wx:if="{{item.is_zans==1}}" class="iconfont zan-icon zan-icon-true icon-dianzan"></i>
+            <i wx:else class="iconfont zan-icon icon-dianzan"></i>
+            <text class="{{item.is_zans==1?'zan-icon-true':''}}">{{item.zan_num?item.zan_num:'点赞'}}</text>
+          </view>
+        </view>
+
+      </view> -->
+      <view class="flex-right-row">
+          <view class="icon-wrap" data-index="{{index}}" bindtap="goDetail" data-action_type="{{item.is_zans}}" data-growth_wall_id="{{item.growth_wall_id}}">
+            <i class="iconfont icon-liuyan1 message-icon"></i>
+            <text>{{item.comment_num?item.comment_num:'评论'}}</text>
+          </view>
+          <view class="icon-wrap" bindtap='postsPraise' data-index="{{index}}" data-action_type="{{item.is_zans}}" data-id="{{item.growth_wall_id}}">
+            <i wx:if="{{item.is_zans==1}}" class="iconfont zan-icon zan-icon-true icon-dianzan"></i>
+            <i wx:else class="iconfont zan-icon icon-dianzan"></i>
+            <text class="{{item.is_zans==1?'zan-icon-true':''}}">{{item.zan_num?item.zan_num:'点赞'}}</text>
+          </view>
+        </view>
+    </view>
+
+    <view class='kong' wx-if="{{bbslist.length<1}}">
+      <image src='../../img/folder_none.png'></image>
+      <text>暂无心得，赶快去发布吧~</text>
+    </view>
+
+  </view>
+
+</view>

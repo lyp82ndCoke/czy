@@ -1,0 +1,45 @@
+<view class="container forward-wrap">
+    <view class="message-wrap">
+        <image class="shop-image" src="{{shareInfo.picture}}" mode="widthFix"></image>
+        <view class="msg-text-w">
+            <view class="msg-text-t">
+                <text class="dear-text">Dear：</text>
+                <view>
+                    <text class="edit-btn {{isShowEextarea ? 'save-color' : ''}}" bindtap="editMessage">{{isShowEextarea?'完成':'编辑'}}</text>
+                    <text class="edit-btn cancel-color" wx:if="{{isShowEextarea}}" bindtap="cancelEdit">取消</text>
+                </view>
+            </view>
+            <block wx:if="{{isShowEextarea}}">
+                <textarea maxlength="60" value="{{shareInfo.message}}" bindinput='getAreaValue' cursor-spacing="100" auto-focus="true" class='bbs-textarea' placeholder="请填写你的寄语...">
+                    <view class='font-count'><text style='color:#E60039;'>{{fontvaluelength}}</text>/60</view>
+                </textarea>
+            </block>
+            <view class="text-wrap" wx:if="{{!isShowEextarea}}">
+                <text class="message-text">{{shareInfo.message}}</text>
+                <view class="bottom-empty"></view>
+            </view>
+            <view class="msg-text-b">
+                <text class="nick-name">{{shareInfo.nickname}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="button-wrap">
+        <button wx:if="{{!isShowEextarea}}" class="share-firend" hover-class="none" open-type="share">发送至好友</button>
+        <view wx:else class="share-firend opacity-button" bindtap="sendFriend">发送至好友</view>
+        <view class="share-circle {{isShowEextarea?'opacity-button':''}}" bindtap="showPopup">发送至朋友圈</view>
+        <text class="circle-text">先保存至相册,才能发送至朋友圈哦!</text>
+    </view>
+    <!-- 海报弹窗 -->
+    <view class="dialog-wrap" wx:if="{{showPoster}}">
+		<view class="dialog-wrap-center">
+			<image class="poster-image" src="{{posterPicture}}" mode="widthFix" />
+			<view class="dialog-close-w" catchtap="closePoster">
+                <i class="iconfont icon-guanbi1 close-icon"></i>
+			</view>
+        </view>
+        <view class="savePhoto" catchtap="shareFirends">
+            <i class="iconfont icon-xiangce photo-sty"></i>
+            <text>{{openSetting ? '设置保存图片' : '保存到相册'}}</text>      
+        </view>
+	</view>
+</view>

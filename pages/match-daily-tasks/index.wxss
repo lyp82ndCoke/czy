@@ -1,0 +1,130 @@
+.task-head{
+    height:145rpx;
+    background:linear-gradient(0deg,rgba(230,0,57,1) 0%,rgba(242,81,121,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.head-title{
+    width:150rpx;
+    height: 1rpx;
+    background-color: #fff;
+}
+.daily-task-top{
+    font-size:32rpx;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    text-shadow:0px 2rpx 7rpx rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 0 21rpx;
+}
+.daily-total{
+    text-align: center;
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    margin: 24rpx 0 20rpx;
+}
+.task-list{
+    margin: 30rpx 35rpx 0;
+    padding: 0 27rpx 27rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 8rpx 8rpx 0px rgba(240,240,240,1);
+    border-radius:24rpx;
+}
+.task-item{
+    padding-top: 32rpx;
+}
+.daily-item-min{
+    background:rgba(248,248,248,1);
+    border-radius:20rpx;
+    margin-top: 20rpx;
+    font-size: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.daily-num{
+    height:27rpx;
+    line-height:27rpx;
+    padding-left: 21rpx;
+    margin-bottom: 24rpx;
+    border-left: 4px solid rgba(255,153,81,1);
+    font-size:32rpx;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}
+.task-category{
+    /* width:106rpx; */
+    height:36rpx;
+    padding: 0 21rpx;
+    background:rgba(255,210,113,1);
+    border-radius:24rpx 0 24rpx 0;
+    color: #fff;
+    text-align: center;
+    line-height: 36rpx;
+    font-size:24rpx;
+    font-weight:500;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+}
+.task-content{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    padding: 39rpx 16rpx;
+}
+.piblish-num{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    margin-top: 39rpx;
+}
+.people-num{
+    color: #666;
+}
+.back-top{
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+    background-color: #FF9951;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    right: 30rpx;
+    bottom: 30rpx;
+}
+.icon-up-sty{
+    font-size: 30rpx;
+}
+.back-top-text{
+    font-size: 20rpx;
+}
+.no-award-show{
+    width:686rpx;
+    height:512rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0 10rpx 18rpx 0 rgba(240,240,240,1);
+    border-radius:24rpx;
+    margin: 30rpx 32rpx 30rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+.task-status-text{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+    margin-top: 46rpx;
+}
+.award-empty-img{
+    width:99rpx;
+    height:200rpx;
+}
+.task-status-img{
+    margin-top: 101rpx;
+}

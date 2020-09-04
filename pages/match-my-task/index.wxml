@@ -1,0 +1,169 @@
+<view class="container {{tabFixed && type ==1 ?'fixed-padding':''}}">
+	<view class="task-user-msg">
+		<view class="flex-left-row user-info-wrap">
+			<image class="task-user-icon" src="{{times_task_user_info.headimgurl}}"></image>
+			<view class="task-user">
+				<text class="task-user-name">{{times_task_user_info.nickname}}</text>
+				<view class="task-progress-title">第
+					<text class="task-progress-text">{{camp_times_info.diff_day}}</text>
+					天
+					/ 共 {{camp_times_info.camp_times_day}} 天
+				</view>
+				<view class="task-review">
+					<view class="task-progress">
+						<view class="task-progress-done" style='width:{{(camp_times_info.diff_day/camp_times_info.camp_times_day)*100}}%'></view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="task-user-data">
+			<view class="task-user-item">
+				<view class="item-count-sty">{{times_task_user_info.share_task_num}}</view>
+				<view class="item-name-sty">已分享</view>
+			</view>
+			<view class="task-user-item task-user-cneter">
+				<view class="item-count-sty">{{times_task_user_info.zan_num}}</view>
+				<view class="item-name-sty">已获赞</view>
+			</view>
+			<view class="task-user-item task-user-cneter">
+				<view class="item-count-sty">{{times_task_user_info.finish_task_num}}</view>
+				<view class="item-name-sty">完成任务</view>
+			</view>
+			<view class="task-user-item task-user-right" wx:if="{{task_info.is_have_rank==1}}">
+				<view class="item-count-sty">{{times_task_user_info.rank_num}}</view>
+				<view class="item-name-sty">当前排行</view>
+			</view>
+		</view>
+	</view>
+	<view class="task-list-content">
+		<view
+		 class="task-list-tab {{tabFixed?'tab-fixed':''}}"
+		 wx:if="{{type === '1'}}"
+		 id="tabwrap"
+		>
+			<view
+			 class="task-tab-item {{tabIndex==index+1?'tab-active-color':''}}"
+			 wx:for="{{sortTypeList}}"
+			 wx:for-index="index"
+			 wx:key="index"
+			 data-key="{{item.key}}"
+			 bindtap="clickTab"
+			>{{item.value}}
+			</view>
+		</view>
+		<view class="task-list-card" wx:if="{{rankingList.length > 0}}">
+			<view
+			 class="list-item-card"
+			 wx:for="{{rankingList}}"
+			 wx:key="index"
+			 wx:for-index="index"
+			 wx:for-item="item"
+			 data-task_id="{{item.times_task_id}}"
+			 data-camp_id="{{item.camp_times_id}}"
+			 data-submit_id="{{item.task_submit_id}}"
+			 data-is_open="{{item.is_open}}"
+			 data-unionid="{{item.unionid}}"
+			 data-index="{{index}}"
+			 bindtap="queryDetail"
+			>
+				<view class="item-tag">Day {{item.target_day}}</view>
+				<view class="item-content">
+					<view class="item-content-dsc title2">
+						任务说明：{{item.task_content}}
+					</view>
+					<view class="task-feel-content {{item.isfold?'title7':'item-details-auto'}}">
+						<text>{{item.details}}</text>
+					</view>
+					<view
+					 data-length="{{ item.content.length }}"
+					 wx-if="{{ item.contentLength>175}}"
+					 data-index="{{index}}"
+					 class='bbs-item-more'
+					 catchtap='showDetail'
+					>
+						<text wx-if="{{item.isfold == true}}">展开</text>
+						<i wx-if="{{item.isfold == true}}" class="iconfont icon-zhankai fold-icon" />
+						<text wx-if="{{item.isfold == false}}">收起</text>
+						<i wx-if="{{item.isfold == false}}" class="iconfont icon-zhankai1 fold-icon" />
+					</view>
+				</view>
+				<view class="image-list">
+					<imgList list="{{item.pic_url}}" bindimgView="imgClickShow" />
+				</view>
+				<view class="flex-right-row bottom-btn">
+					<view>
+						<i wx:if="{{type === '1'}}" class="iconfont {{item.is_open == 1 ? 'icon-yulan2' : 'icon-iconweigongkai'}}  is-open-sty"></i>
+						<text wx:if="{{type === '1'}}" class="res-status-sty">{{item.is_open==1?'公开':'不公开'}}</text>
+					</view>
+					<view class="is-open-right">
+						<view
+						 class="icon-wrap"
+						 catchtap="clickZan"
+						 data-index="{{index}}"
+						 data-identify_id="{{item.task_submit_id}}"
+						 data-is_zan="{{item.is_zan}}"
+						>
+							<i class="iconfont icon-zan-pinlun {{item.is_zan == 1?'active-zan icon-dianzan':'icon-icondianzan'}}" style="vertical-align: middle;"></i>
+							<text class="zan-comment-num {{item.is_zan == 1?'active-zan':''}}">{{item.zan_num>0?item.zan_num:'点赞'}}</text>
+						</view>
+						<view
+						 class="icon-wrap"
+						 data-task_id="{{item.times_task_id}}"
+						 data-camp_id="{{item.camp_times_id}}"
+						 data-submit_id="{{item.task_submit_id}}"
+						 data-unionid="{{item.unionid}}"
+						 data-index="{{index}}"
+						 catchtap="queryDetail"
+						>
+							<i class="iconfont icon-pinglun1 icon-zan-pinlun"></i>
+							<text class="zan-comment-num">{{item.comment_count_num>0?item.comment_count_num:'评论'}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:else class="area-empty-wrap">
+			<image
+			 class="area-empty-img"
+			 src="../../img/area-empty.png"
+			 mode="aspectFit|aspectFill|widthFix"
+			>
+			</image>
+			<text class="area-empty-text">哎呦～还没有呢，先去看看其他吧</text>
+		</view>
+	</view>
+	<!-- 切换公开 -->
+	<view class="dialog-wrap" wx:if="{{showIsOpen}}">
+		<view class="dialog-wrap-center">
+			<view class="close-wrap-t">
+				<view class="colse_wrap">
+					<i class="iconfont icon-guanbi1 guanbi-popup-sty" catchtap="closeDialog"></i>
+					<text class="guanbi-line"></text>
+				</view>
+			</view>
+			<view class="dialog-top-wrap">
+				<view class="flex-center-row">
+					<image
+					 class="light-bulb-img"
+					 src="../../img/light_bulb.png"
+					 mode="aspectFit|aspectFill|widthFix"
+					></image>
+					<text class="dialog-title">温馨提示</text>
+				</view>
+				<view class="flex-center-row dialog-content">
+					<view class="task-not-open" wx:if="{{camp_times_info.time_status == 2 && itemInfo.isOpen == 2}}">
+						<view>已帮您更正为公开状态</view>
+						<view>快去分享吧</view>
+					</view>
+					<view class="task-not-open" wx:if="{{camp_times_info.time_status == 3 && itemInfo.isOpen == 2}}">
+						<view wx:if="{{itemInfo.isOpen == 2}}">已修正为公开状态</view>
+						<view>任务已结束，分享后任务统计的赞</view>
+						<view>不会在计算在排行中哦~</view>
+					</view>
+				</view>
+				<view class="dialog-share-btn" catchtap="shareNow">立即分享</view>
+			</view>
+		</view>
+	</view>
+</view>
+

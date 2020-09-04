@@ -1,0 +1,126 @@
+<view class="container share-rank">
+	<login
+	 wx:if="{{loginShow}}"
+	 class="login"
+	 bind:getuserinfo="loginHide"
+	 bind:cancel="cancelLogin"
+	/>
+	<view
+	 class="login-wrap"
+	 wx:if="{{loginWrapShow}}"
+	 catchtap='loginShow'
+	/>
+	<view class="flex-left-row  rank-share-tips">
+		<i class="iconfont icon-laba-copy laba-sty"></i>
+		<view class="tips-text">
+			<text>你的好友{{myRank.nickname}}正在参加{{myRank.camp_times_name}}</text><text wx:if="{{myRank.award_name}}">，赢{{myRank.award_name}}</text><text>，邀请你参加</text>
+		</view>
+	</view>
+	<view class="rank-total-msg">
+		<image
+		 class="user-icon"
+		 src="{{myRank.headimgurl}}"
+		 mode="aspectFit|aspectFill|widthFix"
+		></image>
+		<view class="rank-num">
+			目前排行
+			<text class="rank-num-sty">{{myRank.current_rank}}</text>
+			名
+		</view>
+		<view class="count-time-wrap">
+			<i class="iconfont icon-shalou1 shalou-sty"></i>
+			<view class="task-end-sty" wx:if="{{myRank.task_status==1&&timeData}}">
+				<text>活动倒计时</text>
+				<text class="count-num" >{{timeData[0]}}</text>
+				<text>天</text>
+				<text class="count-num" >{{timeData[1]}}</text>
+				<text>:</text>
+				<text class="count-num" >{{timeData[2]}}</text>
+				<text>:</text>
+				<text class="count-num" >{{timeData[3]}}</text>
+			</view>
+			<text class="task-end-sty" wx:if="{{myRank.task_status==2}}">活动已结束</text>
+		</view>
+		<view class="total-num paren-task">
+			累计完成
+			<text class="num-color">{{myRank.finish_task_num}}</text>
+			个亲子任务
+		</view>
+		<view class="total-num zan-total">
+			被
+			<text class="num-color">{{myRank.view_count_num}}+</text>
+			父母查阅，获
+			<text class="num-color">{{myRank.zan_num}}</text>
+			赞
+		</view>
+	</view>
+	<view class="rank-share-content">
+		<button
+		 class="time-limit-activity"
+		 open-type="contact"
+		 show-message-card="true"
+		 send-message-title="培养好孩子"
+		 send-message-path="/pages/match-share-rank/index?site_id={{adv_info.get_chack_button.site_id}}&category=2&camp_times_id={{camp_times_id}}"
+		 send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+		 data-button_path="{{adv_info.get_chack_button.apipath_button}}"
+		 data-goods_id="{{adv_info.get_chack_button.goods_id}}"
+		 bindcontact="handleContact"
+		 wx:if="{{adv_info.get_chack_button.adv_pic_url}}"
+		>
+			<image
+			 class="limit-activity-img"
+			 src="{{adv_info.get_chack_button.adv_pic_url}}"
+			 mode="aspectFit|aspectFill|widthFix"
+			></image>
+			<view class="time-limit-tag">限时活动</view>
+			<view class="query-btn">
+				<i class="iconfont icon-tianxie tianxie-sty"></i>
+				<text class="btn-text">去查阅</text>
+			</view>
+		</button>
+		<view class="rank-content-title" wx:if="{{taskList.length > 0}}">已完成的任务</view>
+		<view
+		 class="day-item-content"
+		 wx:for="{{taskList}}"
+		 wx:for-item="item"
+		 wx:for-index="index"
+		 wx:key="index"
+		>
+			<view class="time-day-tag item-tag-font">Day {{item.target_day}}</view>
+			<view class="task-item-wrap">
+				<view
+				 class="task-item"
+				 wx:for="{{item.task_data}}"
+				 wx:for-item="itemMin"
+				 wx:for-index="minIndex"
+				 wx:key="minIndex"
+				>
+					<view class="task-detail">
+						<text>{{itemMin.task_content}}</text>
+					</view>
+					<view class="flex-between-row task-item-bottom">
+						<view>
+							已有
+							<text class="partic-num">{{itemMin.participant_num}}</text>
+							人发布
+						</view>
+						<text>{{itemMin.task_remarks}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<button
+	 class="jion-task"
+	 open-type="contact"
+	 show-message-card="true"
+	 send-message-title="培养好孩子"
+	 send-message-path="/pages/match-share-rank/index?site_id={{adv_info.get_participate_button.site_id}}&category=2&camp_times_id={{camp_times_id}}"
+	 send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+	 data-button_path="{{adv_info.get_participate_button.apipath_button}}"
+	 data-goods_id="{{adv_info.get_participate_button.goods_id}}"
+	 bindcontact="handleContact"
+	>我也要参加
+	</button>
+</view>
+

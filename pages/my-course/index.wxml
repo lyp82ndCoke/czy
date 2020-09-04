@@ -1,0 +1,37 @@
+<!--我的课程-->
+<!-- <title text="我的课程" back/> -->
+ <view class="login-wrap" wx:if="{{loginWrapShow}}" catchtap='loginShow' />
+  <login wx:if="{{loginShow}}" class="login" bind:getuserinfo="loginHide" bind:cancel="cancelLogin" />
+
+<view class="container">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <view class='course_box' wx:if="{{list.length}}">
+    <view class='course_Items' wx:for='{{list}}' wx:key="{{item.spec_column_id}}" bindtap='gotoModular' data-type='{{item.type}}' data-index='{{index}}'  data-is_enable="{{item.is_enable}}" data-camp_times_id='{{item.camp_times_id}}' data-spec_column_id='{{item.spec_column_id}}'>
+      <!--课程列表左边图片显示-->
+      <view class='course_item_img_l'>
+        <image src='{{item.cover_img}}' />
+      </view>
+      <!--课程右边文字显示-->
+      <view class='course_item_right'>
+      <text class="red-dot" wx:if="{{item.is_show_notice==1}}"></text>
+        <view class='course_title'>
+          <view class='course_name text_ellipsis text-2'>{{item.spec_column_title}}</view>
+          <!-- <view class='title_circle' wx:if='{{item.userNewCount > 0}}'>{{item.userNewCount}}</view> -->
+        </view>
+        <view class='course_content text_ellipsis'>{{item.spec_column_introduction}}</view>
+        <view class='course_count'>共{{item.spec_column_count}}节</view>
+      </view>
+    </view>
+  </view>
+  <view class='main1' wx:else style='margin:0;background:#fff;'>
+  <image src='../../img/box_03.jpg' class='bg' mode='widthFix' />
+  <view class='order-sub-title'>暂无内容~</view>
+</view>
+</view>
+
+<!-- <view class='main1' wx:if="{{!haveCourData}}">
+  <image src='../../img/xly.png' class='bg' mode='widthFix' />
+  <view class='order-sub-title' style='margin-top:40rpx;'>暂无课程</view>
+</view> -->
+
+<!-- 空页面 -->

@@ -1,0 +1,39 @@
+<view class="container forward-wrap">
+    <login
+	    wx:if="{{loginShow}}"
+	    class="login"
+	    bind:getuserinfo="loginHide"
+	    bind:cancel="cancelLogin"
+	/>
+	<view
+	    class="login-wrap"
+	    wx:if="{{loginWrapShow}}"
+	    catchtap='loginShow'
+	/>
+    <view class="message-wrap">
+        <image class="shop-image" src="{{shareInfo.picture}}" mode="widthFix"></image>
+        <view class="msg-text-w">
+            <view class="msg-text-t">
+                <text class="dear-text">Dear：</text>
+            </view>
+            <view class="text-wrap">
+                <text class="message-text">{{shareInfo.message}}</text>
+                <view class="bottom-empty"></view>
+            </view>
+            <view class="msg-text-b">
+                <text class="nick-name">{{shareInfo.nickname}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="button-wrap">
+        <button class="share-firend" 
+            open-type="contact"
+            show-message-card="true"
+            send-message-title="我学完了父母训练营系列课程，邀请你来看看，真的有用！"
+            send-message-path="/pages/match-share-area/index?share_id={{share_id}}&category=4"
+            send-message-img="{{shareInfo.picture}}"
+            bindcontact="handleContact"
+        >点击了解详情</button>
+        <text class="circle-text">新用户还有多项好礼等待领取哦</text>
+    </view>
+</view>

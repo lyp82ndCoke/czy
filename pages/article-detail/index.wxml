@@ -1,0 +1,57 @@
+<!--pages/course-details/index.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<!-- <title back/> -->
+<view class="container">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '',isIpxBottom ? 'isIpx-pad-bottom' : '']}}"> -->
+
+  <view class="goods-details-wrap ">
+    <view class="article-title">
+      <view class='title-details'>
+        {{details.title}}
+      </view>
+      <view class='title-source'>{{details.creators_name}} {{details.create_date}}
+      </view>
+    </view>
+    <view class='goods-details-content'>
+     <template  is="wxParse"  wx:if="{{details.target_type==2}}" data="{{wxParseData:content.nodes}}" />
+      <!-- <rich-text wx:if="{{details.target_type==2}}" space="true" nodes="{{details.content}}" bitapndtap=""></rich-text> -->
+      <web-view wx:if="{{details.target_type==3}}" src="{{details.url}}"></web-view>
+     
+    </view>
+    <!-- 阅读数/点赞数/收藏数量-->
+    <!-- <view class="{{payShow == false ? 'content-statistics' : 'ispay-content-statistics'}}"> -->
+    <view class="content-statistics">
+      <!-- 阅读数 -->
+      <view class="{{payShow == false ? 'statistics-view' : 'ispay-statistics-view'}}">
+        <image class='statistics-img1' src='../../img/eye.jpg'></image>
+        <text class='statistics-text'>{{details.view_num}}</text>
+      </view>
+      <!-- 点赞数 -->
+      <!-- <view class="{{payShow == false ? 'statistics-view' : 'ispay-statistics-view'}}" style=" {{payShow == false ? 'margin-left:50rpx;' : ''}}" bindtap='articalPrice'> -->
+      <view class="statistics-view" data-like="{{details.is_zan}}" bindtap='like'>
+        <image class='statistics-img' src="../../img/{{details.is_zan == 2?'hand2.png':'handClick.png'}}"></image>
+        <text class="{{details.is_zan == 2 ? 'statistics-text': 'click-statistics-text'}}">{{details.zan_num}}</text>
+        <!-- <text class="click-statistics-text"></text> -->
+      </view>
+      <!-- 收藏 -->
+      <!-- <view class='statistics-view' style='margin-left:50rpx;' hidden='{{payShow == true}}' bindtap='articleCollect'> -->
+      <view class='statistics-view' data-collect="{{details.is_collect}}" style='margin-left:50rpx;' bindtap='collect'>
+        <image class='statistics-img' src="../../img/{{details.is_collect == 2?'star1.png':'star2.png'}}"></image>
+        <!-- <image class='statistics-img' src="../../img/star1.png"></image> -->
+        <!-- <text class="{{isCollect == 0 ? 'statistics-text': 'click-statistics-text'}}">{{collectNum}}</text> -->
+        <text class="{{details.is_collect == 2? 'statistics-text': 'click-statistics-text'}}">{{details.collect_num}}</text>
+      </view>
+    </view>
+
+    <!--回到顶部-->
+    <i class="iconfont icon-yizhidingceng go-top" wx:if='{{topShow}}' bindtap='goTop'></i>
+
+  </view>
+  <!-- 写留言  -->
+  <view>
+    <comment id="comment" showBtn articleId="{{formData.article_id}}" commenType="1" articleType="{{formData.article_type}}" articleTitle="{{details.title}}" commTitle="精选留言" bind:commentOver="commentOver" />
+  </view>
+  <goIndex/>
+
+
+</view>

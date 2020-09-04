@@ -1,0 +1,99 @@
+.bbs-box {
+    padding-bottom: 100rpx;
+}
+
+.bbs-item {
+    background: #fff;
+    padding: 20rpx 40rpx;
+    margin-top: 20rpx;
+}
+
+.bbs-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bbs-item-head-avea {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.bbs-item-head-desc-nickname {
+    font-weight: bold;
+    font-size: 30rpx;
+}
+
+.bbs-item-head-desc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.send-msg {
+    width: 100rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background: #bfbfbf;
+    border-radius: 24rpx;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.red-send-msg {
+    background: #fc5c46;
+    width: 100rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    border-radius: 24rpx;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.bbs-item-box {
+    margin-top: 20rpx;
+    padding: 30rpx 0rpx;
+}
+
+.bbs-textarea {
+    background: #f8f8f8;
+    height: 340rpx;
+    font-size: 24rpx;
+    padding: 20rpx 20rpx;
+    width: 95%;
+    border-radius: 20rpx;
+    margin-bottom: 30rpx;
+}
+
+.bbs-item-imglist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top:20rpx;
+
+}
+
+.bbs-item-imglist-item {
+    width: 220rpx;
+    height: 220rpx;
+    margin-bottom: 20rpx;
+    margin-right: 2rpx;
+}
+.tips{
+    font-size:25rpx;
+color:#fb5c46;
+font-weight:bold;
+opacity:0.8;
+}
+.font-count{
+    font-size:25rpx;
+    color:#fb5c46;
+    font-weight:bold;
+    display: flex;
+   justify-content: flex-end;
+
+}

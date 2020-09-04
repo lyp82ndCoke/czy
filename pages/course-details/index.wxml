@@ -1,0 +1,145 @@
+<!--pages/course_detail/index.wxml-->
+<wxs module="filters" src="../../wxs/numToW.wxs"></wxs>
+<import src='../../wxParse/wxParse.wxml' />
+<!-- <title back /> -->
+<view class="course-detail container ">
+	<!-- <view class="course-detail container {{isIpx ? 'isIpx' : ''}}"> -->
+	<!-- 音频控件 -->
+	<view class='audio-component' wx:if='{{detail.type == 1}}'>
+		<!-- 音频头部 -->
+		<view class='cours-top'>
+			<view>
+				<view class='cours-top-font1' style='font-size:40rpx;'>
+					{{detail.audio_title}}
+				</view>
+				<view class='cours-top-font2 cours-top-time'>
+					<text class='cours-time'>{{detail.create_time}}</text>
+					<!-- <i class="iconfont bofang-num-icon icon-bofang1"></i>
+          <text>{{detail.play_num}}</text> -->
+				</view>
+			</view>
+		</view>
+		<!-- 音频主题内容 -->
+		<view class='cours-music'>
+			<view class='course-music-v'>
+				<view class='cours-top-font3'>{{filters.toAfater(userPlaySecond)}}</view>
+				<slider class='course-slider' bindchange='radioChange' block-color='#F0EFEF' color='#DBDADB' block-size="13" activeColor='#FB643B' step='1' value='{{userPlaySecond}}' mini='0' max='{{userPlayTotal}}' />
+				<view class='cours-top-font3'>{{filters.toAfater(userPlayTotal)}}</view>
+			</view>
+			<view class='course-music-button' style='background:#fff'>
+				<image class='pre' src='../../img/1.png' style='height:60rpxwidth:60rpx;' data-id="{{detail.last_song_course_id}}" bindtap='changeMusic' />
+				<image style='height: 60rpx;width:60rpx;' class='pf' src="../../img/{{!musicPlay?'3.png':'4.png'}}" bindtap='musicPlay' />
+				<image style="height: 60rpx;width:60rpx;" data-id="{{detail.next_song_course_id}}" class='pre' src='../../img/5.png' bindtap='changeMusic' />
+			</view>
+		</view>
+	</view>
+	<!-- 视频控件 -->
+	<view class='video-component' wx:if="{{detail.type == 2}}">
+		<!-- 视频头部 -->
+		<view class='cours-top'>
+			<view>
+				<view class='cours-top-font1' style='font-size:40rpx;'>{{detail.audio_title}}</view>
+				<view class='cours-top-font2 cours-top-time'>
+					<text class='cours-time'>{{detail.create_time}}</text>
+					<!-- <i class="iconfont bofang-num-icon icon-bofang1"></i>
+          <text>{{detail.play_num}}</text> -->
+				</view>
+			</view>
+		</view>
+		<!-- 视频内容 -->
+		<view class='course-video'>
+			<view class="section tc">
+				<video src="{{detail.audio_url}}" controls='true' autoplay='true' show-play-btn='true' enable-progress-gesture='true' controls bindended="nextCourse" binderror="videoError"></video>
+			</view>
+		</view>
+	</view>
+	<!-- 课程内容 -->
+	<view class='course-content'>
+		<!-- 课程简介 -->
+		<!-- <view class='course-synopsis' wx:if="{{detail.audio_title != ''}}">
+      <view class='course-top-title'>课程简介</view>
+      <view class='course-synopsis-content'>{{detail.audio_title}}</view>
+    </view> -->
+		<!-- 课程概述 -->
+		<view class='course-introduction' wx:if="{{detail.course_details != ''}}">
+			<view class='course-top-title'>课程概述</view>
+			<view class='rich-text'>
+				<template is="wxParse" data="{{wxParseData:content.nodes}}" />
+				<!-- <rich-text nodes="{{detail.course_details}}" bitapndtap=""></rich-text> -->
+			</view>
+		</view>
+		<!-- 评论 -->
+		<view class='course-commont'>
+			<view class="beforeCor">评论</view>
+			<view>
+				<view class='flex-between-row comm topQuery{{index}}' wx:for="{{commentlist}}" wx:key="item.comment_id" wx:if="{{commentlist.length > 0}}">
+					<view class='comm-photo flex-center-column'>
+						<image src='{{item.headimgurl}}' style='width:58rpx;height:58rpx;border-radius:50%'></image>
+					</view>
+					<view class='comm-content'>
+						<view class='flex-between-row comm-content-top'>
+							<view class='comm-text-a' style='margin:0'>{{item.nickname}}</view>
+							<image src="../../img/winnow.png" class="winnow" wx:if="{{item.is_featured==1}}"></image>
+						</view>
+						<view class='comm-content-true'>
+							<text class='comm-text-b'>{{item.comment_contents}}</text>
+						</view>
+						<view class="level-wrap" wx:if="{{item._apply.length > 0}}">
+							<view class="level-item" wx:for="{{item._apply}}" wx:for-index="minIndex" wx:for-item="minItem" wx:key="minIndex">
+								<text class="comment-nickname">{{minItem.nickname}}：</text>
+								{{minItem.comment_contents}}
+							</view>
+						</view>
+						<view class="comment-bottom">
+							<text class="create-time">{{item.create_time}}</text>
+							<view class="Cblock">
+								<view class='flex-left-row zan-icon-wrap {{item.is_zans == 1?"is-zan":""}}' bindtap='commPraise' data-index='{{index}}' data-identify_type="{{item.is_zans}}" data-id="{{item.comment_id}}">
+									<i class="iconfont icon-dianzan_active dianzan-icon" />
+									<text class="{{item.is_zans == 1?'comm-hand-text':'comm-hand-text-cel'}}">{{item.zan_num?item.zan_num:'点赞'}}</text>
+								</view>
+								<i class="iconfont icon-pinglun1 pinlun-sty" bindtap="replyTask" data-info="{{item}}" data-idx="{{index}}"></i>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 评论空页面 -->
+				<view class='comment-none' wx:if='{{commentlist.length == 0}}'>
+					<image src='../../img/no_comm.png' mode='widthFix' />
+					<view class='cours-top-font2'>暂无评论</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 写评论 -->
+	<!-- <view class='write-commont'>
+		<view>
+			<view class='write-btn' data-headerImg="{{headerImg}}" bindtap='writeBtn'>
+				写评论
+			</view>
+			<view class='flex-left-row zan-wrap {{detail.is_zans==1?"comm-hand-text":"comm-hand-text-cel"}}' bindtap='coursePrise'>
+				<i class="iconfont icon-xin xin-icon" />
+				<text data-praiseCount='{{detail.praiseCount}}'>{{detail.zan_num>0?detail.zan_num:"点赞"}}</text>
+			</view>
+		</view>
+	</view> -->
+	<view class="fixed-bottom">
+		<view class="input-sty" catchtap="showCommon">说点什么...</view>
+		<view class='flex-left-row zan-wrap {{detail.is_zans==1?"comm-hand-text":"comm-hand-text-cel"}}' bindtap='coursePrise'>
+				<i class="iconfont icon-xin xin-icon" />
+				<text data-praiseCount='{{detail.praiseCount}}'>{{detail.zan_num>0?detail.zan_num:"点赞"}}</text>
+			</view>
+		<!-- <view class="bto-line"></view> -->
+	</view>
+<block>
+		<view class="write-commont-wrap" catchtouchmove='true' wx:if="{{!commontShow}}" bindtap="hideCommon">
+			<view class="commont-wrap" catchtap="return">
+				<textarea fixed class="textarea" adjust-position="false" catchtouchmove='true' focus value="{{comment_contents}}" bindinput="commontChange" maxlength="1000" cursor-spacing="150" disable-default-padding adjust-position="false" show-confirm-bar="false" placeholder="{{placeholderMsg}}"></textarea>
+				<view>
+					<text wx:if="{{!loadingBtn}}" class="release-btn" bindtap="{{commentType == 'reply' ? 'release' : 'reComment'}}">发布</text>
+					<text wx:else class="release-btn release-btn-loading">发布</text>
+				</view>
+			</view>
+		</view>
+	</block>
+</view>
+<!-- <template is="music_felx" hidden='playEnd' data="{{musicFlex,musicPlay,courseTitle,nowtime,audiotime,courseDay,courseDayShow,currentId,user_course_id,listening_mode,music_id,haveTabber,courseFreeSecond,animationAll,animation,havePayBtn,headerImg}}" /> -->

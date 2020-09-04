@@ -1,0 +1,80 @@
+/* template/template.wxss */
+
+.course-wrap {
+    width: 100%;
+    background-color: #fff;
+}
+
+.course-img {
+    width: 100%;
+    height: 380rpx;
+}
+
+.content-desc {
+    position: relative;
+    text-align: left;
+    padding: 30rpx 30rpx 20rpx;
+}
+
+.course-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.price-wrap {
+    margin-top: 20rpx;
+}
+
+.price {
+    font-size: 48rpx;
+    color: rgb(255, 88, 88);
+    font-weight: bold;
+}
+
+.original-price {
+    margin-left: 20rpx;
+    font-size: 28rpx;
+    font-weight: 400;
+    text-decoration: line-through;
+    color: rgba(153, 153, 153, 1);
+}
+
+.course-bottom {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: baseline;
+}
+
+.sell-num {
+    font-size: 28rpx;
+    color: rgba(153, 153, 153, 1);
+    /* flex: 1; */
+}
+
+.good-tag {
+    margin-left: 22rpx;
+    height: 38rpx;
+    border: 1rpx solid #6ab1f3;
+    padding: 0 10rpx;
+    line-height: 38rpx;
+    font-size: 24rpx;
+    color: #6ab1f3;
+    /* flex: 1; */
+}
+
+.buy-btn {
+    position: absolute;
+    bottom: 28rpx;
+    right: 30rpx;
+    border-radius: 30rpx;
+    padding: 0 35rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    background-color: #FF5858;
+    color: #fff;
+}

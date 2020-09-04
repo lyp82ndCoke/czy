@@ -1,0 +1,160 @@
+/* pages/edit-info/index.wxss */
+/* pages/my/my.wxss */
+.my-box {
+    width: 100%;
+  box-sizing: border-box;
+  overflow:hidden;
+}
+
+.my-box-head {
+    background: url(http://test-wap.dawennet.com/somall/images/bg_my.jpg);
+    background-size: contain;
+    height: 359rpx;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.avera {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    /* margin-top: 30rpx;
+    margin-bottom: 30rpx; */
+}
+
+.my-box-head-nickname {
+    font-size: 30rpx;
+    font-weight: bold;
+    margin-bottom: 30rpx;
+}
+
+.my-box-head-desc {
+    font-size: 24rpx;
+    color: #64605d;
+}
+
+.my-box-con {
+    width: 100%;
+    box-sizing:border-box;
+    overflow: hidden;
+    margin-bottom: 140rpx;
+}
+
+.my-box-item {
+    height: 120rpx;
+    background: #fff;
+    margin-top: 3rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20rpx;
+}
+.my-box-item2 {
+    background: #fff;
+    margin-top: 2rpx;
+    padding: 0 20rpx;
+    font-size:30rpx;
+    display:flex;
+    flex-direction:column;
+    padding-bottom:30rpx
+
+}
+.state-box{
+    margin:20rpx 0rpx; 
+}
+.my-box-item-l {
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+    width:400rpx;
+
+}
+
+.my-box-item-l image {
+    width: 34rpx;
+    height: 33rpx;
+    margin-right: 20rpx;
+}
+
+.my-box-item-r image {
+    width: 96rpx;
+    height: 96rpx;
+}
+
+.my-box-item-r {
+    font-size: 30rpx;
+    color: #999;
+    position: relative;
+    /* width:300rpx; */
+    width:514rpx;
+text-align:right;
+
+}
+
+.camera-tip {
+    width: 36rpx !important;
+    height: 31rpx !important;
+    position: absolute;
+    right: 28rpx;
+    top: 60rpx;
+}
+.nickname-text{
+    /* padding-right: 25rpx; */
+    text-align: right;
+}
+.ok-edit{
+    /* height: 80rpx;
+    line-height: 80rpx;
+    background: rgba(255, 122, 57, 0.98);
+    color: #fff;
+    width: 90%;
+    margin-left: 5%;
+    text-align: center;
+    margin-top: 30rpx;
+    border-radius: 30rpx; */
+     /*position: fixed; */
+     /*display/justify-content/align-items*/
+    /* display:flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 30rpx; */
+    position: fixed;
+    bottom: 30rpx;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: rgba(255, 122, 57, 0.98);
+    color: #fff;
+    width: 90%;
+     border-radius: 30rpx;
+     margin-left: 5%;
+}
+checkbox{
+    zoom: 0.6;
+    margin-right: 20rpx;
+}
+.checkbox{
+    margin-right: 80rpx;
+}
+
+.study_conditon_input {
+  background:rgba(255, 255, 255, 0.8);
+  border-radius:10rpx;
+  /* text-align: center; */
+  line-height: 70rpx;
+  height: 70rpx;
+  width: 100%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.must-write {
+  color: #FB4141;
+  font-size: 50rpx;
+}
+

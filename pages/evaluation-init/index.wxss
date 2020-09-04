@@ -1,0 +1,172 @@
+.init-wrap{
+  padding: 27rpx 0;
+}
+.page-wrap{
+  background:rgba(255,255,255,1);
+  box-shadow:0px 8rpx 8epx 0px rgba(240,240,240,1);
+  margin: 0 32rpx;
+  border-radius: 24rpx;
+}
+.init-head{
+  height:185rpx;
+  background:#FFECE6;
+  border-radius:24rpx 24rpx 0px 0px;
+  box-sizing: border-box;
+  padding-top: 29rpx;
+}
+.init-title{
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  text-align: center;
+}
+.round-wrap{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  top: -5rpx;
+  width: 100%;
+}
+/* 步骤条 */
+
+.steps_box{
+  width: 100%;
+  margin-top: 20rpx;
+  padding: 0 110rpx;
+}
+.step-slider-item {
+  width: 50%;
+  height: 6rpx;
+  position: relative;
+  float: left;
+  background-color: #FFD3B9;
+  z-index: 1;
+}
+.active-item{
+  background-color: rgba(255, 153, 81, 1);
+}
+.active-item::after{
+  background-color: rgba(255, 153, 81, 1) !important;
+}
+.step-slider-item::after {
+  content: "";
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: -4px;
+  right: 0;
+  background-color: #FFD3B9;
+  border-radius: 50%;
+  z-index: 5;
+}
+.slider-first::before {
+  content: "";
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: -4px;
+  left: 0;
+  background-color: rgba(255, 153, 81, 1);
+  border-radius: 50%;
+  z-index: 5;
+}
+.steps-all{
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(255,153,81,1);
+  margin-top: 45rpx;
+}
+.steps-one-box1{
+  align-self:baseline;
+}
+.steps-one-box{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+  height: 35rpx;
+}
+
+.content-wrap{
+  background-color: #fff;
+  padding: 61rpx 0 79rpx;
+  border-radius: 0px 0px 24rpx 24rpx;
+}
+.user-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.user-icon{
+  width:120rpx;
+  height:120rpx;
+  border-radius:50%;
+}
+.user-name{
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-top: 29rpx;
+}
+.evalua-head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.evalua-head-title{
+  width:64rpx;
+  height: 2rpx;
+  background-color: rgba(221, 221, 221, 1);
+}
+.evalua-title{
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  margin: 0 40rpx;
+}
+.evalua-target{
+  background:rgba(248,248,248,1);
+  border-radius:24rpx;
+  padding: 29rpx 63rpx 49rpx;
+  margin: 185rpx 28rpx 0;
+}
+.text-sty{
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  margin-top: 29rpx;
+  line-height: 1.6;
+}
+.evalua-bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+.evalua-btn{
+  width:480rpx;
+  height:88rpx;
+  background:rgba(230,0,57,1);
+  border-radius:44rpx;
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:88rpx;
+  text-align: center;
+}
+.evalua-text{
+  margin-top: 20rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+  

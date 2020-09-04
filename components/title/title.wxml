@@ -1,0 +1,19 @@
+<!--components/title/title.wxml-->
+<!-- title组件实例
+
+  使用页面在顶部书写
+  title：当前页面title   String
+  back：是否又返回按钮（默认返回上一页）  Boolean
+  bgColor：title背景颜色  String
+  color：title颜色  String
+  <title text="页面title" back="" bgColor="" color="" />
+ -->
+
+<view class='title-app {{[isIpx ? "title-isIpx":""]}}' style='background:{{bgColor}};color:{{color}};'>
+  <view wx:if='{{back}}' class='back' bindtap="goBack">
+    <i class='iconfont icon-fanhui back-icon' ></i>
+  </view>
+  <view class='text'>
+    {{text}}
+  </view>
+</view>

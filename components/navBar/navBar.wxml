@@ -1,0 +1,18 @@
+<view class='nav' style='height: {{status + navHeight}}px'>
+<view class='status' style='height: {{status}}px;{{containerStyle}}'></view>
+<view class='navbar' style='height:{{navHeight}}px;{{containerStyle}}'>
+<view class='capsule'>
+  <view class='back-icon' wx:if="{{back}}" bindtap='back'>
+    <i class='iconfont icon-fanhui back-icon' ></i>
+  </view>
+  <view class='back-icon' wx:if="{{homeIcon}}" bindtap='home'>
+   <i class='iconfont icon-shouye home-icon' ></i>
+  </view>
+</view>
+<view class='nav-title'>
+  <image src='{{titleImg}}' style='{{iconStyle}}' wx:if="{{titleImg}}"></image>
+  <text style='{{textStyle}}' wx:if="{{text && !titleImg}}">{{text}}</text>
+</view>
+</view>
+</view>
+<view style="height:{{navHeight+status}}px;background: transparent;"></view>

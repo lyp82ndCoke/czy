@@ -1,0 +1,94 @@
+var filters = {
+  toFix: function (value, two) {
+    value = Number(value);
+    value = Math.floor(value * 10) / 10;
+    if (!two) {
+      return value; //此处2为保留两位小数
+    }
+    //强行补位两个小数
+    var s_x = value.toString();
+    var pos_decimal = s_x.indexOf('.');
+    if (pos_decimal < 0) {
+      pos_decimal = s_x.length;
+      s_x += '.';
+    }
+    while (s_x.length <= pos_decimal + 2) {
+      s_x += '0';
+    }
+    return s_x;
+  },
+  format: function (str, dayString, minu) {
+    //shijianchuo是整数，否则要parseInt转换
+    var time = getDate(str);
+    var y = time.getFullYear();
+    var m = time.getMonth() + 1;
+    var d = time.getDate();
+    var h = time.getHours();
+    var mm = time.getMinutes();
+    var s = time.getSeconds();
+    if (dayString) {
+      return y + add0(m) + add0(d);
+    }
+    if (minu) {
+      return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm)
+    }
+    return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
+  },
+  getMonth: function () {
+    var str = getDate();
+    var time = getDate(str);
+    var y = time.getFullYear();
+    var m = time.getMonth() + 1;
+    return y + '年' + add0(m) + '月';
+  },
+  toAfater: function (str) {
+    var mm = Math.floor(str / 60);
+    var s = str % 60;
+
+    return add0(mm) + ':' + add0(s);
+  },
+  toDay: function (str) {
+    var time = getDate(str);
+    var y = time.getFullYear();
+    var m = time.getMonth() + 1;
+    var d = time.getDate();
+    var h = time.getHours();
+    var mm = time.getMinutes();
+    var s = time.getSeconds();
+    return y + '-' + add0(m) + '-' + add0(d);
+  },
+  stotime: function (s) {
+    var t = '';
+    if (s > -1) {
+      // let hour = Math.floor(s / 3600);
+      var min = Math.floor(s / 60) % 60;
+      var sec = s % 60;
+      // if (hour < 10) {
+      //   t = '0' + hour + ":";
+      // } else {
+      //   t = hour + ":";
+      // }
+
+      if (min < 10) {
+        t += "0";
+      }
+      t += min + ":";
+      if (sec < 10) {
+        t += "0";
+      }
+      t += sec;
+    }
+    return t;
+  }
+}
+
+function add0(m) {
+  return m < 10 ? '0' + m : m.toString()
+}
+module.exports = {
+  toFix: filters.toFix,
+  format: filters.format,
+  toAfater: filters.toAfater,
+  getMonth: filters.getMonth,
+  toDay: filters.toDay
+}

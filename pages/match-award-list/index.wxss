@@ -1,0 +1,447 @@
+.rank-list{
+    padding-bottom:340rpx;
+}
+.rank-info{
+    background:linear-gradient(0deg,rgba(230,0,57,1) 0%,rgba(235,65,108,1) 100%);
+    padding: 20rpx 0;
+}
+.rank-info-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.rank-content{
+    background-color: #FAFAFA;
+}
+.price-title{
+    font-size:28rpx;
+    font-weight:300;
+    color:rgba(255,255,255,1);
+}
+.taste-text{
+    font-size:20rpx;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.count-sty{
+    width: 220rpx;
+    text-align: center;
+}
+.rank-count-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:32rpx;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    text-shadow:0px 2rpx 7rpx rgba(0, 0, 0, 0.2);
+}
+.rank-tips{
+    margin: 15rpx 0 0 32rpx;
+}
+.laba-sty{
+    font-size: 20rpx;
+    margin-right: 15rpx;
+    color: #E91F27;
+}
+.tips-text{
+    font-size:20rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:30rpx;
+}
+.date-wrap{
+    width: 100%;
+    white-space: nowrap;
+}
+.card-style{
+    display: inline-block;
+    margin-right: 70rpx;
+    text-align: center;
+}
+.card-style:first-child{
+    margin-left: 32rpx;
+}
+.card-style:last-child{
+    margin-right: 32rpx;
+}
+.prize-wrap{
+    width: 133rpx;
+    height: 110rpx;
+}
+.prize-image{
+    width: 86rpx;
+    height: 61rpx;
+}
+.price-top-box{
+    height: 61rpx;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    bottom: -10rpx;
+}
+.yohui-sty{
+    color:#E60039;
+    font-size: 55rpx;
+}
+.prize-podium{
+    width: 133rpx;
+    height: 48rpx;
+}
+.prize-name{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin: 20rpx 0 13rpx 0;
+}
+.prize-rank{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+.price-good-title{
+    margin: 58rpx 0 38rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.good-title-text{
+    font-size:32rpx;
+    font-weight:500;
+    color:#333333;
+    margin: 0 30rpx;
+}
+.good-title-line{
+    width:41px;
+    height: 1rpx;
+    border-top:1px solid rgba(221,221,221,1);
+    color: #fff;
+    height: 1rpx;
+}
+.rank-conent{
+    margin-top: 60rpx;
+}
+.rank-name-list{
+    margin-bottom: 0 !important;
+}
+.award-end-text{
+    font-size:20rpx;
+    font-weight:400;
+    line-height:32rpx;
+    text-align: center;
+    margin: 20rpx 0;
+    color:#999;
+}
+.no-award-show{
+    width:686rpx;
+    height:512rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0 10rpx 18rpx 0 rgba(240,240,240,1);
+    border-radius:24rpx;
+    margin: 40rpx 32rpx 30rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+.task-status-text{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+    margin-top: 46rpx;
+}
+.task-status-img{
+    margin-top: 101rpx;
+}
+.status-empty-img{
+    width:79rpx;
+    height:106rpx;
+}
+.no-award-img{
+    margin-top: 40rpx;
+}
+.award-empty-img{
+    width:99rpx;
+    height:200rpx;
+}
+.no-award-text{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+    margin-top: 30rpx;
+}
+.award-prize-time{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(229,0,58,1);
+}
+.rank-list-content{
+    background-color: #fff;
+    margin: 20rpx 32rpx;
+    padding: 28rpx 37rpx 28rpx 26rpx;
+    box-shadow:0px 10rpx 18rpx 0px rgba(240,240,240,1);
+    border-radius:24rpx;
+}
+.rank-list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 40rpx; 
+}
+.rank-list-item:first-child{
+    margin-top: 0;
+}
+.rank-item-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+.medal-tag{
+    width: 54rpx;
+    height: 64rpx;
+}
+.rank-tag-wrap{
+    margin-right:39rpx;
+    width: 54rpx;
+    text-align: center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color: #FF9951;
+}
+.rank-index-sty{
+    color: #FF9951;
+    font-size:24rpx;
+    font-weight:500;
+}
+.awards-rank{
+    width: 54rpx;
+    height: 64rpx;
+}
+.rank-user-icon{
+    width:96rpx;
+    height:96rpx;
+    border-radius:50%;
+    margin-right: 23rpx;
+}
+.user-info-sty{
+    line-height: 1.8;
+}
+.rank-item-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row
+}
+.rank-user-name{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    max-width: 270rpx;
+}
+.rank-task-num{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+.count-num{
+    margin-left: 10rpx;
+    font-weight:500;
+    color:rgba(102,102,102,1);
+}
+.rank-zan{
+    /* width: 120rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap; */
+}
+.dian-zan-sty{
+    font-size: 28rpx;
+    color: #666666;
+    margin-right: 10rpx;
+}
+.task-zan-num{
+    font-size:24rpx;
+    font-weight:500;
+    color:rgba(102,102,102,1);
+    display: inline-block;
+}
+.user-self-info{
+    width: 100%;
+    background:rgba(255,228,220,1);
+    border-radius:24rpx 24rpx 0px 0px;
+    padding: 36rpx 32rpx 46rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.user-self-bto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.share-warp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 32rpx;
+}
+.zan-taste{
+    font-size:24rpx;
+    font-weight:300;
+    color:rgba(153,153,153,1);
+    margin-left: 37rpx;
+}
+/* .share-btn{
+    width:140rpx;
+    height:64rpx;
+    background:rgba(230,0,57,1);
+    border-radius:32rpx;
+    text-align: center;
+    line-height: 64rpx;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-size:32rpx;
+    font-weight:400;
+} */
+.user-rank-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 12rpx;
+}
+.user-msg-left{
+    margin-left: 26rpx;
+}
+.user-zan-bot{
+    margin-right:37rpx;
+}
+.prize-popup{
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+.prize-popup-center{
+    width:620rpx;
+    background: #fff;
+    margin: 200rpx auto 0;
+    text-align: center;
+    border-radius: 16rpx;
+    padding: 31rpx 0 32rpx;
+}
+.prize-popup-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.prize-popup-name{
+    font-size:32rpx;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    text-align: center;
+}
+.prize-popup-people{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:2;
+}
+.award-name-sty{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:42rpx;
+    text-align: center;
+    margin-top:25rpx;
+}
+.prize-award-img{
+    width: 320rpx;
+    height: 240rpx;
+    margin: 32rpx auto 28rpx;
+}
+.coupon-wrap{
+    width: 480rpx;
+    margin: 75rpx auto 105rpx;
+    max-height: 350rpx;
+}
+.coupon-list{
+    width: 480rpx;
+    height: 115rpx;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 11;
+    margin-top: 15rpx;
+}
+.coupon-list:first-child{
+    margin-top: 0rpx;
+}
+.prize-coupon-bg{
+    width: 480rpx;
+    height: 115rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 12;
+}
+.coupon-text-dsc{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 13;
+    color: #fff;
+}
+.popup-btn-know{
+    width:480rpx;
+    height:88rpx;
+    background:linear-gradient(180deg,#F0BD44,#EE8042);
+    border-radius:44rpx;
+    text-align: center;
+    line-height: 88rpx;
+    color: #fff;
+    margin: 0 auto;
+}
+.coupon-left-text{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 115rpx;
+}
+.coupon-amount{
+    font-size:32rpx;
+    font-weight:500;
+}
+.coupon-threshold{
+    font-size:20rpx;
+    font-weight:300;
+}
+.coupon-name-dsc{
+    flex: 3;
+    font-size:24rpx;
+    font-weight:400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-align: center;
+}

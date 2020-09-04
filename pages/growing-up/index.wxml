@@ -1,0 +1,72 @@
+<!--index.wxml-->
+<!-- <title/> -->
+<view class="container">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <login wx:if="{{loginShow}}" class="login" bind:getuserinfo="loginHide" bind:cancel="cancelLogin" />
+  <!--全局点击唤醒授权遮罩-->
+  <view class="login-wrap" wx:if="{{loginWrapShow}}" catchtap='loginShow' />
+  <!--banner-->
+  <view class='bbs-box'>
+    <view class='bbs-item' wx:for="{{bbslist}}" wx:key="{{item.id}}" wx:for-index="index" wx:for-item="item">
+      <view class='bbs-item-head'>
+        <image class='bbs-item-head-avea' src='{{item.picture}}'></image>
+        <view class='bbs-item-head-desc'>
+          <view class='bbs-item-head-desc-nickname'>{{item.nickname}}</view>
+          <!-- <view class='bbs-item-head-desc-time'>{{item.create_time}}</view> -->
+        </view>
+      </view>
+      <view data-isfold="{{item.isfold}}" class="bbs-item-text  {{item.isfold?'title7':'bbs-item-text-auto'}}">
+        <text class='bbs-item-text-con '>{{item.details}}</text>
+      </view>
+      <view data-posts_id="{{item.id}}" data-length="{{ item.content.length }}" wx-if="{{ item.contentLength>175}}" data-index="{{index}}" class='bbs-item-more' bindtap='showDetail' data-idx="{{ item.id }}">
+        <text wx-if="{{item.isfold == true}}">展开</text>
+        <i wx-if="{{item.isfold == true}}" class="iconfont icon-zhankai fold-icon" />
+
+
+        <text wx-if="{{item.isfold == false}}">收起</text>
+        <i wx-if="{{item.isfold == false}}" class="iconfont icon-zhankai1 fold-icon" />
+      </view>
+      <!-- <view > -->
+      <imgList class='bbs-item-imglist' list="{{item.pic_urls}}" bindimgClickShow="imgClickShow"/>
+      <!-- </view> -->
+      <!-- <view class='bbs-item-imglist'> -->
+      <!--  -->
+        <!-- <image mode="aspectFill" bindtap="imgYu" class='bbs-item-imglist-item' data-list="{{item.pic_urls}}" data-src="{{itemin}}" wx:key="{{itemin}}" wx:for="{{item.pic_urls}}" wx:for-item="itemin" src="{{itemin}}"></image> -->
+      <!-- </view> -->
+
+      <view class='btn-agree'>
+        <text class='bbs-item-head-desc-time'>{{item.create_time}}</text>
+        <view class="flex-between-row">
+          <view class="icon-wrap" data-index="{{index}}" bindtap="goDetail" data-action_type="{{item.is_zans}}" data-growth_wall_id="{{item.growth_wall_id}}">
+            <i class="iconfont icon-liuyan1 message-icon"></i>
+            <text>{{item.comment_num?item.comment_num:'评论'}}</text>
+          </view>
+          <view class="icon-wrap" bindtap='postsPraise' data-index="{{index}}" data-action_type="{{item.is_zans}}" data-id="{{item.growth_wall_id}}">
+            <i wx:if="{{item.is_zans==1}}" class="iconfont zan-icon zan-icon-true icon-dianzan"></i>
+            <i wx:else class="iconfont zan-icon icon-dianzan"></i>
+            <text class="{{item.is_zans==1?'zan-icon-true':''}}">{{item.zan_num?item.zan_num:'点赞'}}</text>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+    <view class='user_add_class-fixed'>
+        <button show-message-card="true" bindcontact="handleContact" send-message-title="培养好孩子" send-message-path="/pages/bbs/bbs" send-message-img="https://task.zmedc.com/upload/20190830/31c9d3a9777f37c1563372b79c131f31_67667.jpeg" class="user_add_class" open-type="contact" session-from="user_add_class"></button>
+        <image src='https://task.zmedc.com/upload/20190830/373fb95ac44cc261eaf217960e5513bc_4430.png'></image>
+      </view>
+  <view class='release-notes' bindtap='sendInfoMsg'>
+    <image src='https://task.zmedc.com/upload/20190830/a9593db0b7bb2557b36f78ed7d5b28d2_4306.png'></image>
+    <!-- 发布心得 -->
+  </view>
+    <view class='kong' wx:if="{{compelteLoding == true && bbslist.length == 0}}">
+      <image src='../../img/folder_none.png'></image>
+      <text>暂无心得，赶快去发布吧~</text>
+    </view>
+
+  </view>
+  <!--商品列表 开始-->
+
+  <!--商品列表 结束-->
+
+</view>

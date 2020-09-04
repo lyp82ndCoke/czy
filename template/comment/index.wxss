@@ -1,0 +1,136 @@
+
+
+
+/* 公共评论模块 */
+.comment{
+  padding: 0 28rpx;
+  box-sizing: border-box;
+  background-color:#fff;
+}
+.comment-title{
+  font-size: 33rpx;
+  font-weight: bold;
+  color:rgb(57, 134, 233);
+  margin-top: 80rpx;
+}
+.comment-line{
+   background: rgb(153, 153, 153);
+   width: 105rpx;
+   height: 7rpx;
+   margin-top: 8rpx;
+   border-radius: 20rpx;
+   margin-bottom: 40rpx;
+}
+.commetn-all{
+   width: 100%;
+   margin-bottom: 45rpx;
+}
+.comm-text-a{
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+
+.comm-text-b{
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  letter-spacing: 5rpx;
+}
+.comm{
+  width: 100%;
+    align-items:flex-start;
+   margin-bottom: 25rpx;
+}
+.comm-photo{
+  width: 13%;
+  align-items: flex-start;
+}
+.comm-conntent{
+  width: 87%;
+}
+.comm-photo image{
+  width: 50rpx;
+  border-radius: 100%;
+}
+.comm-content{
+  width: 100%;
+}
+.comm-content-top{
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.comm-hand{
+  width: 26rpx;
+  margin-right: 10rpx;
+}
+.comm-hand-text{
+  color : rgb(244, 173, 61);
+  font-size: 30rpx;
+}
+
+.comm-hand-text-cel{
+  color : rgb(187, 187, 187);
+  font-size: 25rpx;
+}
+.comm-content-true{
+  border-bottom: 1px solid #F2F2F2;
+  padding-bottom: 28rpx;
+}
+.comm-bottom{
+  font-size: 30rpx;
+  margin-bottom: 140rpx;
+  margin-top: 45rpx;
+  color: rgb(126, 126, 126);
+  letter-spacing: 5rpx;
+}
+
+
+.saying-success{
+  position: fixed;
+  width: 340rpx;
+  height: 380rpx;
+  background-color: #fff;
+  top: 238rpx;
+  left: calc(50% - 161rpx);
+  z-index: 999;
+  border-radius: 20rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+
+.saying-masking520{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* top: 238rpx;
+  left: calc(50% - 161rpx); */
+  z-index: 999;
+  border-radius: 20rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.saying-masking520-hand{
+    width: 380rpx;
+    margin-bottom: 200rpx;
+    margin-left: 40rpx;
+}
+.saying-masking520-know{
+    width: 230rpx;
+    /* margin-right: 50rpx; */
+}
+.success-img{
+  width: 140rpx;
+}
+.success-text{
+  margin-top: 50rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  letter-spacing: 3rpx;
+  
+}

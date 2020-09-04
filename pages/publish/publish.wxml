@@ -1,0 +1,21 @@
+<!--留言-->
+<!-- 留言公共模块 -->
+<import src="../../template/comment//index.wxml" />
+<!-- <title back/> -->
+<view class="container">
+<!-- <view class="container  {{[isIpx ? 'isIpx' : '']}}"> -->
+<view class="publish-main ">
+   <view class='publish-title'>{{title}}</view>
+   <textarea maxlength='0' bindinput='writeConntent' class='publish-textarea' placeholder='说说你的想法' placeholder-class='publish-textarea-p' value='{{content}}'></textarea>
+</view>
+<view class='flex-center-column submit-wrap' >
+   <!-- <view class='saying-button button-goto' bindtap='publish'>
+  发布
+   </view>  -->
+   <button class="submit" disabled="{{loading}}" bindtap="publish">发布</button>
+</view>
+
+</view>
+<comment id="comment" articleId="{{id}}" 
+  commenType="2" articleType="{{type}}" articleTitle="{{title}}" commTitle="我的留言" bind:commentOver="commentOver"/>
+ 

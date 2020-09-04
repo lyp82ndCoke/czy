@@ -1,0 +1,163 @@
+<view class="container share-area-wrap {{!task_total_info.task_info.task_example && tabFixed?'fixed-padding':''}}">
+    <login
+     wx:if="{{loginShow}}"
+     class="login"
+     bind:getuserinfo="loginHide"
+     bind:cancel="cancelLogin"
+    />
+    <view
+     class="login-wrap"
+     wx:if="{{loginWrapShow}}"
+     catchtap='loginShow'
+    />
+    <view class="share-area-head">
+        <text class="camp-times-name">{{task_total_info.task_info.camp_times_name}}</text>
+        <view class="rank-count-time" wx:if="{{task_total_info.task_info.task_status==1}}">
+            <text>距离比赛开始</text>
+            <count-time class="count-sty task-start-count" endTime="{{task_total_info.task_info.task_start_time}}" />
+        </view>
+        <view class="head-center">
+            <text class="top-line"></text>
+            <text class="join-people-num">当前参赛人数<text class="join-number"> {{task_total_info.task_info.join_people_num}} </text>人</text>
+            <text class="top-line"></text>
+        </view>
+        <text class="taste-text">攻略：分享越多，点赞量越高，排名越靠前</text>
+    </view>
+    <view class="icon-btn-wrap">
+        <view class="icon-item" bindtap="queryRank" wx:if="{{task_info.is_have_rank==1}}">
+            <i class="iconfont icon-paixingbang icon-sty"></i>
+            <text class="item-text">总排行榜</text>
+        </view>
+        <view class="icon-item" bindtap="queryTasks">
+            <i class="iconfont icon-rili icon-sty"></i>
+            <text class="item-text">所有任务</text>
+        </view>
+        <view class="icon-item" bindtap="queryPrize" wx:if="{{task_info.is_have_prize==1}}">
+            <i class="iconfont icon-xingzhuang icon-sty"></i>
+            <text class="item-text">活动奖品</text>
+        </view>
+    </view>
+    <view class="task-count-time" wx:if="{{task_total_info.task_info.task_status==2}}">
+        <text>比赛倒计时 </text>
+        <count-time class="count-sty task-end-count" endTime="{{task_total_info.task_info.end_time}}" />
+    </view>
+    <view class="task-count-time" wx:if="{{task_total_info.task_info.task_status==3}}">
+        <text>比赛已结束</text>
+    </view>
+    <view class="task-area-tab {{tabFixed?'tab-fixed':''}}" id="tabwrap" wx:if="{{!task_total_info.task_info.task_example}}">
+        <view
+         class="task-tab-item {{tabIndex==index?'tab-active-color':''}}"
+         wx:for="{{navList}}"
+         wx:for-index="index"
+         wx:key="index"
+         data-id="{{index}}"
+         data-key="{{item.key}}"
+         bindtap="tabChange"
+        >{{item.value}}
+        </view>
+    </view>
+    <view class="task-area-content">
+        <view
+         wx:for="{{task_total_info.task_info.task_example ? task_total_info.task_info.task_example : rankingList}}"
+         wx:for-item="item"
+         wx:for-index="index"
+         wx:key="index"
+         data-index="{{index}}"
+         bindtap="clickComment"
+         class="task-item"
+        >
+            <view class="task-item-top">
+                <view class="flex-left-row item-user-info">
+                    <image src="{{item.headimgurl}}" mode="aspectFit|aspectFill|widthFix"></image>
+                    <view class="user-nickname-rank {{task_info.is_have_rank==1 && !task_total_info.task_info.task_example ?'':'user-nickname-unrank'}}">
+                        <text class="nick-name-sty">{{item.nickname}}</text>
+                        <text class="rank-num-sty" wx:if="{{task_info.is_have_rank==1 && !task_total_info.task_info.task_example}}">当前排名{{item.rank_num}}名</text>
+                    </view>
+                </view>
+                <view class="zan-share-finish" wx:if="{{!task_total_info.task_info.task_example}}">
+                    <view class="item-botoom item-tag-left">已分享
+                        <text class="text-num-color">{{item.share_count_num}}</text>
+                    </view>
+                    <view class="item-botoom">已获赞
+                        <text class="text-num-color">{{item.total_zan_num}}</text>
+                    </view>
+                    <view class="item-botoom item-tag-right">完成任务
+                        <text class="text-num-color">{{item.finish_task_num}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="task-item-bottom">
+                <view class="task-user-detail {{!task_total_info.task_info.task_example ? 'title7' : ''}}">
+                    <text class="selected-sty" wx:if="{{item.is_essence==1}}">【精选】</text>
+                    <text class="user-detail-sty">{{item.details}}</text>
+                </view>
+                <imgList list="{{item.pic_url}}" bindimgClickShow="imgClickShow" />
+                <view class="task-dsc" wx:if="{{!task_total_info.task_info.task_example}}">
+                    <text class="title2">任务说明：{{item.task_content}}</text>
+                </view>
+                <view class="flex-between-row bottom-num" wx:if="{{!task_total_info.task_info.task_example}}">
+                    <view class="view-count-num">
+                        <i class="iconfont icon-liulan liulan-sty"></i>
+                        <text class="liulan-text">{{item.view_count_num}}</text>
+                    </view>
+                    <view class="icon-num-right">
+                        <i
+                         class="iconfont {{item.is_like==1?'dianzan-active icon-dianzan':'icon-icondianzan'}} dianzan-sty"
+                         data-index="{{index}}"
+                         data-id="{{item.task_submit_id}}"
+                         data-like="{{item.is_like}}"
+                         catchtap="likeFun"
+                        ></i>
+                        <text data-index="{{index}}"
+                         data-id="{{item.task_submit_id}}"
+                         data-like="{{item.is_like}}"
+                         catchtap="likeFun">{{item.valid_zan_nums}}</text>
+                        <i class="iconfont icon-pinglun1 pinlun-sty"></i>
+                        <text>{{item.comment_count_num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{!task_total_info.task_info.task_example && rankingList.length <= 0}}" class="area-empty-wrap">
+        <image
+         class="area-empty-img"
+         src="../../img/area-empty.png"
+         mode="aspectFit|aspectFill|widthFix"
+        >
+        </image>
+        <text class="area-empty-text">哎呦～还没有呢，先去看看其他吧</text>
+    </view>
+    <!-- 悬浮按钮外边框 -->
+      <view class="fixed-b-wrap">
+        <!-- 每日任务 -->
+        <view class="day-task-wrap" catchtap="goTaskCalendar" wx:if="{{task_total_info.roles == 1}}">
+          <image class="task-trophy" src="../../img/day_task.png" mode="aspectFit|aspectFill|widthFix"></image>
+        </view>
+        <!-- 查看赛况 -->
+        <view class="back-my-area" catchtap="goBackArea" >
+          <!--任务分享落地页显示 -->
+          <image class="btn-trophy" src="../../img/match_area.png" mode="aspectFit|aspectFill|widthFix"></image>
+        </view>
+        <!-- 我也要参加 -->
+        <button
+          open-type="contact"
+          show-message-card="true"
+          send-message-title="培养好孩子"
+          send-message-path="/pages/match-area/index?site_id={{task_total_info.adv_info.get_participate_button.site_id}}&category=2&camp_times_id={{camp_times_id}}"
+          send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/adManagement-poster/ZMWH6860A229BBB4BE4E1FA8F5B7C3668CFC.jpg"
+          data-button_path="{{task_total_info.adv_info.get_participate_button.apipath_button}}"
+          data-goods_id="{{task_total_info.adv_info.get_participate_button.goods_id}}"
+          bindcontact="handleContact"
+          class="join-task"
+          >
+            <image class="join-task-img" src="../../img/join_btn.png" mode="aspectFit|aspectFill|widthFix"></image>
+        </button>
+    </view>
+    <!-- 返回顶部 -->
+    <view class="back-top" wx:if="{{showBackTop}}" catchtap="backTop">
+      <i class="iconfont icon-up icon-up-sty"></i>
+      <text class="back-top-text">TOP</text>
+    </view>
+</view>
+

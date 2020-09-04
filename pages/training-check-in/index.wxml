@@ -1,0 +1,129 @@
+<!-- pages/training-check-in/index.wxml -->
+<!-- <title back/> -->
+<view class="container">
+  <!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <view class='wrapper flex-column'>
+    <view class='date-hd'>
+      <view class='item'>
+        <view class='item-hd'>
+          <text>每日签到</text>
+          <view class='flex-between-row'>
+            <text class='title text-2'>{{signInfo.sign_name}}</text>
+          </view>
+        </view>
+        <view class='item-ct flex-between-row'>
+          <view class='lt-ct'>
+            <view class='title'>
+              已<i>{{signInfo.sign_type == 1 ? '连续签到第 ' : '累计签到 '}}</i><text>{{signInfo.sign_type == 1 ? signInfo.continuity_day_num : signInfo.sign_times}} 天</text>>
+            </view>
+            <view wx:if="{{incomeList.length}}" wx:for="{{incomeList}}" wx:key="index" class='sub-title'>
+              <text wx:if="{{item.income_type==1}}">已获得{{item.income_amount/100}}元优惠券</text>
+              <text wx:if="{{item.income_type==2}}">已获得押金返还</text>
+              <button open-type="contact" session-from="a" show-message-card="true" send-message-title="获取优惠劵" bindcontact="handleContact" send-message-path="/pages/training-check-in/index?type=1" send-message-img="../../img/kfmg.jpg" wx:if="{{index==incomeList.length-1}}" class="go-income">
+                去查看>
+              </button>
+              <!-- <i  class="iconfont icon-piaoliusanicon- sub-title-icon" bindtap="couponPrompt"></i> -->
+            </view>
+          </view>
+          <view class='rt-ct sign' wx:if="{{signInfo.sign_status == 2}}" bindtap='{{signInfo.today_sign_type == 0?"goSign":""}}' data-is_today_have_question="{{signInfo.is_today_have_question}}" data-date="{{signInfo.date}}" data-id='{{signInfo.sign_id}}'>
+            {{signInfo.today_sign_type == 0?'立即签到':'已签到'}}
+          </view>
+          <view class='rt-ct sign sign-end' wx:if="{{signInfo.sign_status == 3}}">签到结束</view>
+          <view class='rt-ct sign sign-end' wx:if="{{signInfo.sign_status == 1}}">签到未开始</view>
+          <!-- 吐丝 -->
+          <!-- <view class='already-sign' hidden='{{!signState}}'>{{signInfo.signInTips}}</view> -->
+        </view>
+      </view>
+    </view>
+    <view class="date-ct">
+      <view class="date-select flex-row">
+        <!-- 年 -->
+        <view class='year flex-between-row'>
+          <image bindtap='cutYear' src='../../img/zuojiantou.png'></image>
+          <input disabled='true' value='{{year}}年'></input>
+          <image bindtap='plusYear' src='../../img/youjiantou.png'></image>
+        </view>
+        <!-- 月 -->
+        <view class='month flex-row'>
+          <image bindtap='cutMonth' src='../../img/zuojiantou.png'></image>
+          <input disabled='true' value='{{month}}月'></input>
+          <image bindtap='plusMonth' src='../../img/youjiantou.png'></image>
+        </view>
+      </view>
+      <view class='date-item flex-row'>
+        <text>一</text>
+        <text>二</text>
+        <text>三</text>
+        <text>四</text>
+        <text>五</text>
+        <text>六</text>
+        <text>日</text>
+      </view>
+      <!-- 周 -->
+      <view class="box-flex box-padding" style='position:relative'>
+        <view class='already-sign' style='position:absolute;top:50%;z-index:9' hidden='{{!signState1}}'>
+          {{voVlue}}
+        </view>
+        <view class="flex-item {{vo.day == ''?'':'flex-item-margin'}}" wx:for="{{currentDayList1}}" wx:for-item="vo" wx:key="index" bindtap='kipQue' data-activity-title='{{signInfo.sign_name}}' data-day='{{vo.day}}' data-sign-date='{{vo.date}}' data-id='{{signInfo.camp_times_id}} ' data-sign_type="{{vo.sign_type}}" data-corr-state='{{vo.corrState}}' data-bg-state='{{vo.bgState}}'>
+          <view wx:if="{{vo.day != ''}}" class="item-content {{vo.bgState?'bg-color-active':''}}">
+            {{vo.day}}
+            <view style="width:100%;height:100%;">
+              <!-- <image src='../../img/star.png' class='star-icon'></image>
+              <image src='../../img/dui.png' class='corr-icon'></image> -->
+              <image src='../../img/star.png' class='star-icon' hidden='{{!vo.starState}}'></image>
+              <image src='../../img/dui.png' class='corr-icon' hidden='{{!vo.corrState}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='show-stars' hidden='{{signInfo.activityExplain == ""}}'>{{signInfo.activityExplain}}</view> -->
+      <view wx:if="{{signInfo.sign_type == 1}}">
+        <view class="bottom-text" wx:if="{{bottomText&&signInfo.star_num}}">
+          已获得{{signInfo.star_num}}颗星星，已获得押金返现
+        </view>
+        <view class="bottom-text" wx:if="{{!bottomText&&signInfo.star_num}}">
+          已获得{{signInfo.star_num}}颗星星，再接再厉哦~
+        </view>
+      </view>
+    </view>
+    <!-- 海报，分享 -->
+    <!-- <view class="date-ft flex-center-row" hidden='false'>
+      <view class="ft-lt" bindtap='createBill' hidden='{{saveImgBtnHidden}}'>生成海报</view>
+      <button class="ft-lt ft-lt-btn" bindopensetting="handleSetting" hover-class='none' open-type="openSetting" hidden='{{openSettingBtnHidden}}'>生成海报</button>
+      <view class="ft-rt">
+        <button open-type='share' hover-class='none'>转发小程序</button>
+      </view>
+    </view> -->
+  </view>
+  <!-- <view class='pup flex-column' hidden="{{!billState}}">
+    <view class='hd'>
+      <image src="{{signInfo.shareInfo.sharePicturePerView}}"></image>
+      <text>{{title}}喊你一起参与</text>
+    </view>
+    <view class='ft flex-column'>
+      <text>— 图片已保存至相册 —</text>
+      <image src='../../img/closed1.png' bindtap='showBill'></image>
+    </view>
+
+  </view>
+
+  <text class='subSignin' hidden='{{!subSignin || signEndState}}'>{{options.subSigninTips}}</text> -->
+  <!-- 优惠券说明弹框 -->
+  <view class='sign-explain-pup flex-center-row' hidden='{{!explainState}}'>
+    <view class='pup-wrapper '>
+      <view class='pup-hd flex-between-row'>
+        <text>如何找到我的优惠券</text>
+        <i class="iconfont close-icon icon-guanbi" bindtap='closeExplain'></i>
+        <!-- <image src='../../img/shut_down.png' bindtap='closeExplain'></image> -->
+      </view>
+      <scroll-view scroll-y>
+        <view class='pup-ct'>
+          <view class='pup-item'>
+            <!-- <text class='grey-dot'></text> -->
+            <text>{{description}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

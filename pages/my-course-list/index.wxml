@@ -1,0 +1,68 @@
+<!--pages/my-course-list/index.wxml-->
+<!-- <title back /> -->
+<view class="cate_box container">
+<!-- <view class="cate_box container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <view class='header flex' style='background:url(https://task.zmedc.com/upload/20181031/df1761a4b7a865a86d3cfa450c66109c_34307.jpg) center/cover no-repeat'>
+    <image src='{{musicHead.cover_img}}' class='pic02'></image>
+    <view class='header_infos'>
+      <view class='header_infos_title'>{{musicHead.spec_column_title}}</view>
+      <view class='header_infos_total'>总计{{musicHead.spec_column_count}}节</view>
+    </view>
+  </view>
+
+  <scroll-view class='cate_content' bindscroll="scroll" scroll-y scroll-top="{{scrollTop}}">
+    <view class='flex cate_list' wx:for="{{list}}" wx:key="{{item.course_id}}" wx:for-item="item"  bindtap='goDetail' data-course_id="{{item.course_id}}" data-spec_column_id="{{item.spec_column_id}}">
+      <view class="cate_content_infos" >
+        <!--未播放并且没有点击播放过-->
+        <view class='cate_content_title noliseten title2 {{[item.play?"play":""]}}'>{{item.audio_title}}</view>
+        <view class='cate_content_time {{[item.play?"play":""]}}'>
+          <i wx:if="{{item.type==1}}" class='iconfont time-icon icon-zhinengerji'></i>
+          <i wx:if="{{item.type==2}}" class='iconfont time-icon icon-shipin11'></i>
+          {{item.audio_length}}
+        </view>
+        
+      </view>
+
+      
+       <view class="btn_player flex" wx:if="{{item.onPlay}}" data-id="{{item.course_id}}">
+        <i class="iconfont bofang-num-icon icon-zantingtingzhi"></i>
+        <text >播放中</text>
+      </view>
+       <view wx:else class="btn_player flex" data-id="{{item.course_id}}">
+        <i class="iconfont bofang-num-icon icon-bofang1"></i>
+        <text >播放</text>
+      </view>
+      <!-- <view class="btn_player flex" wx:if="{{item.audioType == 1}}" catchtap="{{item.isPlayStatus == true?'musicPlay':'btnPlay'}}" data-id="{{item.id}}" data-cid="{{item.courseID}}" data-courseTitle="{{item.courseTitle}}" data-playAudioUrl="{{item.playAudioUrl}}"
+        data-audioSecond="{{item.audioSecond}}">
+        <image src='../../img/duobian01.png' class='btn_pause' wx:if="{{item.isPlayStatus == false}}"></image>
+        <image src='../../img/juxing504.png' class='btn_pause' wx:if="{{item.isPlayStatus == true && musicPlay == false}}"></image>
+        <image src='../../img/duobian01.png' class='btn_pause' wx:if="{{item.isPlayStatus == true && musicPlay == true}}"></image>
+        <text wx:if="{{item.isPlayStatus == true && musicPlay == false}}">播放中</text>
+        <text wx:if="{{item.isPlayStatus == false}}">播放</text>
+        <text wx:if="{{item.isPlayStatus == true && musicPlay == true}}">播放</text>
+      </view> -->
+
+      <!-- 視頻 -->
+
+      <view class="btn_player flex" wx:if="{{item.audioType == 2}}" data-id="{{item.id}}" data-cid="{{item.courseID}}" data-audioType="{{item.audioType}}" data-playAudioUrl='{{item.playAudioUrl}}' data-playVideoUrl='{{item.playVideoUrl}}'>
+        <image src='../../img/duobian01.png' class='btn_pause'></image>
+        <text>播放</text>
+      </view>
+    </view>
+    <view wx:if='{{list.length < musicHead.spec_column_count}}' class='foot_box'>
+      <view class='foot_line'></view>
+      <view class='foot_info'>课程陆续更新中</view>
+      <view class='foot_line'></view>
+    </view>
+    <view class='main1' style='background:#fff' wx:if="{{list.length<1}}">
+      <image src='../../img/box_03.jpg' class='bg' mode='widthFix' />
+      <view class='order-sub-title'>暂无内容~</view>
+    </view>
+
+  </scroll-view>
+
+
+
+</view>
+
+<!-- <template is="music_felx" hidden='playEnd' data="{{musicFlex,musicPlay,courseTitle,nowtime,audiotime,courseDay,courseDayShow,currentId,user_course_id,listening_mode,music_id,haveTabber,courseFreeSecond,animationAll,animation,havePayBtn,headerImg}}" /> -->

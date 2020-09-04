@@ -1,0 +1,152 @@
+/* pages/my-course-list/index.wxss */
+/* 365course/pages/categeory_list/index.wxss */
+
+/* header */
+page {
+  background: #fff;
+  height: 100%;
+  
+}
+.cate_box{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header {
+  width: 100%;
+  height: 276rpx;
+    justify-content: flex-start;
+}
+.header .pic02 {
+  width: 172rpx;
+  height: 172rpx;
+  margin-left: 50rpx;
+}
+.header_infos {
+  color: #fff;
+  font-size: 24rpx;
+  margin-left: 34rpx;
+}
+.header_infos_title {
+  font-size: 36rpx;
+}
+
+.music_flexd {
+  bottom: 30rpx !important;
+}
+
+.btn_player {
+  width:120rpx;
+height:42rpx;
+color:#fff;
+font-size:24rpx;
+border-radius:10rpx;
+background-color:#fb5942;
+justify-content:center;
+}
+.btn_pause {
+  width: 16rpx;
+  height: 18rpx;
+  margin:0 10rpx;
+}
+.cate_list {
+  padding: 15rpx 25rpx;
+   height: auto;
+  border-bottom: 1px solid rgb(250, 250, 250);
+  background-color: #fff;
+}
+
+.cate_content{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height:100%;
+box-sizing:border-box;
+padding: 276rpx 0 10rpx;
+
+
+}
+.cate_content_infos {
+  font-size: 28rpx;
+  color: gray;
+  width:550rpx;
+
+}
+.noliseten{
+  color: #000;
+}
+.lisetening{
+  color: #fb5942;
+}
+.lisetened {
+  color: #000;
+  margin-bottom: 5rpx;
+}
+.cate_content_time image {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+}
+.cate_content_title {
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; */
+  font-size: 32rpx;
+  height: 90rpx;
+}
+.cate_content_title_old{
+   color: #A1A1A1!important
+}
+
+.cate_content_time_old{
+     color: #A1A1A1!important
+}
+
+.cate_content_time_old image {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+}
+.foot_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:35rpx;
+
+}
+
+.foot_info {
+  font-size: 30rpx;
+  font-weight: normal;
+  color: #BEBEBE;
+  margin-left:20rpx;
+  margin-right:20rpx;
+
+}
+.foot_line {
+  width: 55rpx;
+  height: 3rpx; 
+  background: #BEBEBE;
+}
+.time-icon{
+  margin-right: 3rpx;
+  font-size: 32rpx;
+}
+.bofang-num-icon {
+  margin-right: 10rpx;
+  font-size: 23rpx;
+
+}
+.play{
+  color: #FA3147;
+}

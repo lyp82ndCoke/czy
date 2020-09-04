@@ -1,0 +1,111 @@
+<view class="container {{tabFixed?'fixed-padding':''}}">
+	<view class="task-day-top">
+		<view class="task-day-content">
+			<view>
+				<text class="task_category">{{task_info.task_category_name}}</text>
+			</view>
+			<view class="task_details">
+				<text>{{task_info.task_content}}</text>
+			</view>
+		</view>
+	</view>
+	<!-- <view class="task-info-total">
+		<text>今日{{task_info.today_release_num}}人发布，公开任务到赛区{{task_info.today_open_num}}条</text>
+	</view> -->
+	<view class="task-area-tab {{tabFixed?'tab-fixed':''}}" id="tabwrap">
+		<view
+		 class="task-tab-item {{tabIndex==index?'tab-active-color':''}}"
+		 wx:for="{{navList}}"
+		 wx:for-index="index"
+		 wx:key="index"
+		 data-id="{{index}}"
+		 data-key="{{item.key}}"
+		 catchtap="tabChange"
+		>{{item.value}}
+		</view>
+	</view>
+	<view class="task-area-content" wx:if="{{rankingList.length > 0}}">
+		<view
+		 wx:for="{{rankingList}}"
+		 wx:for-item="item"
+		 wx:for-index="index"
+		 wx:key="index"
+		 class="task-item"
+		 bindtap="clickComment"
+		 data-index="{{index}}"
+		>
+			<view class="task-item-top">
+				<view class="flex-left-row item-user-info">
+					<image src="{{item.headimgurl}}" mode="aspectFit|aspectFill|widthFix"></image>
+					<view class="user-nickname-rank {{task_info.is_have_rank==1?'':'user-nickname-unrank'}}">
+						<text class="nick-name-sty">{{item.nickname}}</text>
+						<text class="rank-num-sty" wx:if="{{task_info.is_have_rank==1}}">当前排名{{item.rank_num}}名</text>
+					</view>
+				</view>
+				<view class="zan-share-finish">
+					<view class="item-botoom item-tag-left">已分享
+						<text class="text-num-color">{{item.share_count_num}}</text>
+					</view>
+					<view class="item-botoom">已获赞
+						<text class="text-num-color">{{item.valid_zan_nums}}</text>
+					</view>
+					<view class="item-botoom item-tag-right">完成任务
+						<text class="text-num-color">{{item.finish_task_num}}</text>
+					</view>
+				</view>
+			</view>
+			<view class="task-item-bottom">
+				<view
+				 class="task-user-detail title7"
+				>
+					<text class="selected-sty" wx:if="{{item.is_essence==1}}">【精选】</text>
+					<text class="user-detail-sty">{{item.details}}</text>
+				</view>
+				<imgList list="{{item.pic_url}}" bindimgView="imgClickShow" />
+				<view class="task-dsc">
+					<text class="title2">任务说明：{{item.task_content}}</text>
+				</view>
+				<view class="flex-between-row bottom-num">
+					<view class="view-count-num">
+						<i class="iconfont icon-liulan liulan-sty"></i>
+						<text class="item-view-num">{{item.view_count_num}}</text>
+					</view>
+					<view class="icon-num-right">
+						<i
+						 class="iconfont {{item.is_like==1?'dianzan-active icon-dianzan':'icon-icondianzan'}} dianzan-sty"
+						 data-index="{{index}}"
+						 data-id="{{item.task_submit_id}}"
+						 data-like="{{item.is_like}}"
+						 catchtap="likeFun"
+						></i>
+						<text class="total-zan-num">{{item.total_zan_num==0?'点赞':item.total_zan_num}}</text>
+						<i
+						 class="iconfont icon-pinglun1 pinlun-sty"
+						 bindtap="clickComment"
+						 data-index="{{index}}"
+						></i>
+						<text class="comment-num">{{item.comment_count_num==0?'评论':item.comment_count_num}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view wx:else class="area-empty-wrap">
+		<image
+		 class="area-empty-img"
+		 src="../../img/area-empty.png"
+		 mode="aspectFit|aspectFill|widthFix"
+		>
+		</image>
+		<text class="area-empty-text">哎呦～还没有呢，先去看看其他吧</text>
+	</view>
+	<view
+	 class="back-top"
+	 wx:if="{{showBackTop}}"
+	 catchtap="backTop"
+	>
+		<i class="iconfont icon-up icon-up-sty"></i>
+		<text class="back-top-text">TOP</text>
+	</view>
+</view>
+

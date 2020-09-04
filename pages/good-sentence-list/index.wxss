@@ -1,0 +1,67 @@
+/* pages/good-sentence-list/index.wxss */
+.main {
+  padding: 50rpx;
+  box-sizing: border-box;
+}
+
+.saying-item {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.saying-item-box {
+  width: 100%;
+  min-height: 150rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 30rpx;
+    position: relative;
+
+}
+
+.saying-item-box text {
+  font-size: 30rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+  line-height: 50rpx;
+}
+
+.saying-item-box-view{
+  font-size: 30rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+  line-height: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.saying-item-box-zz {
+  color:rgb(174, 174, 174);
+  font-size: 25rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 30rpx;
+}
+.saying-item-bottom{
+  width: 100%;
+  height: 60rpx;
+  padding:0 30rpx;
+  box-sizing: border-box;
+
+}
+.saying-item-bottom text{
+  color:rgb(201, 201, 201);
+  font-size: 25rpx;
+}  
+.saying-item-bottom image{
+  width: 30rpx;
+  margin-right: 7rpx;
+}

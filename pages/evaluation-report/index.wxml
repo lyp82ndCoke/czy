@@ -1,0 +1,58 @@
+<view class="container report-wrap">
+    <view class="report-head">
+        <image class="report-bgimage" src="../../img/report-bg.png" mode="aspectFit|aspectFill|widthFix"></image>
+        <text class="report-text">我的测评报告</text>
+    </view>
+    <view class="report-content" wx:if="{{report_list.length > 0}}">
+        <view class="flex-left-row user-message">
+			<view class="user-icon">
+				<image src="{{assess_data.headimgurl}}" mode="aspectFit|aspectFill|widthFix"></image>
+			</view>
+			<view class="evaluation-message">
+				<view class="user-info">
+                    <text class="user-nickname">{{assess_data.nickname}}</text>
+                    <text class="user-age" wx:if="{{assess_data.child_age}}">孩子年龄：{{assess_data.child_age}}岁</text>
+                </view>
+				<view class="evaluation-time">测评时间：{{assess_data.assess_time}}</view>
+			</view>
+        </view>
+        <view class="proess-wrap">
+            <view class="task-progress-wrap" wx:for="{{report_list}}" wx:for-index="index" wx:key="index" wx:for-item="item">
+				<view class="task-progress-title">
+                    <text class="progress-title-left">{{item.tag_name}}</text>
+                    <text class="progress-title-right">{{item.score_text}}</text>
+				</view>
+				<view class="task-review">
+					<view class="task-progress {{'evalua-'+item.score_progress}}">
+                        <view class="task-progress-done {{'task-'+item.score_progress}}" style='width:{{(item.score/item.tag_total_score)*100}}%'>
+                            <text class="status-text">{{item.score}}分</text>
+                        </view>
+					</view>
+				</view>
+			</view>
+        </view>
+    </view>
+    <view class="bottom-text">已有{{assess_data.join_peple_num}}人参加了测评，{{assess_data.exceed_percent}}的家长超过了你，加油哦！</view>
+    <button
+        class="adv-bottom-card"
+        open-type="contact"
+        show-message-card="true"
+        send-message-title="培养好孩子"
+        send-message-path="/pages/evaluation-report/index?assess_id={{assess_id}}&category=3"
+        send-message-img="https://zm-edu.oss-cn-beijing.aliyuncs.com/czy/getcodetitle.jpg"
+        data-button_path="contact_button/assess_id"
+	    data-assess_id="{{assess_id}}"
+        bindcontact="handleContact"
+        wx:if="{{assess_data.qrcode_explain && assess_data.assess_report_qrcode}}"
+        >
+        <view class="adv-card-left">
+            <view class="adv-wrap">
+                <text class="adv-text">{{assess_data.qrcode_explain}}</text>
+            </view>
+                <text class="ask-text">点击获取咨询专家</text>
+        </view>
+        <view class="poster-wrap">
+            <image class="poster-img" src="{{assess_data.assess_report_qrcode}}" mode="aspectFit|aspectFill|widthFix"></image>
+        </view>
+    </button>
+</view>

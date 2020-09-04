@@ -1,0 +1,78 @@
+<!--金句详情-->
+
+<!-- <title back="true" /> -->
+<view class="container" hidden='{{loading}}'>
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}" hidden='{{loading}}'> -->
+  <view class='saying-title flex-right-row' bindtap='gotoList'>
+    <text>查看更多金句 </text>
+    <i class='iconfont icon-back more-icon' />
+  </view>
+  <swiper current='{{current}}' bindchange="sentenceChange">
+    <block wx:for="{{list}}" wx:key="{{item.article_id}}">
+      <swiper-item wx:if="{{item}}">
+
+        <view class='saying-main flex-left-column'>
+          <view class='saying-banner' style="background: url({{item.face_picture}}) no-repeat;background-size: 100% 100%;">
+            <!-- <view class='saying-banner-data flex-left-column'>
+                <text class='saying-banner-data-n'>{{item.dateD}}</text>
+                <view  class='saying-banner-data-k'>{{item.dateF}}.{{item.dateY}}</view>
+           </view> -->
+          </view>
+
+          <view class='saying-content-line' />
+          <scroll-view class='saying-content' scroll-y style='height:250rpx'>
+            <text>{{item.intro}}</text>
+          </scroll-view>
+          <view class='flex-right-row saying-bottom'>
+            <view class='flex-right-column'>
+              <view class='saying-title-a' wx:if="{{item.creators_name}}">/{{item.creators_name}}/</view>
+              <view class='saying-title-a' wx:else> </view>
+
+              <view class='saying-title-b'>每日金句</view>
+            </view>
+          </view>
+        </view>
+        <view class='saying-title-t'>{{item.saying_date}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='flex-center-column' style='padding:0 28rpx;box-sizing: border-box'>
+
+    <!-- <button class='saying-button button-goto' open-type='share' wx:if="{{shareType == 1}}">
+      分享给朋友
+    </button> -->
+
+    <button wx:if="{{openSetting}}" class='saying-button button-goto' bindtap="openSetting">设置保存图片</button>
+    <button wx:else class='saying-button button-goto' bindtap='save'>
+      保存到相册
+    </button>
+    <view class='flex-between-row saying-other'>
+      <view class='flex-left-row'>
+        <image src='../../img/kazilandayanjing.png' mode='widthFix' />
+        <text class='saying-other-text-cel'>{{list[current].view_num}}</text>
+      </view>
+      <view class='flex-left-row' data-current="{{current}}" data-like="{{list[current].is_zan}}" bindtap='like'>
+        <image src="../../img/{{list[current].is_zan == 2?'hand2.png':'hand3.png'}}" mode='widthFix' />
+        <text class="{{list[current].is_zan == 2?'saying-other-text-cel':'saying-other-text'}}">{{list[current].zan_num}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='mask' wx:if="{{mask}}" bindtap='iKnow'>
+    <view>
+      <image src='../../img/hand.png' mode='widthFix' class='mask-hand' />
+    </view>
+    <view>
+      <image src='../../img/know.png' mode='widthFix' class='mask-know' bindtap='iKnow' />
+    </view>
+
+  </view>
+
+  <view>
+  <comment id="comment" wx-if="{{list[current].article_id}}" showBtn articleId="{{list[current].article_id}}" 
+  commenType="1" articleType="3" articleTitle="{{list[current].intro}}" commTitle="精选留言" bind:commentOver="commentOver"/>
+<!-- <template is="comment" data="{{commentlist,comm_title,have_title,have_hand,id,index,hasMoreData,articleTitle,pageType}}" /> -->
+</view>
+
+<goIndex/>
+</view>

@@ -1,0 +1,151 @@
+<!-- 新的底部导航 -->
+<!-- <title back/> -->
+
+<!-- <scroll-view class="course container" style="height:calc(100% - {{navHeight}}px);" bindscroll="scroll" scroll-y scroll-top="{{scrollTop}}"> -->
+<scroll-view class="course container" bindscroll="scroll" scroll-y scroll-top="{{scrollTop}}">
+<!-- <scroll-view class="course container {{[isIpx ? 'isIpx' : '']}}" bindscroll="scroll" scroll-y scroll-top="{{scrollTop}}"> -->
+
+  <!-- <view class='course-menu'>
+    <view>
+      <text class="{{select == 1?'active':''}}" bindtap='selectMenu' data-type='1'>训练营课程</text>
+    </view>
+    <view>
+      <text class="{{select == 2?'active':''}}" bindtap='selectMenu' data-type='2'>精品课程</text>
+    </view>
+  </view> -->
+
+  <view class='course-tab'>
+    <view wx:for="{{list}}" wx:key="{{index}}">
+      <view class='course-data'>{{item.start_time}}</view>
+      <view class='course-main'>
+        <view class='course-main-l' hidden="{{options.is_enable==1}}">
+          <view class='course-day'>Day</view>
+          <view class='course-day-num'>{{item.deblock_day}}</view>
+          <!-- <view class='line' style='height:{{item.line}}'></view> -->
+        </view>
+        <view class='course-main-rv' style="width:{{options.is_enable?'100%':''}};">
+          <view class='course-main-r {{subitem.id}}' wx:for="{{item.courseData}}" wx:for-index="subindex" wx:key="{{subitem.course_id}}" wx:for-item="subitem" bindtap="{{item.courseDateType == 2?'study':''}}">
+            <view class='course-main-r-b'>
+              <view class='course-main-r-b-c'>
+                <view class='font3 title {{[subitem.play?"play-text":""]}}'>{{subitem.audio_title}}</view>
+              </view>
+              <!-- 视频播放 -->
+              <!-- <view class='course-main-r-r' wx:if="{{subitem.audioType == 2}}" >
+                <view class='fx' wx:if="{{item.courseDateType == 2}}">
+                  <image src='../../img/duobian01.png' class='btn_pause' mode='aspectFit'></image>
+                  <text>播放</text>
+                </view>
+                <image mode='widthFix' wx:if="{{item.courseDateType == 1}}" src='../../img/lock.png' />
+              </view> -->
+              <view class='course-main-r-r'>
+                <view class='fx' wx:if="{{subitem.is_deblock==1&&subitem.onPlay}}" catchtap="goCourseDetail" data-course_id='{{subitem.course_id}}' data-spec_column_id='{{options.spec_column_id}}' data-camp_times_id='{{options.camp_times_id}}'>
+                  <i class='iconfont play-icon icon-zantingtingzhi'></i>
+                  <text>播放中</text>
+                </view>
+                <view class='fx' wx:if="{{subitem.is_deblock==1&&!subitem.onPlay}}" catchtap="goCourseDetail" data-course_id='{{subitem.course_id}}' data-spec_column_id='{{options.spec_column_id}}' data-camp_times_id='{{options.camp_times_id}}'>
+                  <i class='iconfont play-icon icon-bofang'></i>
+                  <text>播放</text>
+                </view>
+                 <!-- <view class="btn_player flex" wx:if="{{item.onPlay}}" data-id="{{item.course_id}}">
+        <i class="iconfont bofang-num-icon icon-zantingtingzhi"></i>
+        <text >播放中</text>
+      </view>
+       <view wx:else class="btn_player flex" data-id="{{item.course_id}}">
+        <i class="iconfont bofang-num-icon icon-bofang1"></i>
+        <text >播放</text>
+      </view> -->
+                <view wx:if="{{subitem.is_deblock!=1}}"class='fx fx-sou'>
+                  <i class='iconfont play-icon icon-suo '></i>
+                </view>
+
+              </view>
+
+            </view>
+            <view class="time {{[subitem.play?'play-text':'']}}">
+              <i wx:if="{{subitem.type==1}}" class='iconfont time-icon icon-zhinengerji'></i>
+              <i wx:if="{{subitem.type==2}}" class='iconfont time-icon icon-shipin11'></i>{{subitem.audio_length}}</view>
+          </view>
+
+        </view>
+
+      </view>
+
+
+
+    </view>
+
+
+
+
+  </view>
+
+
+  <!-- 其他列表 -->
+  <!-- <view wx:else class='course-tab'>
+    <view wx:for="{{list}}">
+      <view class='course-data'>{{item.courseDate}}</view>
+      <view class='course-main1'>
+
+        <view class='course-main-rv1' wx:for="{{item.list}}" wx:for-index="subindex" wx:for-item="subitem">
+          <view class='course-main-r {{subitem.id}}' bindtap="study" data-course_id='{{subitem.id}}' data-playVideoUrl="{{subitem.playVideoUrl}}" data-playAudioUrl="{{subitem.playAudioUrl}}" data-audioType="{{subitem.audioType}}" data-courseDate='{{subitem.courseDate}}' data-courseTitle="{{subitem.courseTitle}}" data-audioSecond="{{subitem.audioSecond}}"
+            data-id='{{subitem.id}}' data-courseDay='{{0}}'>
+            <view class='course-main-r-b'>
+              <view class='course-main-r-b-c'>
+                <view class="{{subitem.courseDateType == 2?'font1':'font3'}} title" style='color:#FB5942' wx:if='{{subitem.isPlayStatus == true && musicPlay == false}}'>{{subitem.courseTitle}}</view>
+                <view class="{{subitem.courseDateType == 2?'font1':'font3'}} title" wx:if='{{subitem.isPlayStatus == true && musicPlay == true}}' style='color:#FB5942'>{{subitem.courseTitle}}</view>
+                <view class="{{subitem.courseDateType == 2?'font1':'font3'}} title" wx:if='{{subitem.isPlayStatus == false}}'>{{subitem.courseTitle}}</view>
+                <view class='font2 course-ej'>
+                  <image mode='widthFix' wx:if="{{subitem.audioType == 1}}" src='../../img/ej.png' />
+                  <image mode='widthFix' wx:if="{{subitem.audioType == 2}}" src='../../img/shipin.png' />
+                  <view>{{subitem.audioSecondLabel}}</view>
+                  <view wx:if="{{subitem.audioType == 1}}">已听{{subitem.userPlaySecondPercent}}%</view>
+
+                </view>
+              </view>
+              <view class='course-main-r-r' data-idx="{{subindex}}"  wx:if="{{subitem.audioType == 1}}" catchtap="{{subitem.isPlayStatus == true?'musicPlay':'btnPlay'}}" data-courseDate='{{subitem.courseDate}}' data-id='{{subitem.id}}' data-courseTitle="{{subitem.courseTitle}}" data-playVideoUrl="{{subitem.playVideoUrl}}"
+                data-playAudioUrl="{{subitem.playAudioUrl}}" data-audioSecond="{{subitem.audioSecond}}">
+                <view class='fx' wx:if="{{subitem.courseDateType == 2 && subitem.isPlayStatus == false}}">
+                  <image src='../../img/duobian01.png' class='btn_pause' mode='aspectFit'></image>
+                  <text>播放</text>
+                </view>
+                <view class='fx' wx:if="{{subitem.courseDateType == 2 && subitem.isPlayStatus == true && musicPlay == false}}">
+                  <image src='../../img/juxing504.jpg' class='btn_pause' mode='aspectFit'></image>
+                  <text>播放中</text>
+                </view>
+                <view class='fx' wx:if="{{subitem.courseDateType == 2 &&subitem.isPlayStatus == true && musicPlay == true}}">
+                  <image src='../../img/duobian01.png' class='btn_pause' mode='aspectFit'></image>
+                  <text>播放</text>
+                </view>
+              </view>
+              <view class='course-main-r-r' wx:if="{{subitem.audioType == 2}}" >
+                <view class='fx'>
+                  <image src='../../img/duobian01.png' class='btn_pause' mode='aspectFit'></image>
+                  <text>播放</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+
+    </view>
+
+  </view> -->
+
+  <view class="modalDlg" wx:if="{{isPay == 0 && select == 1}}">
+    <image src='../../img/lock1.png' mode='widthFix' class='lock'></image>
+    <view class='login' bindtap='showBuy'>去购买无痕养育训练营</view>
+
+  </view>
+</scroll-view>
+<!-- 空页面 -->
+<view class='{{list.length == 0?"main-1":""}} main1' wx:if="{{list.length == 0 }}" style='background:#fff'>
+  <image src='../../img/box_03.jpg' class='bg' mode='widthFix' />
+  <view class='order-sub-title'>暂无内容~</view>
+</view>
+<!-- <template is="365new-tabber" data="{{btflag,bbsShow}}" />
+<template is="buy" data="{{is_hidden_buy,price,nick_name1,mobile1}}" />
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{isPay ==0 && select == 1}}"></view>
+<template is="music_felx" hidden='playEnd' data="{{musicFlex,musicPlay,courseTitle,nowtime,audiotime,courseDay,courseDayShow,currentId,user_course_id,listening_mode,music_id,haveTabber,courseFreeSecond,animationAll,animation,havePayBtn,headerImg}}" /> -->

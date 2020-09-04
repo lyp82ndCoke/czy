@@ -1,0 +1,2 @@
+<!--components/goIndex/index.wxml-->
+<view class="go-index" wx:if="{{showIndex}}" bindtap="goIndex"><i class="iconfont icon-zhuye icon-home"/><text class="go-index-text">返回首页</text></view>

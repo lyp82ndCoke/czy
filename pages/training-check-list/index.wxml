@@ -1,0 +1,65 @@
+<!--pages/training-check-list/index.wxml-->
+<!-- <title back/> -->
+<view class="wrapper container" wx:if='{{signList.length != 0}}'>
+<!-- <view class="wrapper container {{[isIpx ? 'isIpx' : '']}}" wx:if='{{signList.length != 0}}'> -->
+  <view class='list'>
+    <view class='item' wx:for="{{signList}}" wx:key="{{item.camp_times_id}}" wx:for-index="index" wx:for-item="item">
+      <view class='item-hd'>
+        <text>每日签到</text>
+        <view class='flex-between-row'>
+          <text class='title text-2'>{{item.camp_name}}</text>
+          <text class='sign-explain' data-description="{{item.sign_explain}}" bindtap='openExplain' data-index="{{index}}">签到说明</text>
+        </view>
+      </view>
+      <view class='item-ct flex-between-row'>
+        <view class='lt-ct'>
+          <view class='title' bindtap='goSignDate' data-id='{{item.camp_times_id}}'>
+            已<text>{{item.sign_type == 1 ? '连续签到第 ' : '累计签到 '}}</text><text>{{item.sign_type == 1 ? item.continuity_day_num : item.sign_times}} 天</text> >
+          </view>
+          
+          <view wx:for="{{item.income_list}}" wx:key="{{incomeIndex}}" wx:for-item="incomeItem" wx:for-index="incomeIndex"  class='sub-title'>
+          <text wx:if="{{incomeItem.income_type==1}}">已获得{{incomeItem.income_amount/100}}元优惠券</text>
+          <text wx:if="{{incomeItem.income_type==2}}">已获得押金返还</text>
+          </view>
+          <!-- <view bindtap='goWallet' hidden="{{item.couponLabel == ''}}" class='sub-title'>已获得{{item.couponLabel}}奖励金，<text class="income-title">我的钱包</text>查看></view> -->
+        </view>
+        <text class='rt-ct sign' wx:if="{{item.sign_status== 2&&item.is_can_sign==1}}" bindtap='goSign' data-id='{{item.camp_times_id}}'>立即签到</text>
+        <text class='rt-ct sign' bindtap='openToast' wx:if="{{item.sign_status== 2&&item.is_can_sign==2}}"  data-id='{{item.camp_times_id}}'>无需签到</text>
+        <text class='rt-ct sign' wx:if="{{item.sign_status== 2&&item.is_can_sign==3}}" bindtap='goSign' data-id='{{item.camp_times_id}}'>已签到</text>
+        <text wx:if="{{item.sign_status== 1}}" data-day="{{item.sign_start_time}}" bindtap="noBegin" class='rt-ct sign sign sign-end'>活动未开始</text>
+        <text wx:if="{{item.sign_status== 3}}" class='rt-ct sign sign-end'>签到结束</text>
+        <!-- 吐丝 -->
+        <view class='already-sign' hidden='{{!item.signState}}'>{{item.signInTips}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 空页面 -->
+  <view class='main1' hidden='true' style='background:#fff'>
+    <image src='../../img/box_03.jpg' class='bg' mode='widthFix' />
+    <view class='order-sub-title'>暂无内容~</view>
+  </view>
+</view>
+<!-- 签到说明弹窗 -->
+<view class='sign-explain-pup flex-center-row' hidden='{{!explainState}}'>
+  <view class='pup-wrapper '>
+    <view class='pup-hd flex-between-row'>
+      <text>每日签到说明</text>
+      <i class="iconfont close-icon icon-guanbi" bindtap='closeExplain'></i>
+      <!-- <image src='../../img/shut_down.png' bindtap='closeExplain'></image> -->
+    </view>
+    <scroll-view scroll-y>
+      <view class='pup-ct'>
+        <view class='pup-item'>
+          <!-- <text class='grey-dot'></text> -->
+          <text>{{description}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 空页面 -->
+<view class="main1 container" wx:if="{{signList.length == 0}}" style='background:#fff'>
+<!-- <view class="main1 container {{[isIpx ? 'isIpx' : '']}}" wx:if="{{signList.length == 0}}" style='background:#fff'> -->
+  <image src='../../img/box_03.jpg' class='bg' mode='widthFix' />
+  <view class='order-sub-title'>暂无签到~</view>
+</view>

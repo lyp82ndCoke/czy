@@ -1,0 +1,39 @@
+<!-- 发布心得 -->
+<!-- <title text="发布心得" back/> -->
+<view class="container">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+<view class='bbs-box'>
+    <view class='bbs-item'>
+        <view class='bbs-item-head'>
+            <view class='bbs-item-head-desc'>
+                <image class='bbs-item-head-avea' src='{{userinfo.avatar||userinfo.picture}}'></image>
+
+                <view class='bbs-item-head-desc-nickname'>{{userinfo.nickname}}</view>
+            </view>
+            <view wx-if="{{sendred==0}}" class="send-msg">发布</view>
+            <view bindtap='postMsg' wx-if="{{sendred==1}}" class="red-send-msg">发布</view>
+        </view>
+
+        <view class='bbs-item-box'>
+            <textarea maxlength="1500" bindinput='getAreaValue' class='bbs-textarea' placeholder="有点话想说..." />
+            <view class='font-count'>{{fontvaluelength}}<text style='color:#999;'>/1500</text></view>
+            <view class='tips'>*长按可以删除图片</view>
+            <view class='bbs-item-imglist'>
+            
+                <!-- <image class='bbs-item-imglist-item' src='../../img/bbs_img1.jpg'></image>
+                <image class='bbs-item-imglist-item' src='../../img/bbs_img2.jpg'></image>
+                <image class='bbs-item-imglist-item' src='../../img/bbs_img3.jpg'></image>
+                <image class='bbs-item-imglist-item' src='../../img/bbs_img1.jpg'></image> -->
+                <image mode="aspectFill" bindtap="imgYu" bindlongpress="deleteImage" data-index="{{index}}" class='bbs-item-imglist-item' data-list="{{pics}}" data-src="{{item}}" wx:for="{{pics}}" wx:for-item="item" src="{{item}}" wx:key="{{index}}"></image>
+                <image  wx-if="{{pics.length<9}}" class='bbs-item-imglist-item' src='../../img/upImg.png' bindtap='choose'></image>
+
+
+            </view>
+        </view>
+
+
+
+    </view>
+
+</view>
+</view>

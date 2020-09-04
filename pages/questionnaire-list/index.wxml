@@ -1,0 +1,24 @@
+<!--pages/questionnaire-list/index.wxml-->
+<!-- <title back text="调查问卷" /> -->
+<view class="wrap">
+  <view class="item-wrap" wx:for="{{list}}" wx:key="{{item.id}}" wx:if="{{item.status==2}}">
+    <view class="item-wrap-top">
+      <view class="item-logo" wx:if="{{item.status==2}}">收集中</view>
+      <view class="item-num-wrap">
+        已收集<span class="item-num">{{item.join_num}}</span>份
+      </view>
+      <view class="item-title title1">{{item.title}}</view>
+       <image class="top-bg-img" src="../../img/cardbg.png"></image>
+    </view>
+    <view class="item-wrap-bottom">
+     <span class="bottom-btn" data-url="{{item.wx_share_pic}}" data-title="{{item.wx_share_title||item.title}}" data-wx_share_pic="{{item.wx_share_pic}}" data-questionnaire_code="{{item.questionnaire_code}}" bindtap="share">
+      <i class="iconfont icon-fenxiang btn-icon"/> 分享
+     </span>
+     <!-- <button class="bottom-btn" data-questionnaire_code="{{item.questionnaire_code}}" open-type="share"><i class="iconfont icon-fenxiang btn-icon"/> 分享</button> -->
+     <span class="bottom-btn btn-left-line" data-questionnaire_code="{{item.questionnaire_code}}" bindtap="goDetail">
+      <i class="iconfont icon-yulan1 btn-icon btn-icon-view"/> 预览
+     </span>
+    </view>
+    
+  </view>
+</view>

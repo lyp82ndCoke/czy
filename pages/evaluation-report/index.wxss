@@ -1,0 +1,201 @@
+.report-wrap{
+    padding-bottom:30rpx;
+}
+.report-head{
+    height: 240rpx;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.report-bgimage{
+    width: 100%;
+    height: 240rpx;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+.report-text{
+    font-size:36rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    position: absolute;
+    left: 79rpx;
+    top: 64rpx;
+    z-index: 11;
+}
+.report-content{
+    width:686rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 8rpx 8rpx 0px rgba(240,240,240,1);
+    border-radius:24rpx;
+    position: relative;
+    margin: -100rpx auto 0;
+    z-index: 12;
+}
+.user-message{
+    padding: 39rpx;
+    border-bottom: 1rpx solid #DDDDDD;
+}
+.user-icon image{
+    width:96rpx;
+    height:96rpx;
+    border-radius:50%;
+}
+.user-icon{
+    margin-right: 18rpx;
+}
+.evaluation-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 96rpx;
+}
+.user-nickname{
+    font-size:32rpx;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    margin-right: 30rpx;
+}
+.user-age{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+}
+.evaluation-time{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+.bottom-text{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    margin: 40rpx auto 0;
+    text-align: center;
+}
+.adv-bottom-card{
+    width:686rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 8rpx 8rpx 0px rgba(240,240,240,1);
+    border-radius:24rpx;
+    margin: 40rpx auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24rpx 34rpx 24rpx 48rpx;
+    line-height: normal;
+    text-align: left;
+}
+.adv-bottom-card::after{
+    border: none !important;
+    outline: none !important;
+}
+.poster-wrap{
+    font-size: 0;
+}
+.poster-wrap image{
+    width:90rpx;
+    height:90rpx;
+}
+.adv-wrap{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin-right: 94rpx;
+}
+.ask-text{
+    font-size:20rpx;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+
+.proess-wrap{
+    padding-bottom: 40rpx;
+}
+.task-progress-wrap{
+    margin: 40rpx 40rpx 0;
+}
+.task-progress-title{
+    color: rgba(153, 153, 153, 1);
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.progress-title-left{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+}
+.progress-title-right{
+    font-size:28rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.task-progress-text{
+    font-size:24rpx;
+    font-weight:400;
+    color:#333;
+}
+.task-review {
+	border: 1px solid transparent;
+	border-radius: 5px;
+	color: #777;
+	display: flex;
+	font-size: 12px;
+    align-items: center;
+    margin-top: 10rpx;
+}
+.task-progress {
+    /* background-color: rgba(230, 0, 57, .1); */
+	position: relative;
+	height: 35rpx;
+	width: 100%;
+}
+.task-progress-done {
+	height: 35rpx;
+    width: 0;
+    text-align: right;
+    padding-right: 10rpx;
+    transition: width 1s ease 0.3s;
+    -ms-transition: width 1s ease 0.3s;
+    -webkit-transition: width 1s ease 0.3s;
+    -moz-transition: width 1s ease 0.3s;
+}
+.task-progress-jiaocha{
+    background-color: rgba(230, 0, 57);
+}
+.task-progress-hencha{
+    background-color: rgba(255, 153, 81);
+}
+.task-progress-good{
+    background-color: rgba(0, 224, 174);
+}
+.task-progress-commonly{
+    background-color: rgba(255, 210, 113);
+}
+.task-progress-excellent{
+    background-color: rgba(0, 206, 224);
+}
+.evalua-progress-jiaocha{
+    background-color: rgba(230, 0, 57, .1);
+}
+.evalua-progress-hencha{
+    background-color: rgba(255, 153, 81, .1);
+}
+.evalua-progress-good{
+    background-color: rgba(0, 224, 174, .1);
+}
+.evalua-progress-commonly{
+    background-color: rgba(255, 210, 113, .1);
+}
+.evalua-progress-excellent{
+    background-color: rgba(0, 206, 224, .1);
+}
+.status-text{
+    font-size:24rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}

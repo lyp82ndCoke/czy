@@ -1,0 +1,68 @@
+.message-item-wrap {
+    display: flex;
+    padding: 25rpx 0;
+    border-bottom: 1rpx solid #f4f2ed;
+}
+
+.message-item-wrap:last-child {
+    border-bottom: none;
+}
+
+.message-item-wrap .avatar-img {
+    border-radius: 50%;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.message-item-title {
+    display: flex;
+    align-items: baseline;
+    color: #999;
+}
+
+.message-nickname {
+    max-width: 210rpx;
+    display: inline-block;
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.message-time {
+    padding-left: 30rpx;
+    font-size: 24rpx;
+}
+
+.message-content {
+    /* display: flex; */
+    padding-left: 40rpx;
+    flex: 1;
+}
+
+.message-text {
+    margin-top: 15rpx;
+    font-size: 28rpx;
+    color: #333;
+    line-height: 46rpx;
+    font-weight: 400;
+}
+
+.message-form {
+    display: flex;
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    line-height: 26rpx;
+    color: #999;
+}
+
+.to-course-nav {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 530rpx;
+}
+
+.icon-back {
+    padding-left: 5rpx;
+}

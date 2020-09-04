@@ -1,0 +1,12 @@
+<!--pages/questionnaire-qrcode/index.wxml-->
+<!-- <title back/> -->
+<view class="qrcode-wrap">
+    <view class="qrcode-img-wrap">
+      <image class="qrcode-img" src="{{qrCodeUrl}}"></image>
+    </view>
+    <view class="save-btn" wx:if="{{openSetting}}" bindtap="openSetting">
+      设置保存图片
+    </view>
+    <view wx:else class="save-btn" bindtap="save">保存二维码</view>
+    <view class="qrcode-bottom-text">答题者可通过长按图片扫码，以进入答题</view>
+  </view>

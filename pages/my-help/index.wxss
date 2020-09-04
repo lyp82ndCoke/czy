@@ -1,0 +1,146 @@
+/* pages/my-help/index.wxss */
+
+page {
+  background: #f8f8f8;
+}
+.suggestions-wrapper {
+  height: 100%;
+  width: 100%;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  text-align: center;
+  background: #f8f8f8;
+  border-top: 1rpx solid #eee;
+}
+
+.sugList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 200rpx
+}
+
+.logo {
+  width: 192rpx;
+  height: 192rpx;
+  margin: 38rpx 0 49rpx 0;
+  border-radius: 50%;
+}
+
+.title-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 3rpx;
+  padding-bottom: 42rpx;
+}
+
+.suggestions-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  /* align-items: center; */
+}
+
+.suggestions-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  height: 62rpx;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+
+.suggestions-title > image {
+  width: 30rpx;
+  height: 17rpx;
+  padding-right: 48rpx;
+}
+
+.title-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 51rpx;
+}
+
+.title-header image {
+  width: 13.5rpx;
+  height: 13.5rpx;
+  margin-right: 14rpx;
+}
+
+.title-header text {
+  width: 580rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  letter-spacing: 2rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.content-dlts {
+  font-size: 28rpx;
+  color: #666;
+  letter-spacing: 3rpx;
+  line-height: 45rpx;
+  padding: 10rpx 43rpx 35rpx 74rpx;
+  text-align: left;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #666666;
+  margin-top: 22rpx;
+  margin-bottom:20rpx;
+}
+
+.sug-btn {
+  width: 100%;
+  position: fixed;
+  padding : 20rpx 0 91rpx 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  background: #f8f8f8
+}
+
+.sug-btn text {
+  font-size: 24rpx;
+  color: #ccc;
+  margin-bottom: 17rpx;
+}
+
+.sug-btn view.sug {
+  width: 650rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #fff;
+  font-size: 28rpx;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background:linear-gradient(180deg,#F5BC26,#F5A925);
+  border-radius: 12rpx;
+}
+
+.main1{
+  width: 100%;
+  margin: 0
+}
+
+.main1 image{
+  padding: 80rpx 0 57rpx 0
+}

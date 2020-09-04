@@ -1,0 +1,102 @@
+<!--pages/growing-up-details/index.wxml-->
+<!--index.wxml-->
+<!-- <title back/> -->
+<view class="container ">
+<!-- <view class="container {{[isIpx ? 'isIpx' : '']}}"> -->
+  <!--全局点击唤醒授权遮罩-->
+  <!--banner-->
+  <view class='bbs-box'>
+    <view class='bbs-item'>
+      <view class='bbs-item-head'>
+        <image class='bbs-item-head-avea' src='{{detail.picture}}'></image>
+        <view class='bbs-item-head-desc'>
+          <view class='bbs-item-head-desc-nickname'>{{detail.nickname}}</view>
+          <!-- <view class='bbs-item-head-desc-time'>{{item.create_time}}</view> -->
+        </view>
+      </view>
+      <view data-isfold="{{item.isfold}}" class="bbs-item-text  {{item.isfold?'title7':'bbs-item-text-auto'}}">
+        <text class='bbs-item-text-con '>{{detail.details}}</text>
+      </view>
+      <view data-posts_id="{{detail.id}}" data-length="{{detail.content.length }}" wx-if="{{ item.contentLength>175}}" data-index="{{index}}" class='bbs-item-more' bindtap='showDetail' data-idx="{{ item.id }}">
+        <text wx-if="{{detail.isfold == true}}">展开</text>
+        <i wx-if="{{detail.isfold == true}}" class="iconfont icon-zhankai fold-icon" />
+
+
+        <text wx-if="{{detail.isfold == false}}">收起</text>
+        <i wx-if="{{detail.isfold == false}}" class="iconfont icon-zhankai1 fold-icon" />
+      </view>
+      <view class='bbs-item-imglist'>
+        <image mode="aspectFill" bindtap="imgYu" class='bbs-item-imglist-item' data-list="{{detail.pic_urls}}" data-src="{{itemin}}" wx:key="{{itemin}}" wx:for="{{detail.pic_urls}}" wx:for-item="itemin" src="{{itemin}}"></image>
+      </view>
+
+      <view class='btn-agree'>
+        <text class='bbs-item-head-desc-time'>{{detail.create_time}}</text>
+        <view class="flex-between-row">
+          <view class="icon-wrap" bindtap='postsPraise' data-action_type="{{detail.is_zans}}" data-id="{{detail.growth_wall_id}}">
+            <i wx:if="{{detail.is_zans==1}}" class="iconfont zan-icon icon-dianzan zan-icon-true "></i>
+            <i wx:else class="iconfont zan-icon icon-dianzan"></i>
+            <text class="{{detail.is_zans==1?'zan-icon-true':''}}">{{detail.zan_num?detail.zan_num:'点赞'}}</text>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+
+  </view>
+  <!-- 评论 -->
+  <view class='course-commont'>
+    <view>评论</view>
+    <view>
+      <view class='flex-between-row comm' wx:for="{{commentlist}}" wx:key="item.comment_id" wx:if="{{commentlist.length > 0}}">
+        <view class='comm-photo flex-center-column'>
+          <image src='{{item.headimgurl}}' style='width:58rpx;height:58rpx;border-radius:50%'></image>
+        </view>
+        <view class='comm-content'>
+          <view class='flex-between-row comm-content-top'>
+            <view class='comm-text-a' style='margin:0'>{{item.nickname}}</view>
+            <view class='flex-left-row zan-icon-wrap {{item.is_zans == 1?"is-zan":""}}' bindtap='commPraise' data-index='{{index}}' data-identify_type="{{item.is_zans}}" data-id="{{item.comment_id}}">
+              <i class="iconfont icon-dianzan_active dianzan-icon" />
+              <text class="{{item.is_zans == 1?'zan-icon-true':'comm-hand-text-cel'}}">{{item.zan_num?item.zan_num:'点赞'}}</text>
+            </view>
+          </view>
+          <view class='comm-content-true'>
+            <text class='comm-text-b'>{{item.comment_contents}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 评论空页面 -->
+      <view class='comment-none' wx:if='{{commentlist.length == 0}}'>
+        <image src='../../img/no_comm.png' mode='widthFix' />
+        <view class='cours-top-font2'>暂无评论</view>
+      </view>
+    </view>
+  </view>
+  <!-- 写评论 -->
+  <view class='write-commont' bindtap="showCommon">
+    <view>
+      <!-- <textarea value="" maxlength="140" cursor-spacing="10" show-confirm-bar="false" auto-height placeholder="说说你的想法..."></textarea> -->
+      <view class="commont-bottom-text">说说你的想法...</view>
+      <text type="text" class="text-btn" style="">发布</text>
+      <!-- <button size="mini" plain  type="default">发布</button> -->
+    </view>
+    <!-- <view>
+      <view class='write-btn' data-headerImg="{{headerImg}}" bindtap='writeBtn'>
+        写评论
+      </view>
+    </view> -->
+  </view>
+  <block >
+    <view class="write-commont-wrap" catchtouchmove='true' wx:if="{{!commontShow}}" bindtap="hideCommon">
+      <view class="commont-wrap" >
+        <textarea fixed class="textarea" adjust-position="false" catchtouchmove='true' focus value="{{commentText}}" bindinput="commontChange" maxlength="1000" cursor-spacing="150"  disable-default-padding adjust-position="false" show-confirm-bar="false" bindblur="blur" bindfocus="focus" placeholder="说说你的想法..."></textarea>
+        <view>
+        <text wx:if="{{!loadingBtn}}" class="release-btn" bindtap="release">发布</text>
+        <text wx:else class="release-btn release-btn-loading">发布</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <goIndex/>
+
+</view>

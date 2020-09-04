@@ -1,0 +1,139 @@
+/*我的课程*/
+
+page {
+  background: #f9f9f9;
+}
+/* 多行移除省略 */
+
+.text_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.course_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 90rpx;
+  margin-top: 25rpx;
+}
+
+.course_Items {
+  width: 700rpx;
+  margin-bottom: 25rpx;
+  padding-left: 12rpx;
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  /* box-shadow: 10px 10px 5px #F9F9F9; */
+  /* height: 212rpx; */
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 25rpx;
+}
+
+.course_item_img_l {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 168rpx;
+}
+
+.course_item_img_l image {
+  width: 170rpx;
+  height: 168rpx;
+}
+
+.course_item_right {
+  position: relative;
+  margin-left: 30rpx;
+}
+.red-dot{
+  position: absolute;
+  display: inline-block;
+  top: 15rpx;
+  left: -15rpx;
+   border-radius: 50%;
+  height: 10rpx;
+  width: 10rpx;
+  background-color: red;
+ 
+}
+
+.course_title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.course_name {
+  font-size: 30rpx;
+  height: 64rpx;
+  font-weight: bold;
+  color: #000;
+  line-height: 1.3;
+  height: 78rpx;
+}
+
+.title_circle {
+  width: 38rpx;
+  height: 38rpx;
+  border-radius: 19rpx;
+  background: #fb5942;
+  font-size: 23rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 13rpx;
+  margin-top: 12rpx;
+  color: #fff;
+}
+
+.course_content {
+  font-size: 24rpx;
+  color: #878787;
+  margin: 5rpx 0;
+  width: 450rpx;
+  height: 64rpx;
+  line-height: 32rpx
+}
+
+.course_count {
+  font-size: 24rpx;
+  color: #fb5942;
+  font-weight: bold;
+}
+
+/*无数据显示*/
+
+.main1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position:fixed;
+  z-index:9999;
+
+}
+.bg{
+ width: 200rpx;
+ /* margin-top: 300rpx; */
+}
+/* .bg {
+  width: 200rpx;
+  margin-top: -300rpx;
+  padding-top: 0 !important;
+
+} */
+
+.order-sub-title {
+  font-size: 30rpx;
+  color: #c2c3c4;
+  margin-bottom: 15rpx;
+}

@@ -1,0 +1,90 @@
+<!--pages/training-answer/index.wxml-->
+<!-- <title text="答题签到" back/> -->
+<view class="container">
+  <view class='wrapper'>
+  <!-- 头部提示 -->
+    <view class="prompt-top" wx:if="{{signInfo.is_tips==1}}">
+      <i class='iconfont icon-laba prompt-top-icon'></i><text class="prompt-top-text van-ellipsis">{{signInfo.tips_content}}</text>
+    </view>
+    <view class='hd'>
+      <view class='title'>{{signInfo.sign_name}}-签到</view>
+    </view>
+    <view class='train-ct'>
+      <!-- 答题内容 -->
+      <view class='train-list'>
+        <view class='train-item' wx:for="{{todayList}}" wx:for-index='index' wx:for-item='item' wx:key="item.sign_id">
+          <view class='title'>{{item.question.question_content}}</view>
+          <view class='answer-list'>
+           
+            <label class="checkbox" wx:for="{{item.answerList}}" wx:for-index='subIndex' wx:for-item='subItem' wx:key="subItem.answer_id">
+              <view wx:if='{{!resState}}' class='lab-view' bindtap='{{item.question.question_type==1?"single":"check"}}' data-qindex="{{index}}" data-aindex="{{subIndex}}" data-qid="{{item.question.question_id}}" data-aid="{{subItem.answer_id}}" data-value='{{subItem.option_type}}'
+                data-checked='{{subItem.checked}}' data-select-type="{{item.question.question_type}}">
+                <!-- <checkbox value="{{subItem.answer_id}}" /> -->
+
+                <view class='check {{subItem.checked?"check-select":""}}'>
+                  <text class='selection {{subItem.checked?"selection-active":""}}'>{{subItem.option_type}}
+                </text>
+                </view>
+
+
+                <view class='sub-selection {{subItem.checked?"sub-selection-active":""}}'>
+                  {{subItem.answer_content}}
+                </view>
+              </view>
+              <view class='lab-view' wx:else>
+                <view class='check {{subItem.is_true_answer==1?"check-correct":(subItem.is_select==1?"check-fail":"")}} '>
+                  <text class='selection {{(subItem.is_true_answer==1||subItem.is_select==1)?"selection-active":""}} '>{{subItem.option_type}}
+                </text>
+                </view>
+
+
+                <view class='sub-selection  {{subItem.is_true_answer==1?"sub-selection-correct":(subItem.is_select==1?"sub-selection-fail":"")}}'>
+                  {{subItem.answer_content}}
+                </view>
+               
+              </view>
+            </label>
+            <!-- </checkbox-group> -->
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 广告内容 -->
+    <!-- <view class='swiper-ct' hidden='{{imageList.length == 0}}'>
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange">
+      <block wx:for="{{imageList}}">
+        <swiper-item>
+          <image src="{{item.picturePreview}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="dots" hidden='{{indicatorDots}}'>
+      <block wx:for="{{imageList}}" wx:key="unique">
+        <view class="dot {{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view> -->
+    <view class='ft'>
+      <text bindtap='{{resState?"":"alertSubmit"}}' class='{{resState?"ft-text-grey":""}}'>{{resState?'已提交':'提交'}}</text>
+    </view>
+  </view>
+  <!-- 签到成功弹窗 -->
+  <!-- <view class='sign-pup flex-center-row'> -->
+  <view class='sign-pup flex-center-row' hidden='{{!pupState}}'>
+    <view class='pup-ct flex-center-row'>
+      <i class="iconfont close-icon icon-guanbi" bindtap='closePup'></i>
+      <!-- <image src='../../img/shut_down.png' bindtap='closePup'></image> -->
+      <view class='flex-column'>
+        <view class='title'>确定提交</view>
+        <image class='sub-icon' src='../../img/tijiaochenggong.png'></image>
+        <!-- <view class='sub-title-1'>连续签到{{dataInfo.userActivitySignIn.signInStepDay}}天，再接再厉哦～</view> -->
+        <view class='sub-title-1'>提交后不可修改哦</view>
+        <view class='sub-title-2' hidden='{{dataInfo.userActivitySignIn.couponLabel == ""}}'>{{dataInfo.userActivitySignIn.couponLabel}}</view>
+        <!-- <button open-type='share' hover-class='none' class='go-share  go-share-margin'>去分享</button> -->
+        <view class='go-share  go-share-margin' bindtap='submitAnswer'>确定</view>
+      </view>
+    </view>
+  </view>
+</view>

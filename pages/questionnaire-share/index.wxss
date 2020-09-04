@@ -1,0 +1,79 @@
+/* pages/questionnaire-share/index.wxss */
+page{
+  background-color: #f7f4f8;
+}
+.wrap {
+  width: 100%;
+  /* height: 100%; */
+  /* background-color: #f7f4f8; */
+  padding: 96rpx 38rpx;
+}
+
+.content {
+  background-color: #fff;
+  box-shadow: 0px 7rpx 12rpx 1rpx rgba(216, 216, 216, 1);
+  border-radius: 40rpx;
+  text-align: center;
+  padding-top: 100rpx;
+  font-size: 0;
+}
+
+.top-padding {
+  padding: 0 70rpx;
+}
+
+.top-title {
+  margin: 0 auto;
+  width: 400rpx;
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.text-line {
+  color: #ccc;
+  /* padding: 0 60rpx; */
+}
+
+.content-center {
+  margin-top: 200rpx;
+}
+
+.img-wrap {
+  flex: 1;
+  background-color: #fff;
+  
+  outline: none;
+  line-height: 1;
+}
+.img-wrap::after{
+  border: none;
+}
+
+.img-wrap .img {
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.img-wrap .img-text {
+  padding: 40rpx 0 5rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 23rpx;
+}
+.bottom-img{
+  margin-top: 105rpx;
+  width: 100%;
+   border-radius:0 0 40rpx 40rpx;
+}
+.weixin-sty{
+  color: #9CD75F;
+  font-size: 128rpx;
+}
+.erweima-sty{
+  color:#4E4B89;
+  font-size: 128rpx;
+}

@@ -1,0 +1,370 @@
+/* pages/questionnaire/index.wxss */
+
+page {
+  background-color: #f7f4f8;
+}
+
+.red {
+  color: red;
+}
+.status-wrap{
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color:#f7f4f8; 
+ 
+}
+.status-content{
+   margin-top: 230rpx;
+    text-align: center;
+    font-size:38rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+padding: 0 150rpx;
+}
+.status-img{
+ 
+  width: 413rpx;
+  height: 336rpx;
+}
+.status-text-top{
+ margin-top: 65rpx;
+}
+.share-text{
+  text-align: center;
+  font-size: 32rpx;
+}
+.status-btn {
+  margin: 100rpx auto 0rpx;
+  width:360rpx;
+line-height:88rpx;
+background:linear-gradient(270deg,rgba(230,0,57,1) 0%,rgba(244,26,80,1) 100%);
+box-shadow:0px 11rpx 16rpx 0rpx rgba(254,191,207,1);
+border-radius:44rpx;
+color: #fff;
+}
+.btn-again{
+  margin-top: 26rpx ;
+  background:rgba(255,218,227,1);
+box-shadow:0px 11px 16px 0px rgba(254,191,207,1);
+ color:rgba(230,0,57,1);
+}
+
+
+
+.notify-wrap {
+  width: 750rpx;
+  height: 72rpx;
+  padding: 15rpx;
+  line-height: 1;
+  background: rgba(255, 176, 0, 1);
+  text-align: center;
+  color: #fff;
+  font-size: 34rpx;
+  vertical-align: middle;
+}
+
+.notify-text {
+  margin-left: 30rpx;
+}
+
+.title-wrap {
+  margin-top: 9rpx;
+  position: relative;
+  width: 100%;
+  height: 221rpx;
+}
+.item-title{
+  padding: 8rpx 16rpx;
+}
+.error-text{
+  /* transform: translateX(50%); */
+   padding: 8rpx 16rpx;
+   /* opacity: 0; */
+  font-size: 28rpx;
+  color: red;
+}
+.title-bg-img {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.title-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  padding: 0 16rpx;
+  font-size: 48rpx;
+}
+
+.content-wrap {
+  padding:28rpx;
+}
+
+.content-top-text {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+}
+
+.question-list-wrap {
+  margin-top: 40rpx;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0rpx 11rpx 16rpx 0rpx rgba(238, 238, 238, 1);
+  border-radius: 28rpx;
+  padding: 0 30rpx 52rpx;
+}
+.item-content{
+  padding-top: 60rpx;
+}
+
+.padding-wrap{
+  width: 100%;
+  margin: 6rpx 0;
+  padding: 0 16rpx;
+}
+.padding-wrap-2{
+width: 50%;
+}
+.padding-wrap-3{
+  width: 33.333%;
+}
+.radio-wrap{
+  width: 100%;
+}
+
+.radio {
+  border: 2rpx solid rgba(204, 204, 204, 1);
+  border-radius: 12rpx;
+  line-height: 1;
+}
+.radio-text-wrap{
+  padding: 24rpx 36rpx;
+}
+.radio-img-wrap{
+  border-radius:12rpx 12rpx 0 0;
+  padding: 5rpx;
+  background-color: #fff;
+}
+
+
+.radio-left {
+  position: relative;
+  width: 34rpx;
+  min-width: 34rpx;
+  height: 34rpx;
+  border: 2px solid rgba(204, 204, 204, 1);
+  border-radius: 50%;
+  background-color: #fff;
+}
+.radio-left-img{
+  margin-left: 27rpx;
+}
+
+.radio-left-true {
+  border-color: #ffb000;
+}
+.img-wrap{
+  position: relative;
+  /* width: 50%; */
+   margin: 16rpx 0rpx;
+   /* background-color: #fff; */
+}
+.img-radio{
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+.img{
+  max-width:100%;
+/* height:286rpx; */
+border-radius:12rpx 12rpx 0rpx 0rpx;
+}
+.img-radio-text-wrap{
+  border-top:2rpx solid rgba(204,204,204,1);
+  border-radius:0px 0px 12rpx 12rpx;
+  padding: 24rpx 0;
+}
+.img-radio-text{
+  width: 100%;
+  text-align: left;
+  font-size: 30rpx;
+  line-height: 1.5;
+  padding: 0rpx 19rpx;
+}
+
+
+
+
+.radio-left-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  background: rgba(255, 176, 0, 1);
+  border-radius: 50%;
+}
+
+.input-wrap {
+  width: 100%;
+  border-top:2rpx solid rgba(204,204,204,1);
+  background-color: #fff;
+  border-radius: 0 0 12rpx 12rpx;
+  padding: 16rpx 36rpx;
+  font-size: 30rpx;
+}
+.input{
+  line-height: 30rpx;
+  font-size: 30rpx;
+}
+
+radio .wx-radio-input {
+  /* 自定义样式.... */
+  height: 34rpx;
+  width: 34rpx;
+  /* margin-top: 1rpx; */
+  border-radius: 50%;
+  /* border: 2rpx solid #999; */
+  background: transparent;
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+
+radio .wx-radio-input.wx-radio-input-checked {
+  /* border: none; */
+  border-color: #ffb000 !important;
+  /* background-color: #fff!important; *//* background-color: transparent!important; *//* 居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+  /* 去除对号 */
+  content: '';
+  /* background: #fff; */
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  /* background: red; */
+  background-color: #ffb000;
+  /* 居中 *//* margin-top: 0rpx; *//* display: flex; *//* position: relative; */
+}
+
+.radio-text {
+  margin-left: 34rpx;
+  /* max-height: 58rpx; */
+  max-width:  524rpx;
+  font-size: 30rpx;
+  line-height: 1.5;
+}
+.radio-img {
+  overflow: hidden;
+  margin-left: 34rpx;
+  max-width:  505rpx;
+}
+.textarea-wrap{
+
+  margin: 0 16rpx;
+  width: 100%;
+   padding: 16rpx;
+}
+.textarea-true{
+  border-color: #ffb000;
+}
+.textarea{
+  box-sizing: border-box;
+  /* height: 118rpx; */
+  width: 100%;
+  /* padding: 16rpx; */
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+.submint-btn{
+   margin:60rpx auto;
+  width:540rpx;
+line-height:88rpx;
+background:rgba(153,153,153,1);
+box-shadow:0px 11rpx 16rpx 0rpx rgba(254,191,207,1);
+border-radius:44rpx;
+font-size:38rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+  
+}
+.submint-btn-true{
+  margin:60rpx auto;
+  width:540rpx;
+line-height:88rpx;
+background:linear-gradient(270deg,rgba(230,0,57,1) 0%,rgba(244,26,80,1) 100%);
+box-shadow:0px 11rpx 16rpx 0rpx rgba(254,191,207,1);
+border-radius:44rpx;
+font-size:38rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+}
+.botton-logo{
+  margin-bottom: 68rpx;
+  text-align: center;
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(153,153,153,1);
+}
+.star-wrap{
+  width: 100%;
+  padding: 26rpx
+}
+.star{
+  flex: 1;
+  color: #E3E3E3;
+  font-size: 65rpx;
+  text-align: center;
+}
+.star-true{
+  color:#ffb101;
+}
+
+/* .radio{
+  position:relative;
+}
+.radio radio{
+  opacity: 0;
+}
+.radio image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:44rpx;
+  height:44rpx;
+} */
+.border-true{
+  border-color: #ffb000;
+}
+.label-true {
+  background: rgba(255, 226, 160, 1);
+  border-color: rgba(255, 176, 0, 1);
+}

@@ -1,0 +1,134 @@
+<!-- pages/questionnaire/index.wxml -->
+<!-- <title back homeIcon/> -->
+<login wx:if="{{loginShow}}" class="login" bind:getuserinfo="loginHide" bind:cancel="cancelLogin" />
+<view class="login-wrap" wx:if="{{loginWrapShow}}" catchtap='loginShow' />
+<block wx:if="{{options.is_preview!=1}}">
+  <view wx:if="{{questionaireInfo.status==4||questionaireInfo.status==3}}" class="status-wrap">
+    <view class="status-content">
+      <image class="status-img" src="../../img/questionnaire-stop.png"></image>
+      <view class="status-text-top">抱歉，</view>
+      <view>该问卷已停止收集啦！</view>
+    </view>
+  </view>
+
+  <view wx:if="{{questionaireInfo.status==5}}" class="status-wrap">
+    <view class="status-content">
+      <image class="status-img" src="../../img/questionnaire-end.png"></image>
+      <view class="status-text-top">{{questionaireInfo.err_msg}}</view>
+    </view>
+    <view wx:if="{{questionaireInfo.is_redirect_share == 1}}" bindtap="goShare" class="status-btn btn-continue share-text">去分享</view>
+  </view>
+
+  <view wx:if="{{submmitStatus}}" class="status-wrap">
+    <view class="status-content">
+      <image class="status-img" src="../../img/questionnaire-ok.png"></image>
+      <!-- <view class="status-text-top">
+      您已完成本次问卷，
+    </view>
+    <view>
+    
+      感谢您的帮助与支持！
+    </view> -->
+      <view class="status-text-top">{{questionaireInfo.success_tips}}</view>
+      <view bindtap="goIndex" class="status-btn btn-continue">返回首页</view>
+    </view>
+  </view>
+
+  <view wx:if="{{questionaireInfo.status==7}}" class="status-wrap">
+    <view class="status-content">
+      <image class="status-img" src="../../img/questionnaire-end.png"></image>
+      <view class="status-text-top">您之前已经回答了{{subList.length}}题，</view>
+      <view>是否继续上次回答？</view>
+      <view bindtap="continueAnswer" class="status-btn btn-continue">继续答题</view>
+      <view bindtap="retake" class="status-btn btn-again">重新答题</view>
+    </view>
+    <!-- <image class="status-img" src="../../img/questionnaire-ok.png"></image>
+<image class="status-img" src="../../img/questionnaire-puse.png"></image>
+<image class="status-img" src="../../img/questionnaire-stop.png"></image> -->
+  </view>
+</block>
+<block wx:if="{{!submmitStatus&&questionaireInfo.status!=7}}">
+  <view wx:if="{{options.is_preview==1}}" class="notify-wrap flex-center-row">
+    <icon type="info" size="32rpx" color="#fff" />
+    <text class="notify-text">当前为预览页面，回答将不计入结果</text>
+  </view>
+  <view class="title-wrap">
+    <image class="title-bg-img" src="../../img/title-bg.png"></image>
+    <view class="title-text">{{questionaireInfo.title}}</view>
+  </view>
+  <view class="content-wrap">
+    <view class="content-top-text">{{questionaireInfo.intro}}</view>
+    <view class="question-list-wrap" id="the-id">
+      <view class="item-content" wx:for="{{componentList}}" wx:key="{{item.componentInfo.component_id}}" id="item-{{index}}">
+        <view class="item-title">
+          {{index+1}}、{{item.componentInfo.title}}
+          <text class="red" wx:if="{{item.componentInfo.component_type==2}}">（多选）</text>
+          <text class="red" wx:if="{{item.componentInfo.is_must_answer==1}}">*</text>
+        </view>
+        <view animation="{{animation}}" class="error-text" wx-if="{{item.error}}">
+          {{errorText}}
+        </view>
+        <view class="radio-wrap flex-left-row-next">
+          <block wx:if="{{item.componentInfo.component_type==1||item.componentInfo.component_type==2}}" wx:for="{{item.optionList}}" data-index="{{subIndex}}" wx:for-index="subIndex" wx:for-item="subItem" wx:key="{{subItem.option_id}}">
+            <view animation="{{animation}}" class="error-text" wx-if="{{subItem.show_type==2&&item.optionError}}">
+              请输入填空项的内容
+            </view>
+            <view class="padding-wrap {{subItem.show_type==3?'img-wrap':''}}" bindtap="radioChange" data-component_id="{{item.componentInfo.component_id}}" data-option_id="{{subItem.option_id}}" data-option_img_url="{{subItem.option_img_url}}" data-show_type="{{subItem.show_type}}" data-component_type="{{item.componentInfo.component_type}}" data-index="{{index}}" data-subindex="{{subIndex}}">
+              <view class="radio {{subItem.option_id==subList[index].option_id||subItem.option_id==subList[index].optionList[subIndex].option_id?'label-true':''}}">
+                <!-- label-true -->
+                <!-- 纯文字 -->
+                <view class="radio-text-wrap flex-left-row {{subItem.show_type==3?'radio-img-wrap':''}} ">
+                  <view class="radio-left {{subItem.option_id==subList[index].option_id||subItem.option_id==subList[index].optionList[subIndex].option_id?'border-true':''}} {{subItem.show_type==3?'radio-left-img':''}}">
+                    <view wx:if="{{subItem.option_id==subList[index].option_id||subItem.option_id==subList[index].optionList[subIndex].option_id}}" class="radio-left-circle"></view>
+                  </view>
+                  <!-- <view wx:if="{{item.componentInfo.component_type==2}}" class="radio-left {{subItem.option_id==subList[index].option_id?'border-true':''}} {{subItem.show_type==3?'radio-left-img':''}}">
+                  <view wx:if="{{subItem.option_id==subList[index].option_id}}" class="radio-left-circle"></view>
+                </view> -->
+                  <block wx:if="{{subItem.show_type==1||subItem.show_type==2}}">
+                    <!--title2去掉限制2行省略号-->
+                    <view class="radio-text">{{subItem.option_name}}</view>
+                  </block>
+                  <block wx:if="{{subItem.show_type==3}}">
+                    <view class="radio-img">
+                      <image mode="widthFix" src="{{subItem.option_img_url}}" class="img"></image>
+                    </view>
+                  </block>
+                </view>
+                <block wx:if="{{subItem.show_type==3}}">
+                  <view class="img-radio-text-wrap {{subItem.option_id==subList[index].option_id||subItem.option_id==subList[index].optionList[subIndex].option_id?'label-true':''}}">
+                    <!--title2去掉限制2行省略号-->
+                    <view class="img-radio-text">{{subItem.option_name}}</view>
+                  </view>
+                </block>
+                <block wx:if="{{subItem.show_type==2&&subItem.option_id==subList[index].option_id||subItem.show_type==2&&subItem.option_id==subList[index].optionList[subIndex].option_id}}">
+                  <!-- 其他输入框 -->
+                  <view catchtap="return" class="input-wrap {{subItem.option_id==subList[index].option_id||subItem.option_id==subList[index].optionList[subIndex].option_id?'border-true':''}}">
+                    <input data-index="{{index}}" data-subindex="{{subIndex}}" class="input" bindinput="changeInput" data-component_type="{{item.componentInfo.component_type}}" cursor-spacing="10" value="{{subList[index].option_value||subList[index].optionList[subIndex].option_value}}" placeholder=""></input>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </block>
+          <!-- 填空 -->
+          <view class="radio img-wrap textarea-wrap {{subList[index].fill_content?'textarea-true':''}}" wx:if="{{item.componentInfo.component_type==3}}">
+            <textarea auto-height bindinput="changeTextarea" data-component_type="{{item.componentInfo.component_type}}" data-component_id="{{item.componentInfo.component_id}}" data-index="{{index}}" adjust-position="false" class="textarea" cursor-spacing="34" value="{{subList[index].fill_content}}"></textarea>
+          </view>
+          <!-- 评分 -->
+          <view class="star-wrap flex-center-row" wx:if="{{item.componentInfo.component_type==4}}">
+            <i wx:for="{{item.optionList}}" wx:for-index="subIndex" wx:for-item="subItem" wx:key="{{subItem.option_id}}" class="iconfont icon-pingfen star {{subIndex<subList[index].option_sort?'star-true':''}}" data-component_type="{{item.componentInfo.component_type}}" data-index="{{index}}" data-subindex="{{subIndex}}" bindtap="clickScore"></i>
+          </view>
+          <!-- <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{itemss}}">
+            <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </checkbox-group> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view wx:if="{{options.is_preview!=1}}" class="submint-btn-true" bindtap="submit">提交</view>
+    <!-- <view class="submint-btn">提交</view> -->
+  </view>
+  <view class="botton-logo">—— 尹建莉父母学堂 ——</view>
+</block>
